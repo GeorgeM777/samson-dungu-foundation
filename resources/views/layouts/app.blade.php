@@ -1534,7 +1534,7 @@
 
         <li><a href="{{ url('/sponsor') }}" class="{{ request()->is('sponsor') ? 'active' : '' }}">Sponsor</a></li>
         <li><a href="{{ url('/get-involved') }}" class="{{ request()->is('get-involved') ? 'active' : '' }}">Get Involved</a></li>
-        <li><a href="{{ url('/blog') }}" class="{{ request()->is('blog*') ? 'active' : '' }}">Blog & News</a></li>
+        <!-- <li><a href="{{ url('/blog') }}" class="{{ request()->is('blog*') ? 'active' : '' }}">Blog & News</a></li> -->
         <li><a href="{{ url('/special-projects') }}" class="{{ request()->is('special-projects') ? 'active' : '' }}">Special Projects</a></li>
         <li><a href="{{ url('/contact') }}" class="{{ request()->is('contact') ? 'active' : '' }}">Contact Us</a></li>
     </ul>
@@ -1552,7 +1552,7 @@
                 <h3>Contact Information</h3>
                 <ul class="footer-links">
                     <li><i class="fas fa-map-marker-alt"></i> Wakiso District, Central Uganda</li>
-                    <li><i class="fas fa-phone"></i> +256 XXX XXX XXX</li>
+                    <li><i class="fas fa-phone"></i>+256 782 488 116</li>
                     <li><i class="fas fa-envelope"></i> info@samsondungufoundation.org</li>
                 </ul>
             </div>
@@ -1578,7 +1578,7 @@
         </div>
         <div class="copyright">
             &copy; {{ date('Y') }} Samson Ddungu Foundation. All rights reserved.<br>
-            Registered Non-Profit Organization in Uganda | Registration No: ######
+            Registered Non-Profit Organization in Uganda | Registration No: 80034053198295
         </div>
     </footer>
 
@@ -1751,7 +1751,7 @@ document.querySelectorAll('.main-nav a').forEach(link => {
             const slides = document.querySelectorAll('.slide');
             const dots = document.querySelectorAll('.slide-dot');
             let currentSlide = 0;
-            const slideInterval = 3000; // Change slide every 5 seconds
+            const slideInterval = 3000; // Change slide every 3 seconds
 
             function showSlide(n) {
                 // Remove active class from all slides and dots

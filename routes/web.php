@@ -48,7 +48,10 @@ Route::get('/test-flutterwave', function() {
 });
 
 // Add these with your existing routes
-Route::get('/sponsor', [DonationController::class, 'index'])->name('sponsor');
+// Route::get('/sponsor', [DonationController::class, 'index'])->name('sponsor');
+Route::get('/sponsor', function () {
+    return view('sponsor'); // or whatever your view name is
+});
 Route::post('/donate/process', [DonationController::class, 'process'])->name('donation.process');
 Route::get('/donate/callback', [DonationController::class, 'callback'])->name('donation.callback');
 Route::get('/donate/success', [DonationController::class, 'success'])->name('donation.success');
@@ -69,3 +72,6 @@ Route::get('/projects/special-needs', function () {
 Route::get('/projects/elderly-medical-camps', function () {
     return view('projects.elderly-medical-camps');
 })->name('projects.elderly-medical-camps');
+
+// routes/web.php
+Route::post('/donation/submit-info', [DonationController::class, 'submitInfo'])->name('donation.submit-info');

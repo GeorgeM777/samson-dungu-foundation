@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Donate - Support Our Mission')
+@section('title', 'Support Our Mission - Donation Instructions')
 @section('content')
 
 <!-- Hero Section -->
@@ -8,14 +8,62 @@
     <div class="slide active" style="background-image: url('{{ asset('images/donate/hero-donate.jpg') }}');">
         <div class="slide-overlay">
             <div class="slide-text">
-                <h2>Your Support Changes Lives</h2>
-                <p>Every contribution directly impacts vulnerable communities in Uganda</p>
+                <h2>Support Our Mission in Uganda</h2>
+                <p>Your contributions directly impact vulnerable communities through sustainable programs</p>
             </div>
         </div>
     </div>
 </div>
 
 <div class="container">
+    <!-- Important Notice - Contact Director First -->
+    <div class="urgent-notice animate-on-scroll">
+        <div class="notice-badge">IMPORTANT</div>
+        <div class="notice-content">
+            <h2><i class="fas fa-exclamation-circle"></i> Before Making a Donation</h2>
+            <p><strong>All volunteers and donors must first contact our Country Director for guidance on the donation process.</strong> This ensures your funds are properly allocated and you receive acknowledgment.</p>
+
+            <div class="contact-director-box">
+                <div class="director-info">
+                    <div class="director-avatar">
+                        <i class="fas fa-user-tie"></i>
+                    </div>
+                    <div class="director-details">
+                        <h3>Contact Country Director</h3>
+                        <p><strong>Kisigula Martin</strong><br>
+                        Country Director, Uganda Operations<br>
+                        <i class="fas fa-phone"></i> +256 782 488 116<br>
+                        <i class="fas fa-envelope"></i> kisigula.martin@samsondungufoundation.org</p>
+                    </div>
+                </div>
+                <div class="contact-actions">
+                    <a href="tel:+256782488116" class="contact-button phone">
+                        <i class="fas fa-phone"></i> Call Now
+                    </a>
+                    <a href="sms:+256782488116?body=Hello%20Kisigula%2C%20I%20would%20like%20to%20make%20a%20donation%20to%20Samson%20Ddungu%20Foundation.%20Please%20guide%20me%20through%20the%20process."
+                       class="contact-button sms">
+                        <i class="fas fa-sms"></i> Send SMS
+                    </a>
+                    <a href="mailto:kisigula.martin@samsondungufoundation.org?subject=Donation%20Guidance%20Request&body=Dear%20Kisigula%2C%0A%0AI%20am%20interested%20in%20making%20a%20donation%20to%20Samson%20Ddungu%20Foundation.%20Please%20provide%20me%20with%20guidance%20on%20the%20process.%0A%0ABest%20regards%2C"
+                       class="contact-button email">
+                        <i class="fas fa-envelope"></i> Email
+                    </a>
+                </div>
+            </div>
+
+            <div class="notice-instructions">
+                <h4><i class="fas fa-list-ol"></i> Donation Process Steps:</h4>
+                <ol>
+                    <li><strong>Contact Country Director</strong> - Call or message Kisigula Martin at +256 782 488 116</li>
+                    <li><strong>Discuss Donation Purpose</strong> - Specify which project or program you wish to support</li>
+                    <li><strong>Receive Guidance</strong> - Get instructions on the best payment method for your situation</li>
+                    <li><strong>Make Payment</strong> - Transfer funds using the provided bank or mobile money details</li>
+                    <li><strong>Send Confirmation</strong> - Share proof of payment for receipt and acknowledgment</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+
     <!-- Urgent Land Project -->
     <div class="urgent-project animate-on-scroll">
         <div class="project-badge">URGENT PROJECT</div>
@@ -34,8 +82,8 @@
         </div>
 
         <div class="project-actions">
-            <a href="#donate-now" class="cta-button pulse">
-                <i class="fas fa-donate"></i> Donate to Land Project
+            <a href="#payment-methods" class="cta-button pulse">
+                <i class="fas fa-donate"></i> Support Land Project
             </a>
             <a href="/special-projects" class="secondary-button">
                 <i class="fas fa-info-circle"></i> Learn More
@@ -63,9 +111,9 @@
                     <li>✓ Regular progress reports</li>
                     <li>✓ Personal connection updates</li>
                 </ul>
-                <button class="giving-button" data-amount="30" data-type="child">
+                <a href="#donate-instructions" class="giving-button">
                     <i class="fas fa-heart"></i> Sponsor Now
-                </button>
+                </a>
             </div>
         </div>
 
@@ -78,15 +126,15 @@
             <div class="giving-content">
                 <p>Fund healthcare services for vulnerable community members</p>
                 <div class="amount-options">
-                    <button class="amount-option" data-amount="50">£50</button>
-                    <button class="amount-option" data-amount="100">£100</button>
-                    <button class="amount-option" data-amount="250">£250</button>
-                    <button class="amount-option" data-amount="500">£500</button>
+                    <span class="amount-option">£50</span>
+                    <span class="amount-option">£100</span>
+                    <span class="amount-option">£250</span>
+                    <span class="amount-option">£500</span>
                 </div>
                 <p class="giving-note">£100 funds a medical outreach clinic for 50 people</p>
-                <button class="giving-button" data-type="medical">
+                <a href="#donate-instructions" class="giving-button">
                     <i class="fas fa-stethoscope"></i> Support Healthcare
-                </button>
+                </a>
             </div>
         </div>
 
@@ -105,233 +153,338 @@
                     <li>✓ Agricultural training</li>
                     <li>✓ Startup toolkits</li>
                 </ul>
-                <button class="giving-button" data-amount="200" data-type="training">
+                <a href="#donate-instructions" class="giving-button">
                     <i class="fas fa-tools"></i> Fund Training
-                </button>
+                </a>
             </div>
         </div>
     </div>
 
+    <!-- Bank Transfer Instructions -->
+    <div class="payment-section animate-on-scroll" id="payment-methods">
+        <h2 class="section-title">Bank Transfer Instructions</h2>
+        <p class="section-subtitle">Official Bank Account Details for Samson Ddungu Foundation</p>
 
+        <div class="payment-methods-grid">
+            <!-- Uganda Shillings Account -->
+            <div class="payment-method-card">
+                <div class="payment-header ugx">
+                    <i class="fas fa-university"></i>
+                    <h3>UGX Account (Uganda Shillings)</h3>
+                </div>
+                <div class="payment-details">
+                    <div class="detail-row">
+                        <span class="detail-label">Bank Name:</span>
+                        <span class="detail-value">Centenary Bank</span>
+                    </div>
+                    <div class="detail-row">
+                        <span class="detail-label">Account Name:</span>
+                        <span class="detail-value">SAMSON DDUNGU ACCOUNTS</span>
+                    </div>
+                    <div class="detail-row">
+                        <span class="detail-label">Account Number:</span>
+                        <span class="detail-value highlight">3100110253</span>
+                    </div>
+                    <div class="detail-row">
+                        <span class="detail-label">Currency:</span>
+                        <span class="detail-value">UGX (Uganda Shillings)</span>
+                    </div>
+                    <div class="detail-row">
+                        <span class="detail-label">Branch:</span>
+                        <span class="detail-value">Main Branch, Kampala</span>
+                    </div>
+                </div>
+                <div class="payment-note">
+                    <i class="fas fa-info-circle"></i>
+                    <span>For local transfers within Uganda</span>
+                </div>
+            </div>
 
+            <!-- USD Account -->
+            <div class="payment-method-card">
+                <div class="payment-header usd">
+                    <i class="fas fa-globe-americas"></i>
+                    <h3>USD Account (US Dollars)</h3>
+                </div>
+                <div class="payment-details">
+                    <div class="detail-row">
+                        <span class="detail-label">Bank Name:</span>
+                        <span class="detail-value">Centenary Bank</span>
+                    </div>
+                    <div class="detail-row">
+                        <span class="detail-label">Account Name:</span>
+                        <span class="detail-value">SAMSON DDUNGU ACCOUNTS</span>
+                    </div>
+                    <div class="detail-row">
+                        <span class="detail-label">Account Number:</span>
+                        <span class="detail-value highlight">3100110258</span>
+                    </div>
+                    <div class="detail-row">
+                        <span class="detail-label">Currency:</span>
+                        <span class="detail-value">USD (US Dollars)</span>
+                    </div>
+                    <div class="detail-row">
+                        <span class="detail-label">SWIFT Code:</span>
+                        <span class="detail-value">CERBUGKAXXX</span>
+                    </div>
+                </div>
+                <div class="payment-note">
+                    <i class="fas fa-info-circle"></i>
+                    <span>For international transfers</span>
+                </div>
+            </div>
 
-   <!-- Donation Form -->
-<div class="donation-form-section" id="donate-now">
-    <h2 class="section-title animate-on-scroll">Make Your Donation</h2>
-
-    @if(session('error'))
-        <div class="alert alert-danger animate-on-scroll">
-            <i class="fas fa-exclamation-circle"></i> {{ session('error') }}
+            <!-- Mobile Money -->
+            <div class="payment-method-card">
+                <div class="payment-header mobile">
+                    <i class="fas fa-mobile-alt"></i>
+                    <h3>Mobile Money</h3>
+                </div>
+                <div class="payment-details">
+                    <div class="detail-row">
+                        <span class="detail-label">Provider:</span>
+                        <span class="detail-value">MTN Mobile Money</span>
+                    </div>
+                    <div class="detail-row">
+                        <span class="detail-label">Phone Number:</span>
+                        <span class="detail-value highlight">+256 782 488 116</span>
+                    </div>
+                    <div class="detail-row">
+                        <span class="detail-label">Account Name:</span>
+                        <span class="detail-value">Samson Ddungu Foundation</span>
+                    </div>
+                    <div class="detail-row">
+                        <span class="detail-label">Supported:</span>
+                        <span class="detail-value">MTN, Airtel, Africell</span>
+                    </div>
+                    <div class="detail-row">
+                        <span class="detail-label">Reference:</span>
+                        <span class="detail-value">Your Name + "DONATION"</span>
+                    </div>
+                </div>
+                <div class="payment-note">
+                    <i class="fas fa-info-circle"></i>
+                    <span>Quick transfers within Uganda</span>
+                </div>
+            </div>
         </div>
-    @endif
+    </div>
 
-    <div class="donation-form-wrapper animate-on-scroll">
-        <form action="{{ route('donation.process') }}" method="POST" id="donationForm">
-            @csrf
+    <!-- Donation Instructions Form -->
+    <div class="donation-form-section" id="donate-instructions">
+        <h2 class="section-title animate-on-scroll">Donation Information Form</h2>
+        <p class="section-subtitle animate-on-scroll delay-200">Fill this form to help us track your donation</p>
 
-            <div class="donation-form">
-                <!-- Amount Step -->
-                <div class="form-step active" id="step-amount">
-                    <h3><i class="fas fa-pound-sign"></i> Select Donation Amount</h3>
-                    <div class="amount-choices">
-                        <button type="button" class="amount-choice" data-amount="25">£25</button>
-                        <button type="button" class="amount-choice" data-amount="50">£50</button>
-                        <button type="button" class="amount-choice" data-amount="100">£100</button>
-                        <button type="button" class="amount-choice" data-amount="250">£250</button>
-                        <button type="button" class="amount-choice" data-amount="500">£500</button>
+        <div class="donation-form-wrapper animate-on-scroll">
+            <div class="donation-instructions">
+                <h3><i class="fas fa-file-invoice-dollar"></i> Important Instructions</h3>
+                <div class="instructions-list">
+                    <div class="instruction-step">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <h4>Contact Country Director First</h4>
+                            <p>Call or message Kisigula Martin (+256 782 488 116) to discuss your donation before proceeding.</p>
+                        </div>
                     </div>
-                    <div class="custom-amount">
-                        <input type="number" id="customAmount" name="custom_amount"
-                               placeholder="Other Amount (£)" min="1" step="0.01">
+                    <div class="instruction-step">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <h4>Use Correct Reference</h4>
+                            <p>When making payment, use your full name + "DONATION" as reference (e.g., "JOHN SMITH DONATION").</p>
+                        </div>
                     </div>
-                    <input type="hidden" name="amount" id="donationAmount" value="100" required>
-                    <button type="button" class="next-button" onclick="nextStep('frequency')">
-                        Next: Choose Frequency <i class="fas fa-arrow-right"></i>
-                    </button>
-                </div>
-
-                <!-- Frequency Step -->
-                <div class="form-step" id="step-frequency">
-                    <h3><i class="fas fa-sync-alt"></i> Donation Frequency</h3>
-                    <div class="frequency-options">
-                        <label class="frequency-option">
-                            <input type="radio" name="frequency" value="one-time" checked>
-                            <div class="option-content">
-                                <i class="fas fa-gift"></i>
-                                <span>One-Time Gift</span>
-                            </div>
-                        </label>
-                        <label class="frequency-option">
-                            <input type="radio" name="frequency" value="monthly">
-                            <div class="option-content">
-                                <i class="fas fa-calendar-alt"></i>
-                                <span>Monthly</span>
-                                <small>Ongoing impact</small>
-                            </div>
-                        </label>
-                        <label class="frequency-option">
-                            <input type="radio" name="frequency" value="quarterly">
-                            <div class="option-content">
-                                <i class="fas fa-calendar"></i>
-                                <span>Quarterly</span>
-                                <small>Every 3 months</small>
-                            </div>
-                        </label>
+                    <div class="instruction-step">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <h4>Keep Proof of Payment</h4>
+                            <p>Save transaction receipts, SMS confirmations, or bank slips for verification.</p>
+                        </div>
                     </div>
-                    <div class="form-actions">
-                        <button type="button" class="back-button" onclick="prevStep('amount')">
-                            <i class="fas fa-arrow-left"></i> Back
-                        </button>
-                        <button type="button" class="next-button" onclick="nextStep('details')">
-                            Next: Your Details <i class="fas fa-arrow-right"></i>
-                        </button>
+                    <div class="instruction-step">
+                        <div class="step-number">4</div>
+                        <div class="step-content">
+                            <h4>Submit This Form</h4>
+                            <p>Complete the form below and we'll contact you to confirm receipt and provide a donation certificate.</p>
+                        </div>
                     </div>
                 </div>
+            </div>
 
-                <!-- Details Step -->
-                <div class="form-step" id="step-details">
-                    <h3><i class="fas fa-user"></i> Your Information</h3>
+            <form action="{{ route('donation.submit-info') }}" method="POST" id="donationInfoForm" class="donation-form">
+                @csrf
+
+                <div class="form-step active">
+                    <h3><i class="fas fa-user-circle"></i> Your Information</h3>
                     <div class="form-grid">
-                        <input type="text" name="first_name" placeholder="First Name *" required>
-                        <input type="text" name="last_name" placeholder="Last Name *" required>
-                        <input type="email" name="email" placeholder="Email Address *" required>
-                        <input type="tel" name="phone" placeholder="Phone Number *" required>
-                        <input type="hidden" name="name" id="fullName">
-                        <input type="hidden" name="designation" id="donationDesignation" value="General Fund">
-                    </div>
-
-                    <div class="designation-options">
-                        <h4>Designate Your Donation</h4>
-                        <div class="designation-buttons">
-                            <button type="button" class="designation-btn" data-designation="General Fund">
-                                General Fund
-                            </button>
-                            <button type="button" class="designation-btn" data-designation="Land Project">
-                                Land Project
-                            </button>
-                            <button type="button" class="designation-btn" data-designation="Medical Support">
-                                Medical Support
-                            </button>
-                            <button type="button" class="designation-btn" data-designation="Education">
-                                Education
-                            </button>
+                        <div class="form-group">
+                            <label for="first_name">First Name *</label>
+                            <input type="text" id="first_name" name="first_name" placeholder="John" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="last_name">Last Name *</label>
+                            <input type="text" id="last_name" name="last_name" placeholder="Smith" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email Address *</label>
+                            <input type="email" id="email" name="email" placeholder="john@example.com" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone Number *</label>
+                            <input type="tel" id="phone" name="phone" placeholder="+256 700 000 000" required>
+                        </div>
+                        <div class="form-group full-width">
+                            <label for="address">Address (Optional)</label>
+                            <input type="text" id="address" name="address" placeholder="City, Country">
                         </div>
                     </div>
 
-                    <div class="payment-note">
-                        <i class="fas fa-lock"></i>
-                        <span>You'll be redirected to Flutterwave's secure payment page</span>
+                    <h4><i class="fas fa-bullseye"></i> Donation Details</h4>
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="amount">Amount *</label>
+                            <input type="number" id="amount" name="amount" placeholder="100" min="1" step="0.01" required>
+                            <select id="currency" name="currency" class="currency-select">
+                                <option value="UGX">UGX</option>
+                                <option value="USD" selected>USD</option>
+                                <option value="GBP">GBP</option>
+                                <option value="EUR">EUR</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="payment_method">Payment Method *</label>
+                            <select id="payment_method" name="payment_method" required>
+                                <option value="">Select method</option>
+                                <option value="bank_ugx">Bank Transfer (UGX)</option>
+                                <option value="bank_usd">Bank Transfer (USD)</option>
+                                <option value="mobile_money">Mobile Money</option>
+                                <option value="cash">Cash Deposit</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="frequency">Frequency</label>
+                            <select id="frequency" name="frequency">
+                                <option value="one_time">One-time gift</option>
+                                <option value="monthly">Monthly</option>
+                                <option value="quarterly">Quarterly</option>
+                                <option value="yearly">Yearly</option>
+                            </select>
+                        </div>
+                        <div class="form-group full-width">
+                            <label for="designation">Where would you like your donation to go? *</label>
+                            <select id="designation" name="designation" required>
+                                <option value="">Select program</option>
+                                <option value="general">General Fund (Where most needed)</option>
+                                <option value="land_project">Land Acquisition Project</option>
+                                <option value="child_sponsorship">Child Sponsorship Program</option>
+                                <option value="medical_support">Medical Support</option>
+                                <option value="vocational_training">Vocational Training</option>
+                                <option value="special_needs">Special Needs Support</option>
+                                <option value="elderly_care">Elderly Care Program</option>
+                                <option value="education">Education Support</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group full-width">
+                        <label for="transaction_id">Transaction/Reference Number *</label>
+                        <input type="text" id="transaction_id" name="transaction_id"
+                               placeholder="Enter your bank reference or MOMO transaction ID" required>
+                        <small class="help-text">This helps us identify your payment</small>
+                    </div>
+
+                    <div class="form-group full-width">
+                        <label for="message">Additional Notes (Optional)</label>
+                        <textarea id="message" name="message" rows="3"
+                                  placeholder="Any special instructions or dedication for your donation..."></textarea>
                     </div>
 
                     <div class="form-actions">
-                        <button type="button" class="back-button" onclick="prevStep('frequency')">
-                            <i class="fas fa-arrow-left"></i> Back
-                        </button>
                         <button type="submit" class="submit-button">
-                            <i class="fas fa-lock"></i> Proceed to Payment
+                            <i class="fas fa-paper-plane"></i> Submit Donation Information
                         </button>
+                        <p class="form-note">
+                            <i class="fas fa-shield-alt"></i> Your information is secure and will only be used for donation acknowledgment
+                        </p>
                     </div>
                 </div>
-            </div>
-        </form>
-
-        <div class="donation-summary">
-            <h3><i class="fas fa-receipt"></i> Donation Summary</h3>
-            <div class="summary-item">
-                <span>Amount:</span>
-                <span id="summaryAmount">£100</span>
-            </div>
-            <div class="summary-item">
-                <span>Frequency:</span>
-                <span id="summaryFrequency">One-Time</span>
-            </div>
-            <div class="summary-item">
-                <span>Designation:</span>
-                <span id="summaryType">General Fund</span>
-            </div>
-            <div class="summary-total">
-                <span>Total:</span>
-                <span id="summaryTotal">£100</span>
-            </div>
-            <div class="security-badge">
-                <i class="fas fa-shield-alt"></i>
-                <span>Secure & Encrypted Payment</span>
-            </div>
-
-            <div class="payment-logos">
-                <img src="{{ asset('images/flutterwave-logo.png') }}" alt="Flutterwave" style="max-width: 150px;">
-                <div class="card-icons">
-                    <i class="fab fa-cc-visa"></i>
-                    <i class="fab fa-cc-mastercard"></i>
-                    <i class="fab fa-cc-amex"></i>
-                    <i class="fas fa-university"></i>
-                </div>
-            </div>
+            </form>
         </div>
     </div>
-</div>
 
-
-    <!-- Impact Visualization -->
-    <h2 class="section-title animate-on-scroll">Your Donation's Impact</h2>
-
-    <div class="impact-visualization animate-on-scroll">
-        <div class="impact-item">
-            <div class="impact-icon">£25</div>
-            <p>Feeds a family of 5 for one week</p>
-        </div>
-        <div class="impact-item delay-200">
-            <div class="impact-icon">£50</div>
-            <p>Provides HIV medication for 3 months</p>
-        </div>
-        <div class="impact-item delay-400">
-            <div class="impact-icon">£100</div>
-            <p>Covers school fees for one child/year</p>
-        </div>
-        <div class="impact-item delay-600">
-            <div class="impact-icon">£200</div>
-            <p>Funds vocational training for one youth</p>
+    <!-- After Donation Process -->
+    <div class="after-donation animate-on-scroll">
+        <h2 class="section-title">What Happens After Your Donation</h2>
+        <div class="process-steps">
+            <div class="process-step">
+                <div class="step-icon">
+                    <i class="fas fa-check-circle"></i>
+                </div>
+                <h3>Confirmation</h3>
+                <p>We'll verify your payment within 24-48 hours and send you a confirmation email</p>
+            </div>
+            <div class="process-step">
+                <div class="step-icon">
+                    <i class="fas fa-file-invoice"></i>
+                </div>
+                <h3>Receipt Issued</h3>
+                <p>Official donation receipt will be emailed to you for tax purposes</p>
+            </div>
+            <div class="process-step">
+                <div class="step-icon">
+                    <i class="fas fa-heart"></i>
+                </div>
+                <h3>Impact Update</h3>
+                <p>Receive updates on how your donation is making a difference</p>
+            </div>
+            <div class="process-step">
+                <div class="step-icon">
+                    <i class="fas fa-certificate"></i>
+                </div>
+                <h3>Recognition</h3>
+                <p>Your name will be added to our annual donor report (if you consent)</p>
+            </div>
         </div>
     </div>
 
     <!-- Trust Indicators -->
     <div class="trust-section animate-on-scroll">
-        <h3>Your Donation is Safe & Secure</h3>
+        <h3>Transparency & Accountability</h3>
         <div class="trust-badges">
             <div class="trust-badge">
-                <i class="fas fa-lock"></i>
-                <span>256-bit Encryption</span>
-            </div>
-            <div class="trust-badge">
-                <i class="fas fa-shield-alt"></i>
-                <span>PCI DSS Compliant</span>
-            </div>
-            <div class="trust-badge">
-                <i class="fas fa-certificate"></i>
-                <span>Registered Charity</span>
+                <i class="fas fa-file-alt"></i>
+                <span>Annual Reports Available</span>
             </div>
             <div class="trust-badge">
                 <i class="fas fa-chart-line"></i>
-                <span>Annual Reports Published</span>
+                <span>Financial Audits Conducted</span>
+            </div>
+            <div class="trust-badge">
+                <i class="fas fa-certificate"></i>
+                <span>Registered Non-Profit</span>
+            </div>
+            <div class="trust-badge">
+                <i class="fas fa-handshake"></i>
+                <span>Direct Community Impact</span>
             </div>
         </div>
     </div>
 </div>
 
 <style>
-    /* Urgent Project Styles */
-    .urgent-project {
-        background: linear-gradient(135deg, #FF6B35, #FF8B35);
-        color: white;
-        padding: 50px;
-        border-radius: 25px;
-        margin: 60px 0;
+    /* Urgent Notice */
+    .urgent-notice {
+        background: linear-gradient(135deg, #ffeb3b, #ff9800);
+        color: #333;
+        padding: 30px;
+        border-radius: 20px;
+        margin: 40px 0;
         position: relative;
         overflow: hidden;
-        box-shadow: 0 15px 40px rgba(255, 107, 53, 0.3);
+        box-shadow: 0 10px 30px rgba(255, 152, 0, 0.3);
+        border: 3px solid #ff9800;
     }
 
-    .project-badge {
+    .notice-badge {
         position: absolute;
         top: 20px;
         right: 20px;
@@ -343,78 +496,130 @@
         font-size: 0.9rem;
     }
 
-    .urgent-project h2 {
-        font-size: 2.2rem;
+    .urgent-notice h2 {
+        color: var(--primary-blue);
+        margin-bottom: 20px;
+        display: flex;
+        align-items: center;
+        gap: 15px;
+    }
+
+    .urgent-notice h2 i {
+        color: #f44336;
+    }
+
+    .contact-director-box {
+        background: white;
+        border-radius: 15px;
+        padding: 25px;
+        margin: 25px 0;
+        border-left: 5px solid var(--primary-blue);
+    }
+
+    .director-info {
+        display: flex;
+        align-items: center;
+        gap: 25px;
         margin-bottom: 20px;
     }
 
-    .urgent-project p {
-        font-size: 1.2rem;
-        margin-bottom: 30px;
-        max-width: 800px;
-    }
-
-    .project-progress {
-        background: rgba(255, 255, 255, 0.2);
-        padding: 30px;
-        border-radius: 15px;
-        margin: 30px 0;
-        backdrop-filter: blur(10px);
-    }
-
-    .progress-bar {
-        height: 20px;
-        background: rgba(255, 255, 255, 0.3);
-        border-radius: 10px;
-        overflow: hidden;
-        margin-bottom: 15px;
-    }
-
-    .progress-fill {
-        height: 100%;
-        background: var(--primary-blue);
-        width: 25%;
-        transition: width 1s ease;
-    }
-
-    .progress-stats {
+    .director-avatar {
+        width: 80px;
+        height: 80px;
+        background: linear-gradient(135deg, var(--primary-blue), var(--primary-blue-dark));
+        border-radius: 50%;
         display: flex;
-        justify-content: space-between;
-        color: rgba(255, 255, 255, 0.9);
-        font-weight: 500;
-    }
-
-    .project-actions {
-        display: flex;
-        gap: 20px;
-        margin-top: 30px;
-    }
-
-    .secondary-button {
-        background: transparent;
+        align-items: center;
+        justify-content: center;
         color: white;
-        border: 2px solid white;
-        padding: 15px 35px;
-        border-radius: 50px;
+        font-size: 2rem;
+    }
+
+    .director-details h3 {
+        color: var(--primary-blue);
+        margin-bottom: 10px;
+    }
+
+    .director-details p {
+        color: #555;
+        line-height: 1.6;
+    }
+
+    .contact-actions {
+        display: flex;
+        gap: 15px;
+        flex-wrap: wrap;
+    }
+
+    .contact-button {
+        padding: 12px 25px;
+        border-radius: 10px;
         text-decoration: none;
         font-weight: bold;
+        display: flex;
+        align-items: center;
+        gap: 10px;
         transition: all 0.3s ease;
     }
 
-    .secondary-button:hover {
-        background: white;
-        color: var(--primary-orange);
+    .contact-button.phone {
+        background: #4CAF50;
+        color: white;
     }
 
-    /* Giving Options */
-    .giving-options {
+    .contact-button.sms {
+        background: #2196F3;
+        color: white;
+    }
+
+    .contact-button.email {
+        background: #9C27B0;
+        color: white;
+    }
+
+    .contact-button:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    }
+
+    .notice-instructions {
+        background: rgba(255, 255, 255, 0.9);
+        border-radius: 15px;
+        padding: 25px;
+        margin-top: 20px;
+    }
+
+    .notice-instructions h4 {
+        color: var(--primary-blue);
+        margin-bottom: 20px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .notice-instructions ol {
+        padding-left: 20px;
+    }
+
+    .notice-instructions li {
+        margin-bottom: 15px;
+        line-height: 1.6;
+        padding-left: 10px;
+    }
+
+    /* Payment Methods */
+    .payment-section {
+        margin: 80px 0;
+    }
+
+    .payment-methods-grid {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
         gap: 30px;
-        margin: 60px 0;
+        margin: 50px 0;
     }
 
-    .giving-card {
+    .payment-method-card {
         background: white;
         border-radius: 20px;
         overflow: hidden;
@@ -422,111 +627,78 @@
         transition: all 0.3s ease;
     }
 
-    .giving-card:hover {
+    .payment-method-card:hover {
         transform: translateY(-10px);
-        box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
     }
 
-    .giving-header {
-        background: var(--primary-blue);
+    .payment-header {
         color: white;
-        padding: 30px;
-        text-align: center;
-        position: relative;
-    }
-
-    .giving-header i {
-        font-size: 2.5rem;
-        margin-bottom: 15px;
-        display: block;
-    }
-
-    .giving-header h3 {
-        font-size: 1.5rem;
-        margin-bottom: 10px;
-    }
-
-    .giving-amount {
-        font-size: 2rem;
-        font-weight: bold;
-        color: var(--primary-orange);
-        background: white;
-        padding: 5px 15px;
-        border-radius: 25px;
-        display: inline-block;
-        margin-top: 10px;
-    }
-
-    .giving-content {
-        padding: 30px;
-    }
-
-    .giving-content p {
-        margin-bottom: 20px;
-        line-height: 1.6;
-    }
-
-    .giving-content ul {
-        margin: 20px 0;
-        padding-left: 20px;
-    }
-
-    .giving-content li {
-        margin-bottom: 10px;
-        color: var(--accent-black);
-    }
-
-    .amount-options {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 10px;
-        margin: 20px 0;
-    }
-
-    .amount-option {
-        background: var(--primary-orange-faded);
-        border: 2px solid transparent;
-        padding: 12px;
-        border-radius: 8px;
-        font-weight: bold;
-        color: var(--primary-orange);
-        cursor: pointer;
-        transition: all 0.3s ease;
-    }
-
-    .amount-option:hover {
-        background: var(--primary-orange);
-        color: white;
-        border-color: var(--primary-orange);
-    }
-
-    .giving-note {
-        font-size: 0.9rem;
-        color: #666;
-        font-style: italic;
-        margin: 15px 0 20px;
-    }
-
-    .giving-button {
-        width: 100%;
-        background: var(--primary-orange);
-        color: white;
-        border: none;
-        padding: 15px;
-        border-radius: 10px;
-        font-weight: bold;
-        font-size: 1rem;
-        cursor: pointer;
-        transition: all 0.3s ease;
+        padding: 25px;
         display: flex;
         align-items: center;
-        justify-content: center;
-        gap: 10px;
+        gap: 20px;
     }
 
-    .giving-button:hover {
-        background: var(--primary-blue);
-        transform: scale(1.05);
+    .payment-header.ugx {
+        background: linear-gradient(135deg, #4CAF50, #2E7D32);
+    }
+
+    .payment-header.usd {
+        background: linear-gradient(135deg, #2196F3, #0D47A1);
+    }
+
+    .payment-header.mobile {
+        background: linear-gradient(135deg, #9C27B0, #6A1B9A);
+    }
+
+    .payment-header i {
+        font-size: 2.5rem;
+    }
+
+    .payment-header h3 {
+        font-size: 1.3rem;
+        margin: 0;
+    }
+
+    .payment-details {
+        padding: 25px;
+    }
+
+    .detail-row {
+        display: flex;
+        justify-content: space-between;
+        padding: 12px 0;
+        border-bottom: 1px solid #f0f0f0;
+    }
+
+    .detail-row:last-child {
+        border-bottom: none;
+    }
+
+    .detail-label {
+        color: #666;
+        font-weight: 500;
+    }
+
+    .detail-value {
+        font-weight: 600;
+        color: #333;
+    }
+
+    .detail-value.highlight {
+        color: var(--primary-orange);
+        font-size: 1.2rem;
+    }
+
+    .payment-note {
+        background: #f8f9fa;
+        padding: 15px 25px;
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        color: #666;
+        border-top: 1px solid #eee;
     }
 
     /* Donation Form */
@@ -536,213 +708,63 @@
 
     .donation-form-wrapper {
         display: grid;
-        grid-template-columns: 2fr 1fr;
+        grid-template-columns: 1fr 1fr;
         gap: 40px;
+    }
+
+    @media (max-width: 1024px) {
+        .donation-form-wrapper {
+            grid-template-columns: 1fr;
+        }
+    }
+
+    .donation-instructions {
+        background: linear-gradient(135deg, #E3F2FD, #BBDEFB);
+        padding: 30px;
+        border-radius: 20px;
+    }
+
+    .instructions-list {
+        margin-top: 20px;
+    }
+
+    .instruction-step {
+        display: flex;
+        gap: 20px;
+        margin-bottom: 25px;
+    }
+
+    .step-number {
+        width: 40px;
+        height: 40px;
+        background: var(--primary-orange);
+        color: white;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: bold;
+        flex-shrink: 0;
+    }
+
+    .step-content h4 {
+        color: var(--primary-blue);
+        margin-bottom: 5px;
+    }
+
+    .step-content p {
+        color: #555;
+        line-height: 1.6;
     }
 
     .donation-form {
         background: white;
-        padding: 40px;
-        border-radius: 20px;
-        box-shadow: var(--shadow);
-    }
-
-    .form-step {
-        display: none;
-    }
-
-    .form-step.active {
-        display: block;
-    }
-
-    .form-step h3 {
-        color: var(--primary-blue);
-        margin-bottom: 30px;
-        display: flex;
-        align-items: center;
-        gap: 15px;
-        font-size: 1.4rem;
-    }
-
-    .amount-choices {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 15px;
-        margin-bottom: 30px;
-    }
-
-    .amount-choice {
-        background: var(--primary-orange-faded);
-        border: 2px solid transparent;
-        padding: 20px;
-        border-radius: 10px;
-        font-size: 1.2rem;
-        font-weight: bold;
-        color: var(--primary-orange);
-        cursor: pointer;
-        transition: all 0.3s ease;
-    }
-
-    .amount-choice:hover,
-    .amount-choice.active {
-        background: var(--primary-orange);
-        color: white;
-        border-color: var(--primary-orange);
-    }
-
-    .custom-amount input {
-        width: 100%;
-        padding: 15px;
-        border: 2px solid #E0E0E0;
-        border-radius: 10px;
-        font-size: 1.1rem;
-        text-align: center;
-        margin-bottom: 30px;
-    }
-
-    .custom-amount input:focus {
-        border-color: var(--primary-orange);
-        outline: none;
-    }
-
-    .frequency-options {
-        display: grid;
-        gap: 15px;
-        margin-bottom: 30px;
-    }
-
-    .frequency-option {
-        cursor: pointer;
-    }
-
-    .frequency-option input {
-        display: none;
-    }
-
-    .option-content {
-        border: 2px solid #E0E0E0;
-        padding: 20px;
-        border-radius: 10px;
-        display: flex;
-        align-items: center;
-        gap: 15px;
-        transition: all 0.3s ease;
-    }
-
-    .option-content i {
-        font-size: 1.5rem;
-        color: var(--primary-blue);
-    }
-
-    .frequency-option input:checked + .option-content {
-        border-color: var(--primary-orange);
-        background: var(--primary-orange-faded);
-    }
-
-    .form-grid {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 20px;
-        margin-bottom: 30px;
-    }
-
-    .form-grid input {
-        width: 100%;
-        padding: 15px;
-        border: 2px solid #E0E0E0;
-        border-radius: 10px;
-        font-size: 1rem;
-    }
-
-    .form-grid input:focus {
-        border-color: var(--primary-orange);
-        outline: none;
-    }
-
-    .payment-methods {
-        display: flex;
-        gap: 20px;
-        margin: 20px 0 30px;
-    }
-
-    .payment-method {
-        flex: 1;
-        cursor: pointer;
-    }
-
-    .payment-method input {
-        display: none;
-    }
-
-    .payment-method i {
-        font-size: 2rem;
-        margin-bottom: 10px;
-        display: block;
-        color: var(--primary-blue);
-    }
-
-    .payment-method input:checked + i {
-        color: var(--primary-orange);
-    }
-
-    .form-actions {
-        display: flex;
-        justify-content: space-between;
-        margin-top: 30px;
-    }
-
-    .back-button,
-    .next-button,
-    .submit-button {
-        padding: 15px 30px;
-        border-radius: 10px;
-        font-weight: bold;
-        cursor: pointer;
-        display: flex;
-        align-items: center;
-        gap: 10px;
-        transition: all 0.3s ease;
-    }
-
-    .back-button {
-        background: #F0F0F0;
-        color: var(--accent-black);
-        border: none;
-    }
-
-    .next-button {
-        background: var(--primary-blue);
-        color: white;
-        border: none;
-    }
-
-    .submit-button {
-        background: var(--primary-orange);
-        color: white;
-        border: none;
-    }
-
-    .back-button:hover {
-        background: #E0E0E0;
-    }
-
-    .next-button:hover,
-    .submit-button:hover {
-        transform: scale(1.05);
-    }
-
-    /* Donation Summary */
-    .donation-summary {
-        background: white;
         padding: 30px;
         border-radius: 20px;
         box-shadow: var(--shadow);
-        height: fit-content;
-        position: sticky;
-        top: 100px;
     }
 
-    .donation-summary h3 {
+    .donation-form h3 {
         color: var(--primary-blue);
         margin-bottom: 25px;
         display: flex;
@@ -750,105 +772,189 @@
         gap: 15px;
     }
 
-    .summary-item {
-        display: flex;
-        justify-content: space-between;
-        padding: 15px 0;
-        border-bottom: 1px solid #F0F0F0;
+    .donation-form h4 {
+        color: var(--primary-blue);
+        margin: 25px 0 15px;
     }
 
-    .summary-total {
-        display: flex;
-        justify-content: space-between;
-        padding: 20px 0;
-        font-size: 1.3rem;
-        font-weight: bold;
-        color: var(--primary-orange);
-        border-top: 2px solid var(--primary-orange);
-        margin-top: 20px;
+    .form-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
     }
 
-    .security-badge {
-        background: var(--primary-orange-faded);
+    @media (max-width: 768px) {
+        .form-grid {
+            grid-template-columns: 1fr;
+        }
+    }
+
+    .form-group {
+        position: relative;
+    }
+
+    .form-group.full-width {
+        grid-column: 1 / -1;
+    }
+
+    .form-group label {
+        display: block;
+        margin-bottom: 8px;
+        font-weight: 600;
+        color: #444;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+        width: 100%;
+        padding: 12px 15px;
+        border: 2px solid #e0e0e0;
+        border-radius: 10px;
+        font-size: 1rem;
+        transition: all 0.3s ease;
+    }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+        border-color: var(--primary-orange);
+        outline: none;
+        box-shadow: 0 0 0 3px rgba(255, 107, 53, 0.2);
+    }
+
+    .currency-select {
+        position: absolute;
+        right: 10px;
+        top: 38px;
+        border: none;
+        background: #f8f9fa;
+        padding: 5px;
+        border-radius: 5px;
+        width: auto !important;
+    }
+
+    .help-text {
+        display: block;
+        margin-top: 5px;
+        color: #666;
+        font-size: 0.9rem;
+    }
+
+    .form-actions {
+        margin-top: 30px;
+    }
+
+    .submit-button {
+        width: 100%;
+        background: var(--primary-orange);
+        color: white;
+        border: none;
         padding: 15px;
         border-radius: 10px;
-        margin-top: 25px;
+        font-size: 1.1rem;
+        font-weight: bold;
+        cursor: pointer;
         display: flex;
         align-items: center;
-        gap: 15px;
-        color: var(--primary-orange);
-        font-weight: 500;
+        justify-content: center;
+        gap: 10px;
+        transition: all 0.3s ease;
     }
 
-    /* Impact Visualization */
-    .impact-visualization {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-        gap: 30px;
-        margin: 60px 0;
+    .submit-button:hover {
+        background: var(--primary-blue);
+        transform: translateY(-3px);
     }
 
-    .impact-item {
+    .form-note {
         text-align: center;
-        background: white;
+        margin-top: 15px;
+        color: #666;
+        font-size: 0.9rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+    }
+
+    /* After Donation Process */
+    .after-donation {
+        margin: 80px 0;
+    }
+
+    .process-steps {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 30px;
+        margin-top: 50px;
+    }
+
+    .process-step {
+        text-align: center;
         padding: 30px 20px;
+        background: white;
         border-radius: 15px;
         box-shadow: var(--shadow);
         transition: all 0.3s ease;
     }
 
-    .impact-item:hover {
-        transform: translateY(-10px) rotate(3deg);
+    .process-step:hover {
+        transform: translateY(-10px);
     }
 
-    .impact-icon {
-        font-size: 2rem;
-        font-weight: bold;
-        color: var(--primary-orange);
+    .step-icon {
+        width: 70px;
+        height: 70px;
         background: var(--primary-orange-faded);
-        width: 80px;
-        height: 80px;
+        color: var(--primary-orange);
         border-radius: 50%;
         display: flex;
         align-items: center;
         justify-content: center;
         margin: 0 auto 20px;
+        font-size: 2rem;
     }
 
-    .impact-item p {
-        font-weight: 500;
-        line-height: 1.5;
+    .process-step h3 {
+        color: var(--primary-blue);
+        margin-bottom: 15px;
     }
 
-    /* Trust Section */
+    .process-step p {
+        color: #666;
+        line-height: 1.6;
+    }
+
+    /* Updated Trust Section */
     .trust-section {
         background: linear-gradient(135deg, var(--primary-blue), var(--primary-blue-dark));
         color: white;
-        padding: 40px;
+        padding: 50px;
         border-radius: 20px;
         margin: 60px 0;
         text-align: center;
     }
 
     .trust-section h3 {
-        margin-bottom: 30px;
-        font-size: 1.5rem;
+        margin-bottom: 40px;
+        font-size: 2rem;
     }
 
     .trust-badges {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-        gap: 20px;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 25px;
     }
 
     .trust-badge {
         background: rgba(255, 255, 255, 0.1);
-        padding: 20px;
-        border-radius: 10px;
+        padding: 25px;
+        border-radius: 15px;
         display: flex;
         flex-direction: column;
         align-items: center;
-        gap: 10px;
+        gap: 15px;
         transition: all 0.3s ease;
     }
 
@@ -858,256 +964,126 @@
     }
 
     .trust-badge i {
-        font-size: 2rem;
+        font-size: 2.5rem;
         color: var(--primary-orange);
     }
 
-    /* Animations */
-    @keyframes pulse {
-        0% { transform: scale(1); }
-        50% { transform: scale(1.05); }
-        100% { transform: scale(1); }
-    }
-
-    .pulse {
-        animation: pulse 2s infinite;
+    .trust-badge span {
+        font-size: 1.1rem;
+        font-weight: 500;
     }
 
     /* Responsive Design */
-    @media (max-width: 1024px) {
-        .donation-form-wrapper {
-            grid-template-columns: 1fr;
-        }
-
-        .donation-summary {
-            position: static;
-        }
-    }
-
     @media (max-width: 768px) {
-        .urgent-project {
-            padding: 30px;
+        .contact-director-box {
+            padding: 20px;
         }
 
-        .amount-choices {
-            grid-template-columns: repeat(2, 1fr);
-        }
-
-        .form-grid {
-            grid-template-columns: 1fr;
-        }
-
-        .giving-options {
-            grid-template-columns: 1fr;
-        }
-    }
-
-    @media (max-width: 480px) {
-        .project-actions {
+        .director-info {
             flex-direction: column;
+            text-align: center;
+            gap: 15px;
         }
 
-        .impact-visualization {
+        .contact-actions {
+            justify-content: center;
+        }
+
+        .payment-methods-grid {
             grid-template-columns: 1fr;
         }
 
-        .trust-badges {
-            grid-template-columns: 1fr;
+        .payment-header {
+            flex-direction: column;
+            text-align: center;
+            gap: 15px;
+            padding: 20px;
+        }
+
+        .urgent-notice {
+            padding: 20px;
         }
     }
-
-    /* Fix for form step display */
-.form-step {
-    display: none !important;
-}
-
-.form-step.active {
-    display: block !important;
-}
-
-/* Fix for button conflicts */
-.designation-btn {
-    background: var(--primary-orange-faded);
-    border: 2px solid transparent;
-    padding: 12px;
-    border-radius: 8px;
-    font-weight: bold;
-    color: var(--primary-orange);
-    cursor: pointer;
-    transition: all 0.3s ease;
-    width: 100%;
-    margin: 5px 0;
-}
-
-.designation-btn:hover,
-.designation-btn.active {
-    background: var(--primary-orange);
-    color: white;
-    border-color: var(--primary-orange);
-}
-
-.designation-options {
-    margin: 20px 0;
-}
-
-.designation-options h4 {
-    color: var(--primary-blue);
-    margin-bottom: 15px;
-}
-
-.designation-buttons {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 10px;
-}
-
-.payment-note {
-    background: #F0F7FF;
-    padding: 15px;
-    border-radius: 10px;
-    margin: 20px 0;
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    color: var(--primary-blue);
-    font-weight: 500;
-}
-
-.alert-danger {
-    background: #FFEBEE;
-    color: #C62828;
-    padding: 15px 20px;
-    border-radius: 10px;
-    margin: 20px 0;
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    border-left: 4px solid #C62828;
-}
-
-.payment-logos {
-    margin-top: 25px;
-    padding-top: 25px;
-    border-top: 1px solid #F0F0F0;
-    text-align: center;
-}
-
-.payment-logos img {
-    max-width: 150px;
-    margin-bottom: 15px;
-}
-
-.card-icons {
-    display: flex;
-    justify-content: center;
-    gap: 15px;
-    font-size: 1.8rem;
-    color: var(--primary-blue);
-}
 </style>
 
 <script>
-    let donationData = {
-        amount: 100,
-        frequency: 'one-time',
-        type: 'general',
-        designation: 'General Fund'
-    };
+    document.addEventListener('DOMContentLoaded', function() {
+        // Auto-copy bank account numbers on click
+        document.querySelectorAll('.detail-value.highlight').forEach(element => {
+            element.style.cursor = 'pointer';
+            element.title = 'Click to copy';
 
-    function nextStep(stepId) {
-        document.querySelector('.form-step.active').classList.remove('active');
-        document.getElementById('step-' + stepId).classList.add('active');
+            element.addEventListener('click', function() {
+                const text = this.textContent;
+                navigator.clipboard.writeText(text).then(() => {
+                    const originalText = this.textContent;
+                    this.textContent = 'Copied!';
+                    this.style.color = '#4CAF50';
 
-        // Combine first and last name for full name
-        if (stepId === 'details') {
-            const firstName = document.querySelector('input[name="first_name"]').value;
-            const lastName = document.querySelector('input[name="last_name"]').value;
-            document.getElementById('fullName').value = firstName + ' ' + lastName;
+                    setTimeout(() => {
+                        this.textContent = originalText;
+                        this.style.color = 'var(--primary-orange)';
+                    }, 2000);
+                });
+            });
+        });
+
+        // Form validation
+        const donationForm = document.getElementById('donationInfoForm');
+        if (donationForm) {
+            donationForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+
+                // Basic validation
+                const requiredFields = this.querySelectorAll('[required]');
+                let valid = true;
+
+                requiredFields.forEach(field => {
+                    if (!field.value.trim()) {
+                        valid = false;
+                        field.style.borderColor = '#f44336';
+                    } else {
+                        field.style.borderColor = '#e0e0e0';
+                    }
+                });
+
+                if (valid) {
+                    // Show success message
+                    alert('Thank you! Your donation information has been submitted. We will contact you shortly to confirm receipt.');
+                    this.submit();
+                } else {
+                    alert('Please fill in all required fields marked with *.');
+                }
+            });
         }
 
-        updateSummary();
-    }
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                const href = this.getAttribute('href');
+                if (href === '#') return;
 
-    function prevStep(stepId) {
-        document.querySelector('.form-step.active').classList.remove('active');
-        document.getElementById('step-' + stepId).classList.add('active');
-    }
-
-    function updateSummary() {
-        document.getElementById('summaryAmount').textContent = '£' + donationData.amount;
-        document.getElementById('summaryFrequency').textContent =
-            donationData.frequency === 'one-time' ? 'One-Time' :
-            donationData.frequency === 'monthly' ? 'Monthly' : 'Quarterly';
-        document.getElementById('summaryType').textContent = donationData.designation;
-        document.getElementById('summaryTotal').textContent = '£' + donationData.amount;
-
-        // Update hidden form fields
-        document.getElementById('donationAmount').value = donationData.amount;
-        document.getElementById('donationDesignation').value = donationData.designation;
-    }
-
-    document.addEventListener('DOMContentLoaded', function() {
-        // Amount choice buttons
-        document.querySelectorAll('.amount-choice').forEach(button => {
-            button.addEventListener('click', function() {
-                document.querySelectorAll('.amount-choice').forEach(btn => btn.classList.remove('active'));
-                this.classList.add('active');
-                donationData.amount = parseInt(this.dataset.amount);
-                document.getElementById('customAmount').value = '';
-                updateSummary();
-            });
-        });
-
-        // Giving option buttons from top section
-        document.querySelectorAll('.giving-button').forEach(button => {
-            button.addEventListener('click', function() {
-                if (this.dataset.amount) {
-                    donationData.amount = parseInt(this.dataset.amount);
+                e.preventDefault();
+                const target = document.querySelector(href);
+                if (target) {
+                    window.scrollTo({
+                        top: target.offsetTop - 100,
+                        behavior: 'smooth'
+                    });
                 }
-                if (this.dataset.type === 'child') {
-                    donationData.designation = 'Child Sponsorship';
-                } else if (this.dataset.type === 'medical') {
-                    donationData.designation = 'Medical Support';
-                } else if (this.dataset.type === 'training') {
-                    donationData.designation = 'Vocational Training';
-                }
-                updateSummary();
-                nextStep('frequency');
             });
         });
 
-        // Custom amount input
-        document.getElementById('customAmount').addEventListener('input', function() {
-            const value = parseFloat(this.value);
-            if (!isNaN(value) && value > 0) {
-                donationData.amount = value;
-                document.querySelectorAll('.amount-choice').forEach(btn => btn.classList.remove('active'));
-                updateSummary();
-            }
-        });
+        // Update currency symbol based on selection
+        const currencySelect = document.getElementById('currency');
+        const amountInput = document.getElementById('amount');
 
-        // Frequency radio buttons
-        document.querySelectorAll('input[name="frequency"]').forEach(radio => {
-            radio.addEventListener('change', function() {
-                donationData.frequency = this.value;
-                updateSummary();
+        if (currencySelect && amountInput) {
+            currencySelect.addEventListener('change', function() {
+                // You could add currency symbol updates here if needed
             });
-        });
-
-        // Designation buttons
-        document.querySelectorAll('.designation-btn').forEach(button => {
-            button.addEventListener('click', function() {
-                document.querySelectorAll('.designation-btn').forEach(btn => btn.classList.remove('active'));
-                this.classList.add('active');
-                donationData.designation = this.dataset.designation;
-                updateSummary();
-            });
-        });
-
-        // Initialize with default values
-        updateSummary();
+        }
     });
 </script>
-
 
 @endsection

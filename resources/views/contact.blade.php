@@ -121,8 +121,8 @@
                 <i class="fas fa-phone-alt"></i>
             </div>
             <h3>Call Us</h3>
-            <p>+256 XXX XXX XXX</p>
-            <a href="tel:+256XXXXXXXXX" class="contact-link">Call Now</a>
+            <p>+256 782 488 116</p>
+            <a href="tel:+256782488116" class="contact-link">Call Now</a>
         </div>
 
         <div class="contact-card delay-200">
