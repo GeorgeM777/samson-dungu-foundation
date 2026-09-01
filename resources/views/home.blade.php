@@ -222,7 +222,7 @@
     <div class="mission-cards">
         <div class="mission-card animate-on-scroll">
             <h3><i class="fas fa-heart"></i> Our Mission</h3>
-            <p>To uplift poor and marginalized families in Uganda through medical outreach programs, compassionate care for the elderly, and sustained support for orphans and widows, ensuring dignity, health, and hope for a better future.</p>
+            <p>Uplifting poor Ugandans through medical outreach, elderly care, and support for orphans and widows — restoring dignity, health, and hope.</p>
             <div class="staggered-img" style="height:200px; margin-top:20px;">
                 <img src="{{ asset('images/mission/mission1.jpg') }}" alt="Mission in Action" style="width:100%; height:100%; object-fit:cover; border-radius:10px;">
             </div>
@@ -230,7 +230,7 @@
 
         <div class="mission-card animate-on-scroll delay-400">
             <h3><i class="fas fa-eye"></i> Our Vision</h3>
-            <p>To see a healthy, compassionate, and empowered Ugandan society where no poor family is denied medical care, and where the elderly, orphans, and widows live with dignity, care and hope.</p>
+            <p>A Uganda where no poor family is denied medical care, and every elderly person, orphan, and widow lives with dignity and hope.</p>
             <div class="staggered-img" style="height:200px; margin-top:20px;">
                 <img src="{{ asset('images/mission/vision1.jpg') }}" alt="Vision for Future" style="width:100%; height:100%; object-fit:cover; border-radius:10px;">
             </div>
@@ -389,6 +389,45 @@
         border-radius: 15px;
         backdrop-filter: blur(10px);
         border: 2px solid rgba(255, 255, 255, 0.2);
+    }
+
+    @keyframes zoomForward {
+        from {
+            transform: scale(1);
+        }
+        to {
+            transform: scale(1.12);
+        }
+    }
+
+    .hero-slideshow .slide::before {
+        content: '';
+        position: absolute;
+        top: -10px;
+        left: -10px;
+        right: -10px;
+        bottom: -10px;
+        background: inherit;
+        background-size: cover;
+        background-position: center;
+        z-index: 0;
+        animation: zoomForward 24s ease-in-out infinite alternate;
+    }
+
+    .hero-slideshow .slide:hover::before {
+        animation-duration: 10s;
+    }
+
+    .staggered-img img,
+    .main-school-image img,
+    .gallery-item img {
+        animation: zoomForward 16s ease-in-out infinite alternate;
+    }
+
+    .staggered-img:hover img,
+    .main-school-image:hover img,
+    .gallery-item:hover img {
+        animation-duration: 6s;
     }
 </style>
 @endsection
