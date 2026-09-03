@@ -21,10 +21,7 @@
     <p class="section-subtitle animate-on-scroll delay-200">Integrated programs addressing the root causes of poverty and vulnerability</p>
 
     <div class="programs-grid animate-on-scroll">
-        <div class="program-card">
-            <div class="program-image">
-                <img src="{{ asset('images/programs/education.jpg') }}" alt="Education Support">
-            </div>
+        <div class="program-card animate-on-scroll" style="background-image: url('{{ asset('images/programs/education.jpg') }}');">
             <div class="program-content">
                 <h3><i class="fas fa-graduation-cap"></i> Education Support</h3>
                 <p>Providing scholarships, school supplies, and tutoring for orphaned and vulnerable children to break the cycle of poverty through education.</p>
@@ -41,10 +38,7 @@
             </div>
         </div>
 
-        <div class="program-card animate-on-scroll delay-200">
-            <div class="program-image">
-                <img src="{{ asset('images/programs/healthcare.jpg') }}" alt="Healthcare">
-            </div>
+        <div class="program-card animate-on-scroll delay-200" style="background-image: url('{{ asset('images/programs/healthcare.jpg') }}');">
             <div class="program-content">
                 <h3><i class="fas fa-heartbeat"></i> Healthcare & Medical Support</h3>
                 <p>Ensuring access to medical care, HIV/AIDS treatment, and health education for vulnerable community members.</p>
@@ -154,10 +148,7 @@
             </div>
         </div>
 
-        <div class="program-card animate-on-scroll delay-600">
-            <div class="program-image">
-                <img src="{{ asset('images/programs/shelter.jpg') }}" alt="Shelter & Housing">
-            </div>
+        <div class="program-card animate-on-scroll delay-600" style="background-image: url('{{ asset('images/programs/shelter.jpg') }}');">
             <div class="program-content">
                 <h3><i class="fas fa-home"></i> Shelter & Housing</h3>
                 <p>Building and providing safe, decent housing for orphans, widows, and homeless community members.</p>
@@ -174,10 +165,7 @@
             </div>
         </div>
 
-        <div class="program-card animate-on-scroll delay-800">
-            <div class="program-image">
-                <img src="{{ asset('images/programs/nutrition.jpg') }}" alt="Nutrition">
-            </div>
+        <div class="program-card animate-on-scroll delay-800" style="background-image: url('{{ asset('images/programs/nutrition.jpg') }}');">
             <div class="program-content">
                 <h3><i class="fas fa-utensils"></i> Nutrition & Food Security</h3>
                 <p>Addressing malnutrition and food insecurity through sustainable agriculture and feeding programs.</p>
@@ -194,10 +182,7 @@
             </div>
         </div>
 
-        <div class="program-card animate-on-scroll">
-            <div class="program-image">
-                <img src="{{ asset('images/programs/counseling.jpg') }}" alt="Counseling">
-            </div>
+        <div class="program-card animate-on-scroll" style="background-image: url('{{ asset('images/programs/counseling.jpg') }}');">
             <div class="program-content">
                 <h3><i class="fas fa-hands-helping"></i> Counseling & Psychosocial Support</h3>
                 <p>Providing emotional and psychological support for traumatized individuals and families.</p>
@@ -238,7 +223,7 @@
 
     <div class="impact-stories animate-on-scroll">
         <div class="story-card">
-            <img src="{{ asset('images/success/graduate.jpg') }}" alt="Success Story">
+            <div class="story-image" style="background-image: url('{{ asset('images/success/graduate.jpg') }}');"></div>
             <div class="story-content">
                 <h4>From Orphan to Graduate</h4>
                 <p>Rebecca, supported since 2015, just graduated secondary school with top marks and is now studying nursing.</p>
@@ -247,7 +232,7 @@
         </div>
 
         <div class="story-card delay-200">
-            <img src="{{ asset('images/success/business.jpg') }}" alt="Success Story">
+            <div class="story-image" style="background-image: url('{{ asset('images/success/business.jpg') }}');"></div>
             <div class="story-content">
                 <h4>Widow's Business Success</h4>
                 <p>After vocational training, Jane now runs a successful tailoring business employing 3 other widows.</p>
@@ -256,7 +241,7 @@
         </div>
 
         <div class="story-card delay-400">
-            <img src="{{ asset('images/success/family.jpg') }}" alt="Success Story">
+            <div class="story-image" style="background-image: url('{{ asset('images/success/family.jpg') }}');"></div>
             <div class="story-content">
                 <h4>Family Transformation</h4>
                 <p>The Muwanguzi family received housing, medical care, and agricultural training - now self-sufficient.</p>
@@ -282,55 +267,98 @@
     }
 
     .program-card {
-        background: white;
+        position: relative;
+        min-height: 450px;
+        background-size: cover;
+        background-position: center;
         border-radius: 20px;
         overflow: hidden;
         box-shadow: var(--shadow);
-        transition: all 0.3s ease;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
         display: flex;
-        flex-direction: column;
+        align-items: flex-end;
     }
 
     .program-card:hover {
-        transform: translateY(-10px);
-        box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+        transform: translateY(-8px);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+    }
+
+    .program-card::before {
+        content: '';
+        position: absolute;
+        top: -10px;
+        left: -10px;
+        right: -10px;
+        bottom: -10px;
+        background: inherit;
+        background-size: cover;
+        background-position: center;
+        filter: blur(10px);
+        z-index: 0;
+        animation: zoomForward 18s ease-in-out infinite alternate;
+    }
+
+    @keyframes zoomForward {
+        from {
+            transform: scale(1);
+        }
+        to {
+            transform: scale(1.12);
+        }
+    }
+
+    .program-card:hover::before {
+        animation-duration: 7s;
+    }
+
+    .program-card::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.5) 50%, rgba(0,0,0,0.3) 100%);
+        z-index: 1;
     }
 
     .program-image {
-        height: 250px;
-        overflow: hidden;
+        display: none;
     }
 
     .program-image img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        transition: transform 0.5s ease;
+        display: none;
     }
 
     .program-card:hover .program-image img {
-        transform: scale(1.1);
+        transform: none;
     }
 
     .program-content {
+        position: relative;
+        z-index: 2;
         padding: 30px;
+        color: white;
         flex: 1;
         display: flex;
         flex-direction: column;
     }
 
     .program-content h3 {
-        color: var(--primary-blue);
+        color: white;
         margin-bottom: 15px;
         display: flex;
         align-items: center;
         gap: 15px;
         font-size: 1.4rem;
+        text-shadow: 0 2px 4px rgba(0,0,0,0.5);
     }
 
     .program-content p {
         margin-bottom: 20px;
         line-height: 1.7;
+        color: rgba(255, 255, 255, 0.9);
     }
 
     .program-content ul {
@@ -340,21 +368,24 @@
 
     .program-content li {
         margin-bottom: 8px;
-        color: var(--accent-black);
+        color: rgba(255, 255, 255, 0.85);
     }
 
     .program-stats {
         display: flex;
         justify-content: space-between;
-        background: var(--primary-orange-faded);
+        background: rgba(255, 255, 255, 0.15);
+        backdrop-filter: blur(10px);
         padding: 15px;
         border-radius: 10px;
         margin-top: 20px;
+        border: 1px solid rgba(255, 255, 255, 0.2);
     }
 
     .program-stats span {
         text-align: center;
         flex: 1;
+        color: white;
     }
 
     .program-stats strong {
@@ -479,6 +510,7 @@
         width: 100%;
         height: 300px;
         object-fit: cover;
+        animation: zoomForward 18s ease-in-out infinite alternate;
     }
 
     .collage-grid {
@@ -493,6 +525,15 @@
         height: 120px;
         object-fit: cover;
         border-radius: 8px;
+        animation: zoomForward 14s ease-in-out infinite alternate;
+    }
+
+    .image-collage:hover .main-collage-img {
+        animation-duration: 6s;
+    }
+
+    .image-collage:hover .collage-grid img {
+        animation-duration: 5s;
     }
 
     .success-metrics {
@@ -573,6 +614,11 @@
         width: 100%;
         height: 400px;
         object-fit: cover;
+        animation: zoomForward 16s ease-in-out infinite alternate;
+    }
+
+    .approach-image:hover img {
+        animation-duration: 6s;
     }
 
     /* Impact Stories */
@@ -584,24 +630,56 @@
     }
 
     .story-card {
+        position: relative;
         background: white;
         border-radius: 15px;
         overflow: hidden;
         box-shadow: var(--shadow);
-        transition: all 0.3s ease;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        min-height: 420px;
+        display: flex;
+        align-items: flex-end;
     }
 
     .story-card:hover {
-        transform: translateY(-10px);
+        transform: translateY(-8px);
+    }
+
+    .story-image {
+        position: absolute;
+        top: -10px;
+        left: -10px;
+        right: -10px;
+        bottom: -10px;
+        background-size: cover;
+        background-position: center;
+        filter: blur(3px);
+        z-index: 0;
+        animation: zoomForward 22s ease-in-out infinite alternate;
+    }
+
+    .story-card::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(to top, rgba(255,255,255,0.95) 0%, rgba(255,255,255,0.7) 60%, rgba(255,255,255,0.3) 100%);
+        z-index: 1;
     }
 
     .story-card img {
-        width: 100%;
-        height: 200px;
-        object-fit: cover;
+        display: none;
+    }
+
+    .story-card:hover .story-image {
+        animation-duration: 9s;
     }
 
     .story-content {
+        position: relative;
+        z-index: 2;
         padding: 25px;
     }
 
@@ -627,6 +705,24 @@
 
     .story-link:hover {
         gap: 15px;
+    }
+
+    .hero-slideshow .slide::before {
+        content: '';
+        position: absolute;
+        top: -10px;
+        left: -10px;
+        right: -10px;
+        bottom: -10px;
+        background: inherit;
+        background-size: cover;
+        background-position: center;
+        z-index: 0;
+        animation: zoomForward 24s ease-in-out infinite alternate;
+    }
+
+    .hero-slideshow .slide:hover::before {
+        animation-duration: 10s;
     }
 
     /* Responsive Design */

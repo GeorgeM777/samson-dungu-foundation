@@ -296,6 +296,42 @@
             }
         }
 
+        /* FLOATING ADMIN PADLOCK BUTTON */
+        .floating-admin-btn {
+            position: fixed;
+            bottom: 30px;
+            left: 30px;
+            z-index: 9998;
+            width: 55px;
+            height: 55px;
+            background: linear-gradient(135deg, #1e3a8a, #3b82f6);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            text-decoration: none;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+            border: none;
+        }
+
+        .floating-admin-btn:hover {
+            transform: scale(1.1) rotate(-10deg);
+            box-shadow: 0 15px 40px rgba(30,58,138,0.4);
+        }
+
+        @media (max-width: 768px) {
+            .floating-admin-btn {
+                bottom: 20px;
+                left: 20px;
+                width: 50px;
+                height: 50px;
+                font-size: 20px;
+            }
+        }
+
         /* Animations (unchanged) */
         @keyframes fadeInUp {
             from {
@@ -1869,5 +1905,8 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
     </script>
+    <a href="/admin/login" class="floating-admin-btn" title="Admin Management">
+        <span>🔒</span>
+    </a>
 </body>
 </html>
