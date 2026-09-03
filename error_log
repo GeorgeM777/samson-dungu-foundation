@@ -1,0 +1,209 @@
+[01-Sep-2026 18:14:47 UTC] PHP Warning:  require(/home/samskqcc/public_html/samson-dungu-foundation/vendor/composer/../laravel/framework/src/Illuminate/Collections/functions.php): Failed to open stream: No such file or directory in /home/samskqcc/public_html/samson-dungu-foundation/vendor/composer/autoload_real.php on line 41
+[01-Sep-2026 18:14:47 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '/home/samskqcc/public_html/samson-dungu-foundation/vendor/composer/../laravel/framework/src/Illuminate/Collections/functions.php' (include_path='.:/opt/alt/php82/usr/share/pear:/opt/alt/php82/usr/share/php:/usr/share/pear:/usr/share/php') in /home/samskqcc/public_html/samson-dungu-foundation/vendor/composer/autoload_real.php:41
+Stack trace:
+#0 /home/samskqcc/public_html/samson-dungu-foundation/vendor/composer/autoload_real.php(45): {closure}()
+#1 /home/samskqcc/public_html/samson-dungu-foundation/vendor/autoload.php(22): ComposerAutoloaderInitc514d8f7b9fc5970bdd94287905ef584::getLoader()
+#2 /home/samskqcc/public_html/samson-dungu-foundation/artisan(10): require('/home/samskqcc/...')
+#3 {main}
+  thrown in /home/samskqcc/public_html/samson-dungu-foundation/vendor/composer/autoload_real.php on line 41
+[01-Sep-2026 18:16:24 UTC] PHP Warning:  require(/home/samskqcc/public_html/samson-dungu-foundation/vendor/composer/../laravel/framework/src/Illuminate/Collections/functions.php): Failed to open stream: No such file or directory in /home/samskqcc/public_html/samson-dungu-foundation/vendor/composer/autoload_real.php on line 41
+[01-Sep-2026 18:16:24 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '/home/samskqcc/public_html/samson-dungu-foundation/vendor/composer/../laravel/framework/src/Illuminate/Collections/functions.php' (include_path='.:/opt/alt/php82/usr/share/pear:/opt/alt/php82/usr/share/php:/usr/share/pear:/usr/share/php') in /home/samskqcc/public_html/samson-dungu-foundation/vendor/composer/autoload_real.php:41
+Stack trace:
+#0 /home/samskqcc/public_html/samson-dungu-foundation/vendor/composer/autoload_real.php(45): {closure}()
+#1 /home/samskqcc/public_html/samson-dungu-foundation/vendor/autoload.php(22): ComposerAutoloaderInitc514d8f7b9fc5970bdd94287905ef584::getLoader()
+#2 /home/samskqcc/public_html/samson-dungu-foundation/artisan(10): require('/home/samskqcc/...')
+#3 {main}
+  thrown in /home/samskqcc/public_html/samson-dungu-foundation/vendor/composer/autoload_real.php on line 41
+[01-Sep-2026 18:17:16 UTC] PHP Warning:  require(/home/samskqcc/public_html/samson-dungu-foundation/vendor/composer/../laravel/framework/src/Illuminate/Collections/functions.php): Failed to open stream: No such file or directory in /home/samskqcc/public_html/samson-dungu-foundation/vendor/composer/autoload_real.php on line 41
+[01-Sep-2026 18:17:16 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '/home/samskqcc/public_html/samson-dungu-foundation/vendor/composer/../laravel/framework/src/Illuminate/Collections/functions.php' (include_path='.:/opt/alt/php82/usr/share/pear:/opt/alt/php82/usr/share/php:/usr/share/pear:/usr/share/php') in /home/samskqcc/public_html/samson-dungu-foundation/vendor/composer/autoload_real.php:41
+Stack trace:
+#0 /home/samskqcc/public_html/samson-dungu-foundation/vendor/composer/autoload_real.php(45): {closure}()
+#1 /home/samskqcc/public_html/samson-dungu-foundation/vendor/autoload.php(22): ComposerAutoloaderInitc514d8f7b9fc5970bdd94287905ef584::getLoader()
+#2 /home/samskqcc/public_html/samson-dungu-foundation/public/index.php(14): require('/home/samskqcc/...')
+#3 Command line code(1): require('/home/samskqcc/...')
+#4 {main}
+  thrown in /home/samskqcc/public_html/samson-dungu-foundation/vendor/composer/autoload_real.php on line 41
+[01-Sep-2026 18:20:56 UTC] PHP Warning:  require(/home/samskqcc/public_html/samson-dungu-foundation/vendor/composer/../laravel/framework/src/Illuminate/Collections/functions.php): Failed to open stream: No such file or directory in /home/samskqcc/public_html/samson-dungu-foundation/vendor/composer/autoload_real.php on line 41
+[01-Sep-2026 18:20:56 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '/home/samskqcc/public_html/samson-dungu-foundation/vendor/composer/../laravel/framework/src/Illuminate/Collections/functions.php' (include_path='.:/opt/alt/php82/usr/share/pear:/opt/alt/php82/usr/share/php:/usr/share/pear:/usr/share/php') in /home/samskqcc/public_html/samson-dungu-foundation/vendor/composer/autoload_real.php:41
+Stack trace:
+#0 /home/samskqcc/public_html/samson-dungu-foundation/vendor/composer/autoload_real.php(45): {closure}()
+#1 /home/samskqcc/public_html/samson-dungu-foundation/vendor/autoload.php(22): ComposerAutoloaderInitc514d8f7b9fc5970bdd94287905ef584::getLoader()
+#2 /home/samskqcc/public_html/samson-dungu-foundation/artisan(10): require('/home/samskqcc/...')
+#3 {main}
+  thrown in /home/samskqcc/public_html/samson-dungu-foundation/vendor/composer/autoload_real.php on line 41
+[01-Sep-2026 18:21:07 UTC] PHP Warning:  require(/home/samskqcc/public_html/samson-dungu-foundation/vendor/composer/../laravel/framework/src/Illuminate/Collections/functions.php): Failed to open stream: No such file or directory in /home/samskqcc/public_html/samson-dungu-foundation/vendor/composer/autoload_real.php on line 41
+[01-Sep-2026 18:21:07 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '/home/samskqcc/public_html/samson-dungu-foundation/vendor/composer/../laravel/framework/src/Illuminate/Collections/functions.php' (include_path='.:/opt/alt/php82/usr/share/pear:/opt/alt/php82/usr/share/php:/usr/share/pear:/usr/share/php') in /home/samskqcc/public_html/samson-dungu-foundation/vendor/composer/autoload_real.php:41
+Stack trace:
+#0 /home/samskqcc/public_html/samson-dungu-foundation/vendor/composer/autoload_real.php(45): {closure}()
+#1 /home/samskqcc/public_html/samson-dungu-foundation/vendor/autoload.php(22): ComposerAutoloaderInitc514d8f7b9fc5970bdd94287905ef584::getLoader()
+#2 /home/samskqcc/public_html/samson-dungu-foundation/artisan(10): require('/home/samskqcc/...')
+#3 {main}
+  thrown in /home/samskqcc/public_html/samson-dungu-foundation/vendor/composer/autoload_real.php on line 41
+[01-Sep-2026 18:21:22 UTC] PHP Warning:  require(/home/samskqcc/public_html/samson-dungu-foundation/vendor/composer/../laravel/framework/src/Illuminate/Collections/functions.php): Failed to open stream: No such file or directory in /home/samskqcc/public_html/samson-dungu-foundation/vendor/composer/autoload_real.php on line 41
+[01-Sep-2026 18:21:22 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '/home/samskqcc/public_html/samson-dungu-foundation/vendor/composer/../laravel/framework/src/Illuminate/Collections/functions.php' (include_path='.:/opt/alt/php82/usr/share/pear:/opt/alt/php82/usr/share/php:/usr/share/pear:/usr/share/php') in /home/samskqcc/public_html/samson-dungu-foundation/vendor/composer/autoload_real.php:41
+Stack trace:
+#0 /home/samskqcc/public_html/samson-dungu-foundation/vendor/composer/autoload_real.php(45): {closure}()
+#1 /home/samskqcc/public_html/samson-dungu-foundation/vendor/autoload.php(22): ComposerAutoloaderInitc514d8f7b9fc5970bdd94287905ef584::getLoader()
+#2 /home/samskqcc/public_html/samson-dungu-foundation/artisan(10): require('/home/samskqcc/...')
+#3 {main}
+  thrown in /home/samskqcc/public_html/samson-dungu-foundation/vendor/composer/autoload_real.php on line 41
+[01-Sep-2026 18:21:57 UTC] PHP Warning:  require(/home/samskqcc/public_html/samson-dungu-foundation/vendor/composer/../laravel/framework/src/Illuminate/Collections/functions.php): Failed to open stream: No such file or directory in /home/samskqcc/public_html/samson-dungu-foundation/vendor/composer/autoload_real.php on line 41
+[01-Sep-2026 18:21:57 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '/home/samskqcc/public_html/samson-dungu-foundation/vendor/composer/../laravel/framework/src/Illuminate/Collections/functions.php' (include_path='.:/opt/alt/php82/usr/share/pear:/opt/alt/php82/usr/share/php:/usr/share/pear:/usr/share/php') in /home/samskqcc/public_html/samson-dungu-foundation/vendor/composer/autoload_real.php:41
+Stack trace:
+#0 /home/samskqcc/public_html/samson-dungu-foundation/vendor/composer/autoload_real.php(45): {closure}()
+#1 /home/samskqcc/public_html/samson-dungu-foundation/vendor/autoload.php(22): ComposerAutoloaderInitc514d8f7b9fc5970bdd94287905ef584::getLoader()
+#2 /home/samskqcc/public_html/samson-dungu-foundation/artisan(10): require('/home/samskqcc/...')
+#3 {main}
+  thrown in /home/samskqcc/public_html/samson-dungu-foundation/vendor/composer/autoload_real.php on line 41
+[01-Sep-2026 18:22:08 UTC] PHP Warning:  require(/home/samskqcc/public_html/samson-dungu-foundation/vendor/composer/../laravel/framework/src/Illuminate/Collections/functions.php): Failed to open stream: No such file or directory in /home/samskqcc/public_html/samson-dungu-foundation/vendor/composer/autoload_real.php on line 41
+[01-Sep-2026 18:22:08 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '/home/samskqcc/public_html/samson-dungu-foundation/vendor/composer/../laravel/framework/src/Illuminate/Collections/functions.php' (include_path='.:/opt/alt/php82/usr/share/pear:/opt/alt/php82/usr/share/php:/usr/share/pear:/usr/share/php') in /home/samskqcc/public_html/samson-dungu-foundation/vendor/composer/autoload_real.php:41
+Stack trace:
+#0 /home/samskqcc/public_html/samson-dungu-foundation/vendor/composer/autoload_real.php(45): {closure}()
+#1 /home/samskqcc/public_html/samson-dungu-foundation/vendor/autoload.php(22): ComposerAutoloaderInitc514d8f7b9fc5970bdd94287905ef584::getLoader()
+#2 /home/samskqcc/public_html/samson-dungu-foundation/artisan(10): require('/home/samskqcc/...')
+#3 {main}
+  thrown in /home/samskqcc/public_html/samson-dungu-foundation/vendor/composer/autoload_real.php on line 41
+[01-Sep-2026 18:22:17 UTC] PHP Warning:  require(/home/samskqcc/public_html/samson-dungu-foundation/vendor/composer/../laravel/framework/src/Illuminate/Collections/functions.php): Failed to open stream: No such file or directory in /home/samskqcc/public_html/samson-dungu-foundation/vendor/composer/autoload_real.php on line 41
+[01-Sep-2026 18:22:17 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '/home/samskqcc/public_html/samson-dungu-foundation/vendor/composer/../laravel/framework/src/Illuminate/Collections/functions.php' (include_path='.:/opt/alt/php82/usr/share/pear:/opt/alt/php82/usr/share/php:/usr/share/pear:/usr/share/php') in /home/samskqcc/public_html/samson-dungu-foundation/vendor/composer/autoload_real.php:41
+Stack trace:
+#0 /home/samskqcc/public_html/samson-dungu-foundation/vendor/composer/autoload_real.php(45): {closure}()
+#1 /home/samskqcc/public_html/samson-dungu-foundation/vendor/autoload.php(22): ComposerAutoloaderInitc514d8f7b9fc5970bdd94287905ef584::getLoader()
+#2 /home/samskqcc/public_html/samson-dungu-foundation/artisan(10): require('/home/samskqcc/...')
+#3 {main}
+  thrown in /home/samskqcc/public_html/samson-dungu-foundation/vendor/composer/autoload_real.php on line 41
+[01-Sep-2026 18:22:31 UTC] PHP Warning:  require(/home/samskqcc/public_html/samson-dungu-foundation/vendor/composer/../laravel/framework/src/Illuminate/Collections/functions.php): Failed to open stream: No such file or directory in /home/samskqcc/public_html/samson-dungu-foundation/vendor/composer/autoload_real.php on line 41
+[01-Sep-2026 18:22:31 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '/home/samskqcc/public_html/samson-dungu-foundation/vendor/composer/../laravel/framework/src/Illuminate/Collections/functions.php' (include_path='.:/opt/alt/php82/usr/share/pear:/opt/alt/php82/usr/share/php:/usr/share/pear:/usr/share/php') in /home/samskqcc/public_html/samson-dungu-foundation/vendor/composer/autoload_real.php:41
+Stack trace:
+#0 /home/samskqcc/public_html/samson-dungu-foundation/vendor/composer/autoload_real.php(45): {closure}()
+#1 /home/samskqcc/public_html/samson-dungu-foundation/vendor/autoload.php(22): ComposerAutoloaderInitc514d8f7b9fc5970bdd94287905ef584::getLoader()
+#2 /home/samskqcc/public_html/samson-dungu-foundation/artisan(10): require('/home/samskqcc/...')
+#3 {main}
+  thrown in /home/samskqcc/public_html/samson-dungu-foundation/vendor/composer/autoload_real.php on line 41
+[01-Sep-2026 18:22:41 UTC] PHP Warning:  require(/home/samskqcc/public_html/samson-dungu-foundation/vendor/composer/../laravel/framework/src/Illuminate/Collections/functions.php): Failed to open stream: No such file or directory in /home/samskqcc/public_html/samson-dungu-foundation/vendor/composer/autoload_real.php on line 41
+[01-Sep-2026 18:22:41 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '/home/samskqcc/public_html/samson-dungu-foundation/vendor/composer/../laravel/framework/src/Illuminate/Collections/functions.php' (include_path='.:/opt/alt/php82/usr/share/pear:/opt/alt/php82/usr/share/php:/usr/share/pear:/usr/share/php') in /home/samskqcc/public_html/samson-dungu-foundation/vendor/composer/autoload_real.php:41
+Stack trace:
+#0 /home/samskqcc/public_html/samson-dungu-foundation/vendor/composer/autoload_real.php(45): {closure}()
+#1 /home/samskqcc/public_html/samson-dungu-foundation/vendor/autoload.php(22): ComposerAutoloaderInitc514d8f7b9fc5970bdd94287905ef584::getLoader()
+#2 /home/samskqcc/public_html/samson-dungu-foundation/artisan(10): require('/home/samskqcc/...')
+#3 {main}
+  thrown in /home/samskqcc/public_html/samson-dungu-foundation/vendor/composer/autoload_real.php on line 41
+[01-Sep-2026 18:32:33 UTC] PHP Warning:  require(/home/samskqcc/public_html/samson-dungu-foundation/vendor/composer/../laravel/framework/src/Illuminate/Collections/functions.php): Failed to open stream: No such file or directory in /home/samskqcc/public_html/samson-dungu-foundation/vendor/composer/autoload_real.php on line 41
+[01-Sep-2026 18:32:33 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '/home/samskqcc/public_html/samson-dungu-foundation/vendor/composer/../laravel/framework/src/Illuminate/Collections/functions.php' (include_path='.:/opt/alt/php82/usr/share/pear:/opt/alt/php82/usr/share/php:/usr/share/pear:/usr/share/php') in /home/samskqcc/public_html/samson-dungu-foundation/vendor/composer/autoload_real.php:41
+Stack trace:
+#0 /home/samskqcc/public_html/samson-dungu-foundation/vendor/composer/autoload_real.php(45): {closure}()
+#1 /home/samskqcc/public_html/samson-dungu-foundation/vendor/autoload.php(22): ComposerAutoloaderInitc514d8f7b9fc5970bdd94287905ef584::getLoader()
+#2 /home/samskqcc/public_html/samson-dungu-foundation/artisan(10): require('/home/samskqcc/...')
+#3 {main}
+  thrown in /home/samskqcc/public_html/samson-dungu-foundation/vendor/composer/autoload_real.php on line 41
+[01-Sep-2026 18:33:59 UTC] PHP Warning:  require(/home/samskqcc/public_html/samson-dungu-foundation/vendor/composer/../laravel/framework/src/Illuminate/Collections/functions.php): Failed to open stream: No such file or directory in /home/samskqcc/public_html/samson-dungu-foundation/vendor/composer/autoload_real.php on line 41
+[01-Sep-2026 18:33:59 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '/home/samskqcc/public_html/samson-dungu-foundation/vendor/composer/../laravel/framework/src/Illuminate/Collections/functions.php' (include_path='.:/opt/alt/php82/usr/share/pear:/opt/alt/php82/usr/share/php:/usr/share/pear:/usr/share/php') in /home/samskqcc/public_html/samson-dungu-foundation/vendor/composer/autoload_real.php:41
+Stack trace:
+#0 /home/samskqcc/public_html/samson-dungu-foundation/vendor/composer/autoload_real.php(45): {closure}()
+#1 /home/samskqcc/public_html/samson-dungu-foundation/vendor/autoload.php(22): ComposerAutoloaderInitc514d8f7b9fc5970bdd94287905ef584::getLoader()
+#2 /home/samskqcc/public_html/samson-dungu-foundation/artisan(10): require('/home/samskqcc/...')
+#3 {main}
+  thrown in /home/samskqcc/public_html/samson-dungu-foundation/vendor/composer/autoload_real.php on line 41
+[01-Sep-2026 18:38:07 UTC] PHP Warning:  require(/home/samskqcc/public_html/samson-dungu-foundation/vendor/composer/../laravel/framework/src/Illuminate/Collections/functions.php): Failed to open stream: No such file or directory in /home/samskqcc/public_html/samson-dungu-foundation/vendor/composer/autoload_real.php on line 41
+[01-Sep-2026 18:38:07 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '/home/samskqcc/public_html/samson-dungu-foundation/vendor/composer/../laravel/framework/src/Illuminate/Collections/functions.php' (include_path='.:/opt/alt/php82/usr/share/pear:/opt/alt/php82/usr/share/php:/usr/share/pear:/usr/share/php') in /home/samskqcc/public_html/samson-dungu-foundation/vendor/composer/autoload_real.php:41
+Stack trace:
+#0 /home/samskqcc/public_html/samson-dungu-foundation/vendor/composer/autoload_real.php(45): {closure}()
+#1 /home/samskqcc/public_html/samson-dungu-foundation/vendor/autoload.php(22): ComposerAutoloaderInitc514d8f7b9fc5970bdd94287905ef584::getLoader()
+#2 /home/samskqcc/public_html/samson-dungu-foundation/artisan(10): require('/home/samskqcc/...')
+#3 {main}
+  thrown in /home/samskqcc/public_html/samson-dungu-foundation/vendor/composer/autoload_real.php on line 41
+[01-Sep-2026 18:38:19 UTC] PHP Warning:  require(/home/samskqcc/public_html/samson-dungu-foundation/vendor/composer/../laravel/framework/src/Illuminate/Collections/functions.php): Failed to open stream: No such file or directory in /home/samskqcc/public_html/samson-dungu-foundation/vendor/composer/autoload_real.php on line 41
+[01-Sep-2026 18:38:19 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '/home/samskqcc/public_html/samson-dungu-foundation/vendor/composer/../laravel/framework/src/Illuminate/Collections/functions.php' (include_path='.:/opt/alt/php82/usr/share/pear:/opt/alt/php82/usr/share/php:/usr/share/pear:/usr/share/php') in /home/samskqcc/public_html/samson-dungu-foundation/vendor/composer/autoload_real.php:41
+Stack trace:
+#0 /home/samskqcc/public_html/samson-dungu-foundation/vendor/composer/autoload_real.php(45): {closure}()
+#1 /home/samskqcc/public_html/samson-dungu-foundation/vendor/autoload.php(22): ComposerAutoloaderInitc514d8f7b9fc5970bdd94287905ef584::getLoader()
+#2 /home/samskqcc/public_html/samson-dungu-foundation/artisan(10): require('/home/samskqcc/...')
+#3 {main}
+  thrown in /home/samskqcc/public_html/samson-dungu-foundation/vendor/composer/autoload_real.php on line 41
+[01-Sep-2026 18:38:30 UTC] PHP Warning:  require(/home/samskqcc/public_html/samson-dungu-foundation/vendor/composer/../laravel/framework/src/Illuminate/Collections/functions.php): Failed to open stream: No such file or directory in /home/samskqcc/public_html/samson-dungu-foundation/vendor/composer/autoload_real.php on line 41
+[01-Sep-2026 18:38:30 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '/home/samskqcc/public_html/samson-dungu-foundation/vendor/composer/../laravel/framework/src/Illuminate/Collections/functions.php' (include_path='.:/opt/alt/php82/usr/share/pear:/opt/alt/php82/usr/share/php:/usr/share/pear:/usr/share/php') in /home/samskqcc/public_html/samson-dungu-foundation/vendor/composer/autoload_real.php:41
+Stack trace:
+#0 /home/samskqcc/public_html/samson-dungu-foundation/vendor/composer/autoload_real.php(45): {closure}()
+#1 /home/samskqcc/public_html/samson-dungu-foundation/vendor/autoload.php(22): ComposerAutoloaderInitc514d8f7b9fc5970bdd94287905ef584::getLoader()
+#2 /home/samskqcc/public_html/samson-dungu-foundation/artisan(10): require('/home/samskqcc/...')
+#3 {main}
+  thrown in /home/samskqcc/public_html/samson-dungu-foundation/vendor/composer/autoload_real.php on line 41
+[01-Sep-2026 18:38:45 UTC] PHP Warning:  require(/home/samskqcc/public_html/samson-dungu-foundation/vendor/composer/../laravel/framework/src/Illuminate/Collections/functions.php): Failed to open stream: No such file or directory in /home/samskqcc/public_html/samson-dungu-foundation/vendor/composer/autoload_real.php on line 41
+[01-Sep-2026 18:38:45 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '/home/samskqcc/public_html/samson-dungu-foundation/vendor/composer/../laravel/framework/src/Illuminate/Collections/functions.php' (include_path='.:/opt/alt/php82/usr/share/pear:/opt/alt/php82/usr/share/php:/usr/share/pear:/usr/share/php') in /home/samskqcc/public_html/samson-dungu-foundation/vendor/composer/autoload_real.php:41
+Stack trace:
+#0 /home/samskqcc/public_html/samson-dungu-foundation/vendor/composer/autoload_real.php(45): {closure}()
+#1 /home/samskqcc/public_html/samson-dungu-foundation/vendor/autoload.php(22): ComposerAutoloaderInitc514d8f7b9fc5970bdd94287905ef584::getLoader()
+#2 /home/samskqcc/public_html/samson-dungu-foundation/artisan(10): require('/home/samskqcc/...')
+#3 {main}
+  thrown in /home/samskqcc/public_html/samson-dungu-foundation/vendor/composer/autoload_real.php on line 41
+[01-Sep-2026 18:38:55 UTC] PHP Warning:  require(/home/samskqcc/public_html/samson-dungu-foundation/vendor/composer/../laravel/framework/src/Illuminate/Collections/functions.php): Failed to open stream: No such file or directory in /home/samskqcc/public_html/samson-dungu-foundation/vendor/composer/autoload_real.php on line 41
+[01-Sep-2026 18:38:55 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '/home/samskqcc/public_html/samson-dungu-foundation/vendor/composer/../laravel/framework/src/Illuminate/Collections/functions.php' (include_path='.:/opt/alt/php82/usr/share/pear:/opt/alt/php82/usr/share/php:/usr/share/pear:/usr/share/php') in /home/samskqcc/public_html/samson-dungu-foundation/vendor/composer/autoload_real.php:41
+Stack trace:
+#0 /home/samskqcc/public_html/samson-dungu-foundation/vendor/composer/autoload_real.php(45): {closure}()
+#1 /home/samskqcc/public_html/samson-dungu-foundation/vendor/autoload.php(22): ComposerAutoloaderInitc514d8f7b9fc5970bdd94287905ef584::getLoader()
+#2 /home/samskqcc/public_html/samson-dungu-foundation/artisan(10): require('/home/samskqcc/...')
+#3 {main}
+  thrown in /home/samskqcc/public_html/samson-dungu-foundation/vendor/composer/autoload_real.php on line 41
+[01-Sep-2026 18:40:47 UTC] PHP Warning:  require(/home/samskqcc/public_html/samson-dungu-foundation/vendor/composer/../laravel/framework/src/Illuminate/Collections/functions.php): Failed to open stream: No such file or directory in /home/samskqcc/public_html/samson-dungu-foundation/vendor/composer/autoload_real.php on line 41
+[01-Sep-2026 18:40:47 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '/home/samskqcc/public_html/samson-dungu-foundation/vendor/composer/../laravel/framework/src/Illuminate/Collections/functions.php' (include_path='.:/opt/alt/php82/usr/share/pear:/opt/alt/php82/usr/share/php:/usr/share/pear:/usr/share/php') in /home/samskqcc/public_html/samson-dungu-foundation/vendor/composer/autoload_real.php:41
+Stack trace:
+#0 /home/samskqcc/public_html/samson-dungu-foundation/vendor/composer/autoload_real.php(45): {closure}()
+#1 /home/samskqcc/public_html/samson-dungu-foundation/vendor/autoload.php(22): ComposerAutoloaderInitc514d8f7b9fc5970bdd94287905ef584::getLoader()
+#2 /home/samskqcc/public_html/samson-dungu-foundation/artisan(10): require('/home/samskqcc/...')
+#3 {main}
+  thrown in /home/samskqcc/public_html/samson-dungu-foundation/vendor/composer/autoload_real.php on line 41
+[01-Sep-2026 18:40:59 UTC] PHP Warning:  require(/home/samskqcc/public_html/samson-dungu-foundation/vendor/composer/../laravel/framework/src/Illuminate/Collections/functions.php): Failed to open stream: No such file or directory in /home/samskqcc/public_html/samson-dungu-foundation/vendor/composer/autoload_real.php on line 41
+[01-Sep-2026 18:40:59 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '/home/samskqcc/public_html/samson-dungu-foundation/vendor/composer/../laravel/framework/src/Illuminate/Collections/functions.php' (include_path='.:/opt/alt/php82/usr/share/pear:/opt/alt/php82/usr/share/php:/usr/share/pear:/usr/share/php') in /home/samskqcc/public_html/samson-dungu-foundation/vendor/composer/autoload_real.php:41
+Stack trace:
+#0 /home/samskqcc/public_html/samson-dungu-foundation/vendor/composer/autoload_real.php(45): {closure}()
+#1 /home/samskqcc/public_html/samson-dungu-foundation/vendor/autoload.php(22): ComposerAutoloaderInitc514d8f7b9fc5970bdd94287905ef584::getLoader()
+#2 /home/samskqcc/public_html/samson-dungu-foundation/artisan(10): require('/home/samskqcc/...')
+#3 {main}
+  thrown in /home/samskqcc/public_html/samson-dungu-foundation/vendor/composer/autoload_real.php on line 41
+[01-Sep-2026 18:42:19 UTC] PHP Warning:  require(/home/samskqcc/public_html/samson-dungu-foundation/vendor/composer/../laravel/framework/src/Illuminate/Collections/functions.php): Failed to open stream: No such file or directory in /home/samskqcc/public_html/samson-dungu-foundation/vendor/composer/autoload_real.php on line 41
+[01-Sep-2026 18:42:19 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '/home/samskqcc/public_html/samson-dungu-foundation/vendor/composer/../laravel/framework/src/Illuminate/Collections/functions.php' (include_path='.:/opt/alt/php82/usr/share/pear:/opt/alt/php82/usr/share/php:/usr/share/pear:/usr/share/php') in /home/samskqcc/public_html/samson-dungu-foundation/vendor/composer/autoload_real.php:41
+Stack trace:
+#0 /home/samskqcc/public_html/samson-dungu-foundation/vendor/composer/autoload_real.php(45): {closure}()
+#1 /home/samskqcc/public_html/samson-dungu-foundation/vendor/autoload.php(22): ComposerAutoloaderInitc514d8f7b9fc5970bdd94287905ef584::getLoader()
+#2 /home/samskqcc/public_html/samson-dungu-foundation/artisan(10): require('/home/samskqcc/...')
+#3 {main}
+  thrown in /home/samskqcc/public_html/samson-dungu-foundation/vendor/composer/autoload_real.php on line 41
+[01-Sep-2026 18:45:29 UTC] PHP Warning:  require(/home/samskqcc/public_html/samson-dungu-foundation/vendor/composer/../laravel/framework/src/Illuminate/Collections/functions.php): Failed to open stream: No such file or directory in /home/samskqcc/public_html/samson-dungu-foundation/vendor/composer/autoload_real.php on line 41
+[01-Sep-2026 18:45:29 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '/home/samskqcc/public_html/samson-dungu-foundation/vendor/composer/../laravel/framework/src/Illuminate/Collections/functions.php' (include_path='.:/opt/alt/php82/usr/share/pear:/opt/alt/php82/usr/share/php:/usr/share/pear:/usr/share/php') in /home/samskqcc/public_html/samson-dungu-foundation/vendor/composer/autoload_real.php:41
+Stack trace:
+#0 /home/samskqcc/public_html/samson-dungu-foundation/vendor/composer/autoload_real.php(45): {closure}()
+#1 /home/samskqcc/public_html/samson-dungu-foundation/vendor/autoload.php(22): ComposerAutoloaderInitc514d8f7b9fc5970bdd94287905ef584::getLoader()
+#2 /home/samskqcc/public_html/samson-dungu-foundation/artisan(10): require('/home/samskqcc/...')
+#3 {main}
+  thrown in /home/samskqcc/public_html/samson-dungu-foundation/vendor/composer/autoload_real.php on line 41
+[01-Sep-2026 18:45:39 UTC] PHP Warning:  require(/home/samskqcc/public_html/samson-dungu-foundation/vendor/composer/../laravel/framework/src/Illuminate/Collections/functions.php): Failed to open stream: No such file or directory in /home/samskqcc/public_html/samson-dungu-foundation/vendor/composer/autoload_real.php on line 41
+[01-Sep-2026 18:45:39 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '/home/samskqcc/public_html/samson-dungu-foundation/vendor/composer/../laravel/framework/src/Illuminate/Collections/functions.php' (include_path='.:/opt/alt/php82/usr/share/pear:/opt/alt/php82/usr/share/php:/usr/share/pear:/usr/share/php') in /home/samskqcc/public_html/samson-dungu-foundation/vendor/composer/autoload_real.php:41
+Stack trace:
+#0 /home/samskqcc/public_html/samson-dungu-foundation/vendor/composer/autoload_real.php(45): {closure}()
+#1 /home/samskqcc/public_html/samson-dungu-foundation/vendor/autoload.php(22): ComposerAutoloaderInitc514d8f7b9fc5970bdd94287905ef584::getLoader()
+#2 /home/samskqcc/public_html/samson-dungu-foundation/artisan(10): require('/home/samskqcc/...')
+#3 {main}
+  thrown in /home/samskqcc/public_html/samson-dungu-foundation/vendor/composer/autoload_real.php on line 41
+[01-Sep-2026 18:45:48 UTC] PHP Warning:  require(/home/samskqcc/public_html/samson-dungu-foundation/vendor/composer/../laravel/framework/src/Illuminate/Collections/functions.php): Failed to open stream: No such file or directory in /home/samskqcc/public_html/samson-dungu-foundation/vendor/composer/autoload_real.php on line 41
+[01-Sep-2026 18:45:48 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '/home/samskqcc/public_html/samson-dungu-foundation/vendor/composer/../laravel/framework/src/Illuminate/Collections/functions.php' (include_path='.:/opt/alt/php82/usr/share/pear:/opt/alt/php82/usr/share/php:/usr/share/pear:/usr/share/php') in /home/samskqcc/public_html/samson-dungu-foundation/vendor/composer/autoload_real.php:41
+Stack trace:
+#0 /home/samskqcc/public_html/samson-dungu-foundation/vendor/composer/autoload_real.php(45): {closure}()
+#1 /home/samskqcc/public_html/samson-dungu-foundation/vendor/autoload.php(22): ComposerAutoloaderInitc514d8f7b9fc5970bdd94287905ef584::getLoader()
+#2 /home/samskqcc/public_html/samson-dungu-foundation/artisan(10): require('/home/samskqcc/...')
+#3 {main}
+  thrown in /home/samskqcc/public_html/samson-dungu-foundation/vendor/composer/autoload_real.php on line 41
+[01-Sep-2026 18:45:57 UTC] PHP Warning:  require(/home/samskqcc/public_html/samson-dungu-foundation/vendor/composer/../laravel/framework/src/Illuminate/Collections/functions.php): Failed to open stream: No such file or directory in /home/samskqcc/public_html/samson-dungu-foundation/vendor/composer/autoload_real.php on line 41
+[01-Sep-2026 18:45:57 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '/home/samskqcc/public_html/samson-dungu-foundation/vendor/composer/../laravel/framework/src/Illuminate/Collections/functions.php' (include_path='.:/opt/alt/php82/usr/share/pear:/opt/alt/php82/usr/share/php:/usr/share/pear:/usr/share/php') in /home/samskqcc/public_html/samson-dungu-foundation/vendor/composer/autoload_real.php:41
+Stack trace:
+#0 /home/samskqcc/public_html/samson-dungu-foundation/vendor/composer/autoload_real.php(45): {closure}()
+#1 /home/samskqcc/public_html/samson-dungu-foundation/vendor/autoload.php(22): ComposerAutoloaderInitc514d8f7b9fc5970bdd94287905ef584::getLoader()
+#2 /home/samskqcc/public_html/samson-dungu-foundation/artisan(10): require('/home/samskqcc/...')
+#3 {main}
+  thrown in /home/samskqcc/public_html/samson-dungu-foundation/vendor/composer/autoload_real.php on line 41
+[01-Sep-2026 18:46:14 UTC] PHP Warning:  require(/home/samskqcc/public_html/samson-dungu-foundation/vendor/composer/../laravel/framework/src/Illuminate/Events/functions.php): Failed to open stream: No such file or directory in /home/samskqcc/public_html/samson-dungu-foundation/vendor/composer/autoload_real.php on line 41
+[01-Sep-2026 18:46:14 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '/home/samskqcc/public_html/samson-dungu-foundation/vendor/composer/../laravel/framework/src/Illuminate/Events/functions.php' (include_path='.:/opt/alt/php82/usr/share/pear:/opt/alt/php82/usr/share/php:/usr/share/pear:/usr/share/php') in /home/samskqcc/public_html/samson-dungu-foundation/vendor/composer/autoload_real.php:41
+Stack trace:
+#0 /home/samskqcc/public_html/samson-dungu-foundation/vendor/composer/autoload_real.php(45): {closure}()
+#1 /home/samskqcc/public_html/samson-dungu-foundation/vendor/autoload.php(22): ComposerAutoloaderInitc514d8f7b9fc5970bdd94287905ef584::getLoader()
+#2 /home/samskqcc/public_html/samson-dungu-foundation/artisan(10): require('/home/samskqcc/...')
+#3 {main}
+  thrown in /home/samskqcc/public_html/samson-dungu-foundation/vendor/composer/autoload_real.php on line 41
