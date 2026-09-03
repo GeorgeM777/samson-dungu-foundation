@@ -3,6 +3,16 @@
 @section('title', 'Contact Us - Get in Touch with Samson Ddungu Foundation')
 @section('content')
 
+@php
+    $leaders = \App\Models\LeadershipTeam::where('is_active', true)->orderBy('order')->get();
+    $contactAddress = \App\Models\SiteSetting::get('contact_address', 'Wakiso District, Central Region, Uganda<br>(Near Kampala, the capital city)');
+    $officeHours = \App\Models\SiteSetting::get('contact_office_hours', 'Monday - Friday: 8:00 AM - 5:00 PM<br>Saturday: 9:00 AM - 1:00 PM<br>Sunday: Closed');
+    $emailInfo = \App\Models\SiteSetting::get('contact_email_info', 'info@samsondungufoundation.org');
+    $emailPartnerships = \App\Models\SiteSetting::get('contact_email_partnerships', 'partnerships@samsondungufoundation.org');
+    $emailDonations = \App\Models\SiteSetting::get('contact_email_donations', 'donations@samsondungufoundation.org');
+    $emailVolunteer = \App\Models\SiteSetting::get('contact_email_volunteer', 'volunteer@samsondungufoundation.org');
+@endphp
+
 <!-- Hero Section -->
 <div class="hero-slideshow" style="height: 60vh; min-height: 500px;">
     <div class="slide active" style="background-image: url('{{ asset('images/contact/hero-contact.jpg') }}');">
@@ -21,58 +31,61 @@
     <p class="section-subtitle animate-on-scroll delay-200">Dedicated leaders driving our mission forward</p>
 
     <div class="leadership-team animate-on-scroll">
-        <div class="leader-card">
-            <div class="leader-image">
-                <img src="{{ asset('images/contact/leadership/ida-dungu.jpg') }}" alt="Ida Nakimwero Ddungu Muwanga">
-                <div class="leader-badge">Founder & Executive Director</div>
-            </div>
-            <div class="leader-info">
-                <h3>IDA NAKIMWERO DDUNGU MUWANGA</h3>
-                <p class="leader-title">EXECUTIVE DIRECTOR</p>
-                <div class="leader-details">
-                    <!-- <p><i class="fas fa-calendar"></i> Since: 15/04/2024</p> -->
-                    <p><i class="fas fa-phone"></i> Contact: +46 72 925 71 01</p>
-                    <p><i class="fas fa-envelope"></i> Email: ida@samsondungufoundation.org</p>
+        @forelse($leaders as $index => $leader)
+            <div class="leader-card {{ $index > 0 ? 'animate-on-scroll delay-' . ($index * 400) : '' }}">
+                @if($index % 2 == 0)
+                    <div class="leader-image">
+                        @if($leader->photo)
+                            <img src="{{ asset($leader->photo) }}" alt="{{ $leader->name }}">
+                        @else
+                            <img src="{{ asset('images/contact/leader-default.jpg') }}" alt="{{ $leader->name }}">
+                        @endif
+                        <div class="leader-badge">{{ $leader->position }}</div>
+                    </div>
+                @endif
+                <div class="leader-info">
+                    <h3>{{ strtoupper($leader->name) }}</h3>
+                    <p class="leader-title">{{ strtoupper($leader->position) }}</p>
+                    <div class="leader-details">
+                        @if($leader->phone)
+                            <p><i class="fas fa-phone"></i> Contact: {{ $leader->phone }}</p>
+                        @endif
+                        @if($leader->email)
+                            <p><i class="fas fa-envelope"></i> Email: {{ $leader->email }}</p>
+                        @endif
+                    </div>
+                    <p class="leader-bio">{{ $leader->bio }}</p>
                 </div>
-                <p class="leader-bio">Continuing the legacy of Samson Ddungu with compassion and dedication, Ida leads our foundation's mission to uplift vulnerable communities across Uganda.</p>
+                @if($index % 2 == 1)
+                    <div class="leader-image">
+                        @if($leader->photo)
+                            <img src="{{ asset($leader->photo) }}" alt="{{ $leader->name }}">
+                        @else
+                            <img src="{{ asset('images/contact/leader-default.jpg') }}" alt="{{ $leader->name }}">
+                        @endif
+                        <div class="leader-badge">{{ $leader->position }}</div>
+                    </div>
+                @endif
             </div>
-        </div>
-
-        <div class="leader-card animate-on-scroll delay-400">
-            <div class="leader-info">
-                <h3>KISIGULA MARTIN WISEMAN</h3>
-                <p class="leader-title">DIRECTOR / COUNTRY COORDINATOR</p>
-                <div class="leader-details">
-                    <!-- <p><i class="fas fa-calendar"></i> Since: 15/04/2024</p> -->
-                    <p><i class="fas fa-phone"></i> Contact: +256 782 488 116</p>
-                    <p><i class="fas fa-envelope"></i> Email: martin@samsondungufoundation.org</p>
-                </div>
-                <p class="leader-bio">With extensive experience in community development, Martin coordinates our nationwide operations and ensures effective program implementation across Uganda.</p>
-            </div>
-            <div class="leader-image">
-                <img src="{{ asset('images/contact/leadership/martin-wiseman.jpg') }}" alt="Kisigula Martin Wiseman">
-                <div class="leader-badge">Country Coordinator</div>
-            </div>
-        </div>
+        @empty
+            <p style="text-align: center; color: #777; padding: 40px;">No team members available. Add some from the admin panel.</p>
+        @endforelse
     </div>
 
     <!-- Contact Information Section -->
     <div class="contact-grid animate-on-scroll">
         <div class="contact-info">
             <h2><i class="fas fa-map-marker-alt"></i> Our Location</h2>
-            <p>Wakiso District, Central Region, Uganda<br>
-            (Near Kampala, the capital city)</p>
+            <p>{!! $contactAddress !!}</p>
 
             <h2><i class="fas fa-clock"></i> Office Hours</h2>
-            <p>Monday - Friday: 8:00 AM - 5:00 PM<br>
-            Saturday: 9:00 AM - 1:00 PM<br>
-            Sunday: Closed</p>
+            <p>{!! $officeHours !!}</p>
 
             <h2><i class="fas fa-envelope"></i> Email Addresses</h2>
-            <p>General Inquiries: info@samsondungufoundation.org<br>
-            Partnerships: partnerships@samsondungufoundation.org<br>
-            Donations: donations@samsondungufoundation.org<br>
-            Volunteering: volunteer@samsondungufoundation.org</p>
+            <p>General Inquiries: {{ $emailInfo }}<br>
+            Partnerships: {{ $emailPartnerships }}<br>
+            Donations: {{ $emailDonations }}<br>
+            Volunteering: {{ $emailVolunteer }}</p>
         </div>
 
         <div class="contact-form animate-on-scroll delay-400">

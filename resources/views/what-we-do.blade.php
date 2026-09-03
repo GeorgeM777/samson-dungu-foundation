@@ -3,13 +3,21 @@
 @section('title', 'What We Do - Our Programs & Initiatives')
 @section('content')
 
+@php
+    $heroTitle = \App\Models\SiteSetting::get('what_we_do_hero_title', 'Our Comprehensive Programs');
+    $heroSubtitle = \App\Models\SiteSetting::get('what_we_do_hero_subtitle', "Holistic support for Uganda's most vulnerable communities");
+    $approachQuote = \App\Models\SiteSetting::get('approach_quote', "There's a solution to solve a problem. At Samson Ddungu Foundation, we are that solution for Uganda's most vulnerable.");
+    $programs = \App\Models\Program::where('is_active', true)->orderBy('order')->get();
+    $stories = \App\Models\ImpactStory::where('is_active', true)->orderBy('order')->take(3)->get();
+@endphp
+
 <!-- Hero Section -->
 <div class="hero-slideshow" style="height: 60vh; min-height: 500px;">
     <div class="slide active" style="background-image: url('{{ asset('images/programs/hero-programs.jpg') }}');">
         <div class="slide-overlay">
             <div class="slide-text">
-                <h2>Our Comprehensive Programs</h2>
-                <p>Holistic support for Uganda's most vulnerable communities</p>
+                <h2>{{ $heroTitle }}</h2>
+                <p>{{ $heroSubtitle }}</p>
             </div>
         </div>
     </div>
@@ -21,183 +29,130 @@
     <p class="section-subtitle animate-on-scroll delay-200">Integrated programs addressing the root causes of poverty and vulnerability</p>
 
     <div class="programs-grid animate-on-scroll">
-        <div class="program-card animate-on-scroll" style="background-image: url('{{ asset('images/programs/education.jpg') }}');">
-            <div class="program-content">
-                <h3><i class="fas fa-graduation-cap"></i> Education Support</h3>
-                <p>Providing scholarships, school supplies, and tutoring for orphaned and vulnerable children to break the cycle of poverty through education.</p>
-                <ul>
-                    <li>Primary & secondary school scholarships</li>
-                    <li>School supplies distribution</li>
-                    <li>After-school tutoring programs</li>
-                    <li>Computer literacy training</li>
-                </ul>
-                <div class="program-stats">
-                    <span><strong>100+</strong> Children Educated</span>
-                    <span><strong>12</strong> Schools Partnered</span>
+        @forelse($programs as $index => $program)
+            <div class="program-card animate-on-scroll {{ $index > 0 ? 'delay-' . ($index * 200) : '' }}" @if($program->image) style="background-image: url('{{ asset($program->image) }}');" @endif>
+                <div class="program-content">
+                    <h3>@if($program->icon)<i class="{{ $program->icon }}"></i>@endif {{ $program->title }}</h3>
+                    <p>{{ $program->short_description }}</p>
+                    @if(is_array($program->bullets) && count($program->bullets) > 0)
+                        <ul>
+                            @foreach($program->bullets as $bullet)
+                                <li>{{ $bullet }}</li>
+                            @endforeach
+                        </ul>
+                    @endif
+                    @if(is_array($program->stats) && count($program->stats) > 0)
+                        <div class="program-stats">
+                            @foreach($program->stats as $stat)
+                                @php
+                                    $parts = explode('|', $stat);
+                                    $num = trim($parts[0] ?? '');
+                                    $lbl = trim($parts[1] ?? '');
+                                @endphp
+                                <span><strong>{{ $num }}</strong> {{ $lbl }}</span>
+                            @endforeach
+                        </div>
+                    @endif
                 </div>
             </div>
-        </div>
 
-        <div class="program-card animate-on-scroll delay-200" style="background-image: url('{{ asset('images/programs/healthcare.jpg') }}');">
-            <div class="program-content">
-                <h3><i class="fas fa-heartbeat"></i> Healthcare & Medical Support</h3>
-                <p>Ensuring access to medical care, HIV/AIDS treatment, and health education for vulnerable community members.</p>
-                <ul>
-                    <li>Medical outreach clinics</li>
-                    <li>HIV/AIDS treatment support</li>
-                    <li>Maternal health programs</li>
-                    <li>Health education workshops</li>
-                </ul>
-                <div class="program-stats">
-                    <span><strong>500+</strong> Patients Served</span>
-                    <span><strong>4</strong> Annual Medical Camps</span>
-                </div>
-            </div>
-        </div>
+            @if($index == 1)
+                <!-- School Partnership Program (static) -->
+                <div class="program-highlight animate-on-scroll">
+                    <div class="highlight-content">
+                        <div class="highlight-text">
+                            <div class="highlight-badge">Partnership Program</div>
+                            <h3><i class="fas fa-handshake"></i> School Partnerships for Inclusive Education</h3>
+                            <p>We collaborate with local schools to ensure orphaned and less privileged children receive quality education in nurturing environments.</p>
 
-        <!-- School Partnership Program -->
-        <div class="program-highlight animate-on-scroll">
-            <div class="highlight-content">
-                <div class="highlight-text">
-                    <div class="highlight-badge">Partnership Program</div>
-                    <h3><i class="fas fa-handshake"></i> School Partnerships for Inclusive Education</h3>
-                    <p>We collaborate with local schools to ensure orphaned and less privileged children receive quality education in nurturing environments.</p>
+                            <div class="partnership-details">
+                                <h4>Our Partner Schools:</h4>
+                                <div class="partner-schools">
+                                    <div class="partner-school">
+                                        <h5>Bushenyi Preparatory Primary School</h5>
+                                        <p><i class="fas fa-map-pin"></i> Serving the Bushenyi community with comprehensive primary education</p>
+                                        <div class="school-features">
+                                            <span><i class="fas fa-user-graduate"></i> 300+ students</span>
+                                            <span><i class="fas fa-chalkboard-teacher"></i> 20 qualified teachers</span>
+                                            <span><i class="fas fa-building"></i> Modern facilities</span>
+                                        </div>
+                                    </div>
 
-                    <div class="partnership-details">
-                        <h4>Our Partner Schools:</h4>
-                        <div class="partner-schools">
-                            <div class="partner-school">
-                                <h5>Bushenyi Preparatory Primary School</h5>
-                                <p><i class="fas fa-map-pin"></i> Serving the Bushenyi community with comprehensive primary education</p>
-                                <div class="school-features">
-                                    <span><i class="fas fa-user-graduate"></i> 300+ students</span>
-                                    <span><i class="fas fa-chalkboard-teacher"></i> 20 qualified teachers</span>
-                                    <span><i class="fas fa-building"></i> Modern facilities</span>
+                                    <div class="partner-school">
+                                        <h5>Prime Junior Primary School Ishaka</h5>
+                                        <p><i class="fas fa-map-pin"></i> Specialized early childhood education in Ishaka</p>
+                                        <div class="school-features">
+                                            <span><i class="fas fa-user-graduate"></i> 200+ students</span>
+                                            <span><i class="fas fa-chalkboard-teacher"></i> 15 dedicated teachers</span>
+                                            <span><i class="fas fa-child"></i> Child-friendly environment</span>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
 
-                            <div class="partner-school">
-                                <h5>Prime Junior Primary School Ishaka</h5>
-                                <p><i class="fas fa-map-pin"></i> Specialized early childhood education in Ishaka</p>
-                                <div class="school-features">
-                                    <span><i class="fas fa-user-graduate"></i> 200+ students</span>
-                                    <span><i class="fas fa-chalkboard-teacher"></i> 15 dedicated teachers</span>
-                                    <span><i class="fas fa-child"></i> Child-friendly environment</span>
+                            <div class="partnership-benefits">
+                                <h4>What We Provide:</h4>
+                                <div class="benefits-grid">
+                                    <div class="benefit">
+                                        <i class="fas fa-money-check-alt"></i>
+                                        <span>Full School Fee Coverage</span>
+                                    </div>
+                                    <div class="benefit">
+                                        <i class="fas fa-tshirt"></i>
+                                        <span>Uniforms & Supplies</span>
+                                    </div>
+                                    <div class="benefit">
+                                        <i class="fas fa-utensils"></i>
+                                        <span>Nutritious Meals</span>
+                                    </div>
+                                    <div class="benefit">
+                                        <i class="fas fa-stethoscope"></i>
+                                        <span>Healthcare Support</span>
+                                    </div>
+                                    <div class="benefit">
+                                        <i class="fas fa-book"></i>
+                                        <span>Learning Materials</span>
+                                    </div>
+                                    <div class="benefit">
+                                        <i class="fas fa-bus"></i>
+                                        <span>Transportation Assistance</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="highlight-images">
+                            <div class="image-collage">
+                                <img src="{{ asset('images/schools/partnership-group.jpg') }}" alt="School Partnership Group Photo" class="main-collage-img">
+                                <div class="collage-grid">
+                                    <img src="{{ asset('images/schools/learning-together.jpg') }}" alt="Children Learning Together">
+                                    <img src="{{ asset('images/schools/school-community.jpg') }}" alt="School Community Activities">
+                                    <img src="{{ asset('images/schools/teacher-student.jpg') }}" alt="Teacher with Students">
+                                    <img src="{{ asset('images/schools/playground-fun.jpg') }}" alt="Playground Activities">
+                                </div>
+                            </div>
+
+                            <div class="success-metrics">
+                                <div class="metric">
+                                    <div class="metric-value">95%</div>
+                                    <div class="metric-label">Attendance Rate</div>
+                                </div>
+                                <div class="metric">
+                                    <div class="metric-value">85%</div>
+                                    <div class="metric-label">Academic Improvement</div>
+                                </div>
+                                <div class="metric">
+                                    <div class="metric-value">100%</div>
+                                    <div class="metric-label">Transition Rate</div>
                                 </div>
                             </div>
                         </div>
                     </div>
-
-                    <div class="partnership-benefits">
-                        <h4>What We Provide:</h4>
-                        <div class="benefits-grid">
-                            <div class="benefit">
-                                <i class="fas fa-money-check-alt"></i>
-                                <span>Full School Fee Coverage</span>
-                            </div>
-                            <div class="benefit">
-                                <i class="fas fa-tshirt"></i>
-                                <span>Uniforms & Supplies</span>
-                            </div>
-                            <div class="benefit">
-                                <i class="fas fa-utensils"></i>
-                                <span>Nutritious Meals</span>
-                            </div>
-                            <div class="benefit">
-                                <i class="fas fa-stethoscope"></i>
-                                <span>Healthcare Support</span>
-                            </div>
-                            <div class="benefit">
-                                <i class="fas fa-book"></i>
-                                <span>Learning Materials</span>
-                            </div>
-                            <div class="benefit">
-                                <i class="fas fa-bus"></i>
-                                <span>Transportation Assistance</span>
-                            </div>
-                        </div>
-                    </div>
                 </div>
-
-                <div class="highlight-images">
-                    <div class="image-collage">
-                        <img src="{{ asset('images/schools/partnership-group.jpg') }}" alt="School Partnership Group Photo" class="main-collage-img">
-                        <div class="collage-grid">
-                            <img src="{{ asset('images/schools/learning-together.jpg') }}" alt="Children Learning Together">
-                            <img src="{{ asset('images/schools/school-community.jpg') }}" alt="School Community Activities">
-                            <img src="{{ asset('images/schools/teacher-student.jpg') }}" alt="Teacher with Students">
-                            <img src="{{ asset('images/schools/playground-fun.jpg') }}" alt="Playground Activities">
-                        </div>
-                    </div>
-
-                    <div class="success-metrics">
-                        <div class="metric">
-                            <div class="metric-value">95%</div>
-                            <div class="metric-label">Attendance Rate</div>
-                        </div>
-                        <div class="metric">
-                            <div class="metric-value">85%</div>
-                            <div class="metric-label">Academic Improvement</div>
-                        </div>
-                        <div class="metric">
-                            <div class="metric-value">100%</div>
-                            <div class="metric-label">Transition Rate</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="program-card animate-on-scroll delay-600" style="background-image: url('{{ asset('images/programs/shelter.jpg') }}');">
-            <div class="program-content">
-                <h3><i class="fas fa-home"></i> Shelter & Housing</h3>
-                <p>Building and providing safe, decent housing for orphans, widows, and homeless community members.</p>
-                <ul>
-                    <li>New home construction</li>
-                    <li>Home renovations</li>
-                    <li>Orphanage support</li>
-                    <li>Emergency shelter</li>
-                </ul>
-                <div class="program-stats">
-                    <span><strong>50</strong> Homes Built</span>
-                    <span><strong>20</strong> Families Housed</span>
-                </div>
-            </div>
-        </div>
-
-        <div class="program-card animate-on-scroll delay-800" style="background-image: url('{{ asset('images/programs/nutrition.jpg') }}');">
-            <div class="program-content">
-                <h3><i class="fas fa-utensils"></i> Nutrition & Food Security</h3>
-                <p>Addressing malnutrition and food insecurity through sustainable agriculture and feeding programs.</p>
-                <ul>
-                    <li>School feeding programs</li>
-                    <li>Agricultural training</li>
-                    <li>Food distribution</li>
-                    <li>Nutrition education</li>
-                </ul>
-                <div class="program-stats">
-                    <span><strong>1,000+</strong> Meals Served Monthly</span>
-                    <span><strong>10</strong> Community Gardens</span>
-                </div>
-            </div>
-        </div>
-
-        <div class="program-card animate-on-scroll" style="background-image: url('{{ asset('images/programs/counseling.jpg') }}');">
-            <div class="program-content">
-                <h3><i class="fas fa-hands-helping"></i> Counseling & Psychosocial Support</h3>
-                <p>Providing emotional and psychological support for traumatized individuals and families.</p>
-                <ul>
-                    <li>Individual counseling</li>
-                    <li>Support groups</li>
-                    <li>Trauma healing workshops</li>
-                    <li>Child protection services</li>
-                </ul>
-                <div class="program-stats">
-                    <span><strong>300+</strong> Individuals Counseled</span>
-                    <span><strong>24/7</strong> Support Hotline</span>
-                </div>
-            </div>
-        </div>
+            @endif
+        @empty
+            <p style="text-align: center; color: #777; padding: 40px;">No programs available. Add some from the admin panel.</p>
+        @endforelse
     </div>
 
     <!-- Approach Section -->
@@ -209,7 +164,7 @@
                 <p>At Samson Ddungu Foundation, we believe in addressing poverty and vulnerability through integrated programs that provide both immediate relief and long-term solutions.</p>
                 <p>Our approach recognizes that education without healthcare, or shelter without economic empowerment, creates only temporary solutions. That's why we implement comprehensive programs that address multiple needs simultaneously.</p>
                 <blockquote>
-                    "There's a solution to solve a problem. At Samson Ddungu Foundation, we are that solution for Uganda's most vulnerable."
+                    "{{ $approachQuote }}"
                 </blockquote>
             </div>
             <div class="approach-image">
@@ -222,32 +177,22 @@
     <h2 class="section-title animate-on-scroll">Program Impact & Success Stories</h2>
 
     <div class="impact-stories animate-on-scroll">
-        <div class="story-card">
-            <div class="story-image" style="background-image: url('{{ asset('images/success/graduate.jpg') }}');"></div>
-            <div class="story-content">
-                <h4>From Orphan to Graduate</h4>
-                <p>Rebecca, supported since 2015, just graduated secondary school with top marks and is now studying nursing.</p>
-                <a href="/blog#rebecca-story" class="story-link">Read Full Story →</a>
+        @forelse($stories as $index => $story)
+            <div class="story-card {{ $index > 0 ? 'delay-' . ($index * 200) : '' }}">
+                @if($story->image)
+                    <div class="story-image" style="background-image: url('{{ asset($story->image) }}');"></div>
+                @endif
+                <div class="story-content">
+                    <h4>{{ $story->title }}</h4>
+                    <p>{{ $story->description }}</p>
+                    @if($story->link)
+                        <a href="{{ $story->link }}" class="story-link">Read Full Story →</a>
+                    @endif
+                </div>
             </div>
-        </div>
-
-        <div class="story-card delay-200">
-            <div class="story-image" style="background-image: url('{{ asset('images/success/business.jpg') }}');"></div>
-            <div class="story-content">
-                <h4>Widow's Business Success</h4>
-                <p>After vocational training, Jane now runs a successful tailoring business employing 3 other widows.</p>
-                <a href="/blog#jane-story" class="story-link">Read Full Story →</a>
-            </div>
-        </div>
-
-        <div class="story-card delay-400">
-            <div class="story-image" style="background-image: url('{{ asset('images/success/family.jpg') }}');"></div>
-            <div class="story-content">
-                <h4>Family Transformation</h4>
-                <p>The Muwanguzi family received housing, medical care, and agricultural training - now self-sufficient.</p>
-                <a href="/blog#muwanguzi-story" class="story-link">Read Full Story →</a>
-            </div>
-        </div>
+        @empty
+            <p style="text-align: center; color: #777; padding: 40px;">No stories available. Add some from the admin panel.</p>
+        @endforelse
     </div>
 </div>
 

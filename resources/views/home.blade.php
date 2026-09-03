@@ -3,54 +3,45 @@
 @section('title', 'Home - Building Hope for Uganda\'s Most Vulnerable')
 @section('content')
 
+@php
+    $heroSlides = \App\Models\HeroSlide::where('is_active', true)->orderBy('order')->get();
+    $impactStats = \App\Models\ImpactStat::where('is_active', true)->orderBy('order')->get();
+    $impactStories = \App\Models\ImpactStory::where('is_active', true)->orderBy('order')->get();
+    $mission = \App\Models\SiteSetting::get('mission_text');
+    $vision = \App\Models\SiteSetting::get('vision_text');
+    $inclusiveStatement = \App\Models\SiteSetting::get('inclusive_statement');
+    $urgentTitle = \App\Models\SiteSetting::get('urgent_appeal_title', '🚨 Urgent Appeal: Land for Hope 2024');
+    $urgentText = \App\Models\SiteSetting::get('urgent_appeal_text');
+    $urgentGoal = \App\Models\SiteSetting::get('urgent_appeal_goal', '£177,778 for 10 acres');
+@endphp
+
 <!-- Hero Slideshow Section -->
 <div class="hero-slideshow">
-    <!-- Slide 1 -->
-    <div class="slide active" style="background-image: url('{{ asset('images/hero/slide1-children.jpg') }}');">
-        <div class="slide-overlay">
-            <div class="slide-text">
-                <h2>Honoring Legacy, Transforming Lives</h2>
-                <p>Continuing Samson Ddungu's mission of compassion since 2012</p>
+    @forelse($heroSlides as $index => $slide)
+        <div class="slide {{ $index === 0 ? 'active' : '' }}" style="background-image: url('{{ asset($slide->image) }}');">
+            <div class="slide-overlay">
+                <div class="slide-text">
+                    <h2>{{ $slide->title }}</h2>
+                    <p>{{ $slide->subtitle }}</p>
+                </div>
             </div>
         </div>
-    </div>
-
-    <!-- Slide 2 -->
-    <div class="slide" style="background-image: url('{{ asset('images/hero/slide2-community.jpg') }}');">
-        <div class="slide-overlay">
-            <div class="slide-text">
-                <h2>Empowering Vulnerable Communities</h2>
-                <p>Education, healthcare, and sustainable development for all</p>
+    @empty
+        <div class="slide active" style="background-image: url('{{ asset('images/hero/slide1-children.jpg') }}');">
+            <div class="slide-overlay">
+                <div class="slide-text">
+                    <h2>Honoring Legacy, Transforming Lives</h2>
+                    <p>Continuing Samson Ddungu's mission of compassion since 2012</p>
+                </div>
             </div>
         </div>
-    </div>
-
-    <!-- Slide 3 -->
-    <div class="slide" style="background-image: url('{{ asset('images/hero/slide3-education.jpg') }}');">
-        <div class="slide-overlay">
-            <div class="slide-text">
-                <h2>Building Brighter Futures</h2>
-                <p>From orphan support to vocational training - creating lasting change</p>
-            </div>
-        </div>
-    </div>
-
-
-     <!-- Slide 4 -->
-    <div class="slide" style="background-image: url('{{ asset('images/hero/slide4-community.jpg') }}');">
-        <div class="slide-overlay">
-            <div class="slide-text">
-                <h2>Empowering Vulnerable Communities</h2>
-                <p>Education, healthcare, and sustainable development for all</p>
-            </div>
-        </div>
-    </div>
+    @endforelse
 
     <!-- Simple Slide Controls -->
     <div class="slide-controls">
-        <div class="slide-dot active" data-slide="0"></div>
-        <div class="slide-dot" data-slide="1"></div>
-        <div class="slide-dot" data-slide="2"></div>
+        @for($i = 0; $i < max(1, $heroSlides->count()); $i++)
+            <div class="slide-dot {{ $i === 0 ? 'active' : '' }}" data-slide="{{ $i }}"></div>
+        @endfor
     </div>
 </div>
 
@@ -62,25 +53,17 @@
     <p class="section-subtitle animate-on-scroll delay-200">Real change measured in lives transformed, communities empowered, and futures secured</p>
 
     <div class="impact-stats">
-        <div class="stat-card animate-on-scroll delay-200">
-            <div class="stat-number">100+</div>
-            <p>Orphaned Children Educated & Cared For</p>
-        </div>
-
-        <div class="stat-card animate-on-scroll delay-400">
-            <div class="stat-number">70</div>
-            <p>Widows Empowered with Skills Training</p>
-        </div>
-
-        <div class="stat-card animate-on-scroll delay-600">
-            <div class="stat-number">20+</div>
-            <p>Vulnerable Families Supported</p>
-        </div>
-
-        <div class="stat-card animate-on-scroll delay-800">
-            <div class="stat-number">12</div>
-            <p>Years of Dedicated Service</p>
-        </div>
+        @forelse($impactStats as $index => $stat)
+            <div class="stat-card animate-on-scroll delay-{{ ($index + 1) * 200 }}">
+                <div class="stat-number">{{ $stat->number }}</div>
+                <p>{{ $stat->label }}</p>
+            </div>
+        @empty
+            <div class="stat-card animate-on-scroll delay-200">
+                <div class="stat-number">100+</div>
+                <p>Orphaned Children Educated & Cared For</p>
+            </div>
+        @endforelse
     </div>
 
     <!-- Image Gallery Section 1: Our Work in Action -->
@@ -224,7 +207,7 @@
     <div class="mission-cards">
         <div class="mission-card animate-on-scroll">
             <h3><i class="fas fa-heart"></i> Our Mission</h3>
-            <p>Uplifting poor Ugandans through medical outreach, elderly care, and support for orphans and widows — restoring dignity, health, and hope.</p>
+            <p>{{ $mission }}</p>
             <div class="staggered-img" style="height:200px; margin-top:20px;">
                 <img src="{{ asset('images/mission/mission1.jpg') }}" alt="Mission in Action" style="width:100%; height:100%; object-fit:cover; border-radius:10px;">
             </div>
@@ -232,7 +215,7 @@
 
         <div class="mission-card animate-on-scroll delay-400">
             <h3><i class="fas fa-eye"></i> Our Vision</h3>
-            <p>A Uganda where no poor family is denied medical care, and every elderly person, orphan, and widow lives with dignity and hope.</p>
+            <p>{{ $vision }}</p>
             <div class="staggered-img" style="height:200px; margin-top:20px;">
                 <img src="{{ asset('images/mission/vision1.jpg') }}" alt="Vision for Future" style="width:100%; height:100%; object-fit:cover; border-radius:10px;">
             </div>
@@ -271,7 +254,7 @@
     <div class="inclusive-statement animate-on-scroll">
         <div class="inclusive-content">
             <h2>About Samson Ddungu Foundation</h2>
-            <p>Samson Ddungu Foundation is a non-denominational, non-political organization working with communities across Uganda. We collaborate with all organizations, religions (Muslims, Christians, Protestants, Catholics, and others), and political entities, focusing on supporting vulnerable groups without discrimination. Our mission is to uplift poor families, orphans, marginalized children, and the elderly through collective efforts.</p>
+            <p>{{ $inclusiveStatement }}</p>
 
             <div class="staggered-images" style="margin-top:40px;">
                 <div class="staggered-img" style="height:200px;">
@@ -292,10 +275,10 @@
         <div class="container">
             <div class="appeal-content">
                 <div class="appeal-text animate-on-scroll">
-                    <h2>🚨 Urgent Appeal: Land for Hope 2024</h2>
-                    <p>We urgently need to purchase 10 acres of land in Wakiso District to expand our services. With rising cases of orphaned children due to HIV/AIDS and poverty, our current rented facilities are overcrowded and inadequate.</p>
+                    <h2>{{ $urgentTitle }}</h2>
+                    <p>{{ $urgentText }}</p>
                     <p style="font-size: 1.3rem; margin: 25px 0;">
-                        <i class="fas fa-exclamation-circle"></i> <strong>Goal: £177,778 for 10 acres</strong>
+                        <i class="fas fa-exclamation-circle"></i> <strong>Goal: {{ $urgentGoal }}</strong>
                     </p>
                     <div style="margin-top: 30px;">
                         <a href="/special-projects" class="cta-button" style="background-color: white; color: var(--primary-orange); padding: 15px 35px; margin-right: 15px;">

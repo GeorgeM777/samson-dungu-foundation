@@ -79,10 +79,12 @@
 
     <div style="background: white; border-radius: 16px; padding: 40px; box-shadow: 0 10px 40px rgba(0,0,0,0.08); text-align: center;">
         <h2 style="color: #1e3a8a; margin-bottom: 15px;">Welcome to the Admin Panel</h2>
-        <p style="color: #777; font-size: 1.05rem; line-height: 1.7; max-width: 600px; margin: 0 auto;">
-            From here you can manage users, reset passwords, and control access to the system.<br>
-            Use the navigation above to get started.
+        <p style="color: #777; font-size: 1.05rem; line-height: 1.7; max-width: 600px; margin: 0 auto 25px;">
+            Manage users and easily update the website's content, text, and images.
         </p>
+        <a href="{{ route('admin.content.dashboard') }}" style="display: inline-block; background: #1e3a8a; color: white; padding: 14px 32px; border-radius: 8px; text-decoration: none; font-weight: 600; box-shadow: 0 5px 15px rgba(30,58,138,0.2);">
+            <i class="fas fa-edit"></i> Open Content Manager
+        </a>
     </div>
 </div>
 

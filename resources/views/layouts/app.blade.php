@@ -5,6 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@yield('title') - Samson Ddungu Foundation</title>
 
+    @php
+        $siteTagline = \App\Models\SiteSetting::get('site_tagline', 'Bringing Hope to Uganda Since 2012');
+        $footerAddress = \App\Models\SiteSetting::get('footer_address', 'Wakiso District, Central Uganda');
+        $footerPhone = \App\Models\SiteSetting::get('footer_phone', '+256 782 488 116');
+        $footerEmail = \App\Models\SiteSetting::get('footer_email', 'info@samsondungufoundation.org');
+        $footerReg = \App\Models\SiteSetting::get('footer_registration', '80034053198295');
+    @endphp
+
     <!-- Logo Colors: Orange (#FF6B35), Blue (#0047AB), Black (#000000) -->
  <style>
         :root {
@@ -1530,7 +1538,7 @@
             <img src="{{ asset('images/logo.png') }}" alt="Samson Ddungu Foundation Logo" class="logo">
             <div class="logo-text">
                 <h1>Samson Ddungu Foundation</h1>
-                <span>Bringing Hope to Uganda Since 2012</span>
+                <span>{{ $siteTagline }}</span>
             </div>
         </div>
 
@@ -1587,9 +1595,9 @@
             <div class="footer-section">
                 <h3>Contact Information</h3>
                 <ul class="footer-links">
-                    <li><i class="fas fa-map-marker-alt"></i> Wakiso District, Central Uganda</li>
-                    <li><i class="fas fa-phone"></i>+256 782 488 116</li>
-                    <li><i class="fas fa-envelope"></i> info@samsondungufoundation.org</li>
+                    <li><i class="fas fa-map-marker-alt"></i> {{ $footerAddress }}</li>
+                    <li><i class="fas fa-phone"></i> {{ $footerPhone }}</li>
+                    <li><i class="fas fa-envelope"></i> {{ $footerEmail }}</li>
                 </ul>
             </div>
             <div class="footer-section">
@@ -1614,7 +1622,7 @@
         </div>
         <div class="copyright">
             &copy; {{ date('Y') }} Samson Ddungu Foundation. All rights reserved.<br>
-            Registered Non-Profit Organization in Uganda | Registration No: 80034053198295
+            Registered Non-Profit Organization in Uganda | Registration No: {{ $footerReg }}
         </div>
     </footer>
 
@@ -1627,25 +1635,29 @@
         </button>
 
         <!-- Individual Contact Action Buttons -->
+        @php
+            $phoneClean = preg_replace('/[^0-9+]/', '', $footerPhone);
+            $emailClean = $footerEmail;
+        @endphp
         <!-- SMS/Message Button -->
-        <a href="sms:+256782488116" class="contact-action sms" aria-label="Send a text message">
+        <a href="sms:{{ $phoneClean }}" class="contact-action sms" aria-label="Send a text message">
             <i class="fas fa-sms"></i>
             <span class="contact-label">Text Message</span>
         </a>
         <!-- Phone Call Button -->
-        <a href="tel:+256782488116" class="contact-action phone" aria-label="Call us">
+        <a href="tel:{{ $phoneClean }}" class="contact-action phone" aria-label="Call us">
             <i class="fas fa-phone-alt"></i>
-            <span class="contact-label">Call: +256 782 488 116</span>
+            <span class="contact-label">Call: {{ $footerPhone }}</span>
         </a>
         <!-- Email Button -->
-        <a href="mailto:info@samsondungufoundation.org?subject=Inquiry%20from%20Website&body=Hello%20Samson%20Ddungu%20Foundation,"
+        <a href="mailto:{{ $emailClean }}?subject=Inquiry%20from%20Website&body=Hello%20Samson%20Ddungu%20Foundation,"
            class="contact-action email"
            aria-label="Send us an email">
             <i class="fas fa-envelope"></i>
-            <span class="contact-label">info@samsondungufoundation.org</span>
+            <span class="contact-label">{{ $emailClean }}</span>
         </a>
         <!-- WhatsApp Button -->
-        <a href="https://api.whatsapp.com/send?phone=256782488116&text=Hello%20Samson%20Ddungu%20Foundation,%20I%20would%20like%20more%20information."
+        <a href="https://api.whatsapp.com/send?phone={{ preg_replace('/[^0-9]/', '', $phoneClean) }}&text=Hello%20Samson%20Ddungu%20Foundation,%20I%20would%20like%20more%20information."
            class="contact-action whatsapp"
            target="_blank"
            aria-label="Chat with us on WhatsApp">
