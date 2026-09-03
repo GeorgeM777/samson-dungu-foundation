@@ -29,7 +29,7 @@
         <h3>Current Slides</h3>
         @forelse($slides as $slide)
             <div class="item-row">
-                <img src="{{ $slide->image }}" alt="{{ $slide->title }}">
+                <img src="{{ asset('storage/' . ltrim(str_replace('/storage/', '', $slide->image), '/')) }}" alt="{{ $slide->title }}">
                 <div class="item-info">
                     <strong>{{ $slide->title }}</strong>
                     <small style="color: #666;">{{ $slide->subtitle }}</small>
@@ -54,7 +54,7 @@
                                 @if($slide->image)
                                     <div class="upload-preview-wrap active" style="display: inline-block;">
                                         <span class="preview-label">Current Image:</span>
-                                        <img src="{{ asset(ltrim($slide->image, '/')) }}">
+                                        <img src="{{ asset('storage/' . ltrim(str_replace('/storage/', '', $slide->image), '/')) }}">
                                     </div>
                                 @endif
                             </div>

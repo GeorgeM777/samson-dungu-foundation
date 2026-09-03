@@ -47,7 +47,7 @@
         <h3>Image Library</h3>
         @forelse($images as $image)
             <div class="item-row">
-                <img src="{{ $image->image }}" alt="{{ $image->label }}">
+                <img src="{{ asset('storage/' . ltrim(str_replace('/storage/', '', $image->image), '/')) }}" alt="{{ $image->label }}">
                 <div class="item-info">
                     <strong>{{ $image->label }}</strong>
                     <small style="display: block; color: #666;">Key: <code>{{ $image->key }}</code></small>

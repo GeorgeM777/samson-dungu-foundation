@@ -58,10 +58,12 @@ class ContentController extends Controller
             'image' => 'required|image|mimes:jpg,jpeg,png,webp|max:5120',
         ]);
 
-        $path = $request->file('image')->store('hero', 'public_uploads');
+        $image = $request->file('image');
+        $imageName = time() . '_' . uniqid() . '.' . $image->getClientOriginalExtension();
+        $path = $image->storeAs('hero', $imageName, 'public');
 
         HeroSlide::create([
-            'image' => '/images/' . $path,
+            'image' => '/storage/' . $path,
             'title' => $request->title,
             'subtitle' => $request->subtitle,
             'order' => HeroSlide::max('order') + 1,
@@ -78,8 +80,13 @@ class ContentController extends Controller
         $data = $request->only(['title', 'subtitle', 'order', 'is_active']);
 
         if ($request->hasFile('image')) {
-            $path = $request->file('image')->store('hero', 'public_uploads');
-            $data['image'] = '/images/' . $path;
+            if ($slide->image && Storage::disk('public')->exists(ltrim($slide->image, '/storage/'))) {
+                Storage::disk('public')->delete(ltrim($slide->image, '/storage/'));
+            }
+            $image = $request->file('image');
+            $imageName = time() . '_' . uniqid() . '.' . $image->getClientOriginalExtension();
+            $path = $image->storeAs('hero', $imageName, 'public');
+            $data['image'] = '/storage/' . $path;
         }
 
         $slide->update($data);
@@ -133,8 +140,13 @@ class ContentController extends Controller
         $data['is_active'] = true;
 
         if ($request->hasFile('image')) {
-            $path = $request->file('image')->store('programs', 'public_uploads');
-            $data['image'] = '/images/' . $path;
+            if ($program->image && Storage::disk('public')->exists(ltrim($program->image, '/storage/'))) {
+                Storage::disk('public')->delete(ltrim($program->image, '/storage/'));
+            }
+            $image = $request->file('image');
+            $imageName = time() . '_' . uniqid() . '.' . $image->getClientOriginalExtension();
+            $path = $image->storeAs('programs', $imageName, 'public');
+            $data['image'] = '/storage/' . $path;
         }
 
         Program::create($data);
@@ -150,8 +162,13 @@ class ContentController extends Controller
         $data['stats'] = array_filter(array_map('trim', explode("\n", $request->stats ?? '')));
 
         if ($request->hasFile('image')) {
-            $path = $request->file('image')->store('programs', 'public_uploads');
-            $data['image'] = '/images/' . $path;
+            if ($program->image && Storage::disk('public')->exists(ltrim($program->image, '/storage/'))) {
+                Storage::disk('public')->delete(ltrim($program->image, '/storage/'));
+            }
+            $image = $request->file('image');
+            $imageName = time() . '_' . uniqid() . '.' . $image->getClientOriginalExtension();
+            $path = $image->storeAs('programs', $imageName, 'public');
+            $data['image'] = '/storage/' . $path;
         }
 
         $program->update($data);
@@ -178,8 +195,10 @@ class ContentController extends Controller
         $data['is_active'] = true;
 
         if ($request->hasFile('image')) {
-            $path = $request->file('image')->store('stories', 'public_uploads');
-            $data['image'] = '/images/' . $path;
+            $image = $request->file('image');
+            $imageName = time() . '_' . uniqid() . '.' . $image->getClientOriginalExtension();
+            $path = $image->storeAs('stories', $imageName, 'public');
+            $data['image'] = '/storage/' . $path;
         }
 
         ImpactStory::create($data);
@@ -192,8 +211,13 @@ class ContentController extends Controller
         $data = $request->only(['title', 'description', 'link', 'order', 'is_active']);
 
         if ($request->hasFile('image')) {
-            $path = $request->file('image')->store('stories', 'public_uploads');
-            $data['image'] = '/images/' . $path;
+            if ($story->image && Storage::disk('public')->exists(ltrim($story->image, '/storage/'))) {
+                Storage::disk('public')->delete(ltrim($story->image, '/storage/'));
+            }
+            $image = $request->file('image');
+            $imageName = time() . '_' . uniqid() . '.' . $image->getClientOriginalExtension();
+            $path = $image->storeAs('stories', $imageName, 'public');
+            $data['image'] = '/storage/' . $path;
         }
 
         $story->update($data);
@@ -220,8 +244,10 @@ class ContentController extends Controller
         $data['is_active'] = true;
 
         if ($request->hasFile('photo')) {
-            $path = $request->file('photo')->store('contact/leadership', 'public_uploads');
-            $data['photo'] = '/images/' . $path;
+            $image = $request->file('photo');
+            $imageName = time() . '_' . uniqid() . '.' . $image->getClientOriginalExtension();
+            $path = $image->storeAs('leaders', $imageName, 'public');
+            $data['photo'] = '/storage/' . $path;
         }
 
         LeadershipTeam::create($data);
@@ -234,8 +260,13 @@ class ContentController extends Controller
         $data = $request->only(['name', 'position', 'phone', 'email', 'bio', 'order', 'is_active']);
 
         if ($request->hasFile('photo')) {
-            $path = $request->file('photo')->store('contact/leadership', 'public_uploads');
-            $data['photo'] = '/images/' . $path;
+            if ($leader->photo && Storage::disk('public')->exists(ltrim($leader->photo, '/storage/'))) {
+                Storage::disk('public')->delete(ltrim($leader->photo, '/storage/'));
+            }
+            $image = $request->file('photo');
+            $imageName = time() . '_' . uniqid() . '.' . $image->getClientOriginalExtension();
+            $path = $image->storeAs('leaders', $imageName, 'public');
+            $data['photo'] = '/storage/' . $path;
         }
 
         $leader->update($data);
@@ -262,14 +293,16 @@ class ContentController extends Controller
             'image' => 'required|image|mimes:jpg,jpeg,png,webp|max:5120',
         ]);
 
-        $path = $request->file('image')->store('site', 'public_uploads');
+        $image = $request->file('image');
+        $imageName = time() . '_' . uniqid() . '.' . $image->getClientOriginalExtension();
+        $path = $image->storeAs('site', $imageName, 'public');
 
         SiteImage::create([
             'key' => $request->key,
             'label' => $request->label,
             'description' => $request->description,
             'group' => $request->group ?? 'general',
-            'image' => '/images/' . $path,
+            'image' => '/storage/' . $path,
         ]);
 
         return back()->with('success', 'Image added.');
@@ -281,8 +314,13 @@ class ContentController extends Controller
         $data = $request->only(['key', 'label', 'description', 'group']);
 
         if ($request->hasFile('image')) {
-            $path = $request->file('image')->store('site', 'public_uploads');
-            $data['image'] = '/images/' . $path;
+            if ($image->image && Storage::disk('public')->exists(ltrim($image->image, '/storage/'))) {
+                Storage::disk('public')->delete(ltrim($image->image, '/storage/'));
+            }
+            $uploaded = $request->file('image');
+            $imageName = time() . '_' . uniqid() . '.' . $uploaded->getClientOriginalExtension();
+            $path = $uploaded->storeAs('site', $imageName, 'public');
+            $data['image'] = '/storage/' . $path;
         }
 
         $image->update($data);

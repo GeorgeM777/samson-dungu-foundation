@@ -30,7 +30,7 @@
 
     <div class="programs-grid animate-on-scroll">
         @forelse($programs as $index => $program)
-            <div class="program-card animate-on-scroll {{ $index > 0 ? 'delay-' . ($index * 200) : '' }}" @if($program->image) style="background-image: url('{{ asset($program->image) }}');" @endif>
+            <div class="program-card animate-on-scroll {{ $index > 0 ? 'delay-' . ($index * 200) : '' }}" @if($program->image) style="background-image: url('{{ asset('storage/' . ltrim(str_replace('/storage/', '', $program->image), '/')) }}');" @endif>
                 <div class="program-content">
                     <h3>@if($program->icon)<i class="{{ $program->icon }}"></i>@endif {{ $program->title }}</h3>
                     <p>{{ $program->short_description }}</p>
@@ -180,7 +180,7 @@
         @forelse($stories as $index => $story)
             <div class="story-card {{ $index > 0 ? 'delay-' . ($index * 200) : '' }}">
                 @if($story->image)
-                    <div class="story-image" style="background-image: url('{{ asset($story->image) }}');"></div>
+                    <div class="story-image" style="background-image: url('{{ asset('storage/' . ltrim(str_replace('/storage/', '', $story->image), '/')) }}');"></div>
                 @endif
                 <div class="story-content">
                     <h4>{{ $story->title }}</h4>

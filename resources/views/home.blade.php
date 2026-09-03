@@ -18,7 +18,7 @@
 <!-- Hero Slideshow Section -->
 <div class="hero-slideshow">
     @forelse($heroSlides as $index => $slide)
-        <div class="slide {{ $index === 0 ? 'active' : '' }}" style="background-image: url('{{ asset($slide->image) }}');">
+        <div class="slide {{ $index === 0 ? 'active' : '' }}" style="background-image: url('{{ asset('storage/' . ltrim(str_replace('/storage/', '', $slide->image), '/')) }}');">
             <div class="slide-overlay">
                 <div class="slide-text">
                     <h2>{{ $slide->title }}</h2>
