@@ -86,6 +86,12 @@
                     <div class="form-group">
                         <label>Replace Photo</label>
                         <input type="file" name="photo" accept="image/*">
+                        @if($leader->photo)
+                            <div class="upload-preview-wrap active" style="display: inline-block;">
+                                <span class="preview-label">Current Photo:</span>
+                                <img src="{{ asset(ltrim($leader->photo, '/')) }}">
+                            </div>
+                        @endif
                     </div>
                     <div class="form-group">
                         <label>Order</label>

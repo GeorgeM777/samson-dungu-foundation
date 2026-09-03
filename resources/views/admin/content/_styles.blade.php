@@ -149,6 +149,31 @@
         margin-top: 10px;
         border-radius: 8px;
     }
+
+    .upload-preview-wrap {
+        display: none;
+        margin-top: 10px;
+        padding: 10px;
+        background: #f0f9ff;
+        border: 2px dashed #3b82f6;
+        border-radius: 8px;
+    }
+    .upload-preview-wrap.active {
+        display: inline-block;
+    }
+    .upload-preview-wrap img {
+        max-width: 250px;
+        max-height: 200px;
+        border-radius: 6px;
+        display: block;
+    }
+    .upload-preview-wrap .preview-label {
+        display: block;
+        font-size: 0.8rem;
+        color: #1e3a8a;
+        font-weight: 600;
+        margin-bottom: 8px;
+    }
     .stats-grid {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));

@@ -80,7 +80,10 @@
                         <label>Replace Image</label>
                         <input type="file" name="image" accept="image/*">
                         @if($program->image)
-                            <small style="display:block; margin-top:5px;">Current: <img src="{{ $program->image }}" style="max-width: 100px; max-height: 60px; border-radius: 4px;"></small>
+                            <div class="upload-preview-wrap active" style="display: inline-block;">
+                                <span class="preview-label">Current Image:</span>
+                                <img src="{{ asset(ltrim($program->image, '/')) }}">
+                            </div>
                         @endif
                     </div>
                     <div class="form-group">

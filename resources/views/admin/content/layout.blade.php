@@ -43,4 +43,6 @@
     @yield('content_body')
 </div>
 
+@include('admin.content._preview_js')
+
 @endsection

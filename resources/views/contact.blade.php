@@ -36,9 +36,9 @@
                 @if($index % 2 == 0)
                     <div class="leader-image">
                         @if($leader->photo)
-                            <img src="{{ asset($leader->photo) }}" alt="{{ $leader->name }}">
+                            <img src="{{ asset(ltrim($leader->photo, '/')) }}" alt="{{ $leader->name }}">
                         @else
-                            <img src="{{ asset('images/contact/leader-default.jpg') }}" alt="{{ $leader->name }}">
+                            <img src="{{ asset('images/contact/leadership/ida-dungu.jpg') }}" alt="{{ $leader->name }}" onerror="this.src='{{ asset('images/contact/leader-default.jpg') }}'">
                         @endif
                         <div class="leader-badge">{{ $leader->position }}</div>
                     </div>
@@ -59,9 +59,9 @@
                 @if($index % 2 == 1)
                     <div class="leader-image">
                         @if($leader->photo)
-                            <img src="{{ asset($leader->photo) }}" alt="{{ $leader->name }}">
+                            <img src="{{ asset(ltrim($leader->photo, '/')) }}" alt="{{ $leader->name }}">
                         @else
-                            <img src="{{ asset('images/contact/leader-default.jpg') }}" alt="{{ $leader->name }}">
+                            <img src="{{ asset('images/contact/leadership/martin-wiseman.jpg') }}" alt="{{ $leader->name }}" onerror="this.src='{{ asset('images/contact/leader-default.jpg') }}'">
                         @endif
                         <div class="leader-badge">{{ $leader->position }}</div>
                     </div>
