@@ -54,6 +54,9 @@
     </div>
 </div>
 
+<!-- SYSTEM UPDATE TEST - Auto-deploy working! -->
+<h3 style="color: green; text-align: center;">✅ System now updates automatically!</h3>
+
 <div class="container">
     <!-- Impact Statistics -->
     <h2 class="section-title animate-on-scroll">Our Impact in Numbers</h2>
