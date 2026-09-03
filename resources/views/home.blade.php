@@ -54,8 +54,7 @@
     </div>
 </div>
 
-<!-- SYSTEM UPDATE TEST - Auto-deploy working! -->
-<h3 style="color: green; text-align: center;">✅ System now updates automatically!</h3>
+
 
 <div class="container">
     <!-- Impact Statistics -->
@@ -434,4 +433,4 @@
     }
 </style>
 @endsection
-"<!-- Test auto-deployment -->" 
+"<!-- Test auto-deployment -->"
