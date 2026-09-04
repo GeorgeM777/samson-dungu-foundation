@@ -47,7 +47,7 @@
             <details style="background: #f8fafc; border-radius: 8px; padding: 15px; margin-bottom: 10px;">
                 <summary style="cursor: pointer; display: flex; align-items: center; gap: 15px;">
                     @if($program->image)
-                        <img src="{{ asset('storage/' . ltrim(str_replace('/storage/', '', $program->image), '/')) }}" style="width: 60px; height: 60px; object-fit: cover; border-radius: 8px;">
+                        <img src="{{ asset(ltrim($program->image, '/')) }}" style="width: 60px; height: 60px; object-fit: cover; border-radius: 8px;">
                     @endif
                     <span style="flex: 1; font-weight: 600; color: #1e3a8a;">{{ $program->title }}</span>
                 </summary>
@@ -82,7 +82,7 @@
                         @if($program->image)
                             <div class="upload-preview-wrap active" style="display: inline-block;">
                                 <span class="preview-label">Current Image:</span>
-                                <img src="{{ asset('storage/' . ltrim(str_replace('/storage/', '', $program->image), '/')) }}">
+                                <img src="{{ asset(ltrim($program->image, '/')) }}">
                             </div>
                         @endif
                     </div>

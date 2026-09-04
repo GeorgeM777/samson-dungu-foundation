@@ -30,7 +30,7 @@
 
     <div class="programs-grid animate-on-scroll">
         @forelse($programs as $index => $program)
-            <div class="program-card animate-on-scroll {{ $index > 0 ? 'delay-' . ($index * 200) : '' }}" @if($program->image) style="background-image: url('{{ asset('storage/' . ltrim(str_replace('/storage/', '', $program->image), '/')) }}');" @endif>
+            <div class="program-card animate-on-scroll {{ $index > 0 ? 'delay-' . ($index * 200) : '' }}" @if($program->image) style="background-image: url('{{ asset(ltrim($program->image, '/')) }}');" @endif>
                 <div class="program-content">
                     <h3>@if($program->icon)<i class="{{ $program->icon }}"></i>@endif {{ $program->title }}</h3>
                     <p>{{ $program->short_description }}</p>
@@ -180,7 +180,7 @@
         @forelse($stories as $index => $story)
             <div class="story-card {{ $index > 0 ? 'delay-' . ($index * 200) : '' }}">
                 @if($story->image)
-                    <div class="story-image" style="background-image: url('{{ asset('storage/' . ltrim(str_replace('/storage/', '', $story->image), '/')) }}');"></div>
+                    <div class="story-image" style="background-image: url('{{ asset(ltrim($story->image, '/')) }}');"></div>
                 @endif
                 <div class="story-content">
                     <h4>{{ $story->title }}</h4>
@@ -266,18 +266,6 @@
         bottom: 0;
         background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.5) 50%, rgba(0,0,0,0.3) 100%);
         z-index: 1;
-    }
-
-    .program-image {
-        display: none;
-    }
-
-    .program-image img {
-        display: none;
-    }
-
-    .program-card:hover .program-image img {
-        transform: none;
     }
 
     .program-content {
@@ -612,14 +600,6 @@
         bottom: 0;
         background: linear-gradient(to top, rgba(255,255,255,0.95) 0%, rgba(255,255,255,0.7) 60%, rgba(255,255,255,0.3) 100%);
         z-index: 1;
-    }
-
-    .story-card img {
-        display: none;
-    }
-
-    .story-card:hover .story-image {
-        animation-duration: 9s;
     }
 
     .story-content {

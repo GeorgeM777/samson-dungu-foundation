@@ -18,7 +18,7 @@
 <!-- Hero Slideshow Section -->
 <div class="hero-slideshow">
     @forelse($heroSlides as $index => $slide)
-        <div class="slide {{ $index === 0 ? 'active' : '' }}" style="background-image: url('{{ asset('storage/' . ltrim(str_replace('/storage/', '', $slide->image), '/')) }}');">
+        <div class="slide {{ $index === 0 ? 'active' : '' }}" style="background-image: url('{{ asset(ltrim($slide->image, '/')) }}');">
             <div class="slide-overlay">
                 <div class="slide-text">
                     <h2>{{ $slide->title }}</h2>
@@ -44,8 +44,6 @@
         @endfor
     </div>
 </div>
-
-
 
 <div class="container">
     <!-- Impact Statistics -->
@@ -81,8 +79,6 @@
             <img src="{{ asset('images/gallery/vocational-training.jpg') }}" alt="Vocational Training" style="width:100%; height:100%; object-fit:cover;">
         </div>
     </div>
-
-
 
     <!-- Educational Partnerships Section -->
 <div class="school-partnerships animate-on-scroll">
@@ -199,7 +195,6 @@
     </div>
 </div>
 
-
     <!-- Mission & Vision -->
     <h2 class="section-title animate-on-scroll">Our Guiding Principles</h2>
     <p class="section-subtitle animate-on-scroll delay-200">Driven by compassion, guided by vision, committed to sustainable change</p>
@@ -221,34 +216,6 @@
             </div>
         </div>
     </div>
-
-    <!-- Image Gallery Section 2: Community Impact -->
-    <!-- <h2 class="section-title animate-on-scroll">Community Impact</h2>
-    <p class="section-subtitle animate-on-scroll delay-200">Transforming communities through holistic development programs</p>
-
-    <div class="image-gallery">
-        <div class="gallery-item animate-on-scroll">
-            <img src="{{ asset('images/impact/community1.jpg') }}" alt="Community Gathering">
-            <div class="gallery-caption">
-                <h4>Community Meetings</h4>
-                <p>Engaging with local leaders and families</p>
-            </div>
-        </div>
-        <div class="gallery-item animate-on-scroll delay-200">
-            <img src="{{ asset('images/impact/agriculture.jpg') }}" alt="Agriculture Project">
-            <div class="gallery-caption">
-                <h4>Agricultural Training</h4>
-                <p>Teaching sustainable farming techniques</p>
-            </div>
-        </div>
-        <div class="gallery-item animate-on-scroll delay-400">
-            <img src="{{ asset('images/impact/water-project.jpg') }}" alt="Water Project">
-            <div class="gallery-caption">
-                <h4>Water Access Projects</h4>
-                <p>Building clean water sources for communities</p>
-            </div>
-        </div>
-    </div> -->
 
     <!-- Inclusive Statement Section -->
     <div class="inclusive-statement animate-on-scroll">
@@ -298,34 +265,6 @@
             </div>
         </div>
     </div>
-
-    <!-- Final Image Gallery: Success Stories -->
-    <!-- <h2 class="section-title animate-on-scroll">Success Stories</h2>
-    <p class="section-subtitle animate-on-scroll delay-200">Real people, real transformations, real hope</p>
-
-    <div class="image-gallery">
-        <div class="gallery-item animate-on-scroll">
-            <img src="{{ asset('images/success/graduate.jpg') }}" alt="Graduation Success">
-            <div class="gallery-caption">
-                <h4>Education Success</h4>
-                <p>Former orphans now graduating from school</p>
-            </div>
-        </div>
-        <div class="gallery-item animate-on-scroll delay-200">
-            <img src="{{ asset('images/success/business.jpg') }}" alt="Small Business">
-            <div class="gallery-caption">
-                <h4>Entrepreneurial Success</h4>
-                <p>Widows running successful small businesses</p>
-            </div>
-        </div>
-        <div class="gallery-item animate-on-scroll delay-400">
-            <img src="{{ asset('images/success/family.jpg') }}" alt="Family Transformation">
-            <div class="gallery-caption">
-                <h4>Family Transformation</h4>
-                <p>Whole families lifted out of poverty</p>
-            </div>
-        </div>
-    </div> -->
 
     <!-- Call to Action -->
     <div style="text-align: center; margin: 100px 0;">
@@ -416,4 +355,3 @@
     }
 </style>
 @endsection
-"<!-- Test auto-deployment -->"
