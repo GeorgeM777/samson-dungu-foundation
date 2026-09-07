@@ -18,7 +18,7 @@
 <!-- Hero Slideshow Section -->
 <div class="hero-slideshow">
     @forelse($heroSlides as $index => $slide)
-        <div class="slide {{ $index === 0 ? 'active' : '' }}" style="background-image: url('{{ asset(ltrim($slide->image, '/')) }}');">
+        <div class="slide {{ $index === 0 ? 'active' : '' }}" style="background-image: url('https://samsondungufoundation.org/{{ ltrim($slide->image, '/') }}');">
             <div class="slide-overlay">
                 <div class="slide-text">
                     <h2>{{ $slide->title }}</h2>
@@ -27,7 +27,7 @@
             </div>
         </div>
     @empty
-        <div class="slide active" style="background-image: url('{{ asset('images/hero/slide1-children.jpg') }}');">
+        <div class="slide active" style="background-image: url('https://samsondungufoundation.org/images/hero/slide1-children.jpg');">
             <div class="slide-overlay">
                 <div class="slide-text">
                     <h2>Honoring Legacy, Transforming Lives</h2>
@@ -70,13 +70,13 @@
 
     <div class="staggered-images">
         <div class="staggered-img animate-on-scroll">
-            <img src="{{ asset('images/gallery/education-class.jpg') }}" alt="Classroom Learning" style="width:100%; height:100%; object-fit:cover;">
+            <img src="https://samsondungufoundation.org/images/gallery/education-class.jpg" alt="Classroom Learning" style="width:100%; height:100%; object-fit:cover;">
         </div>
         <div class="staggered-img animate-on-scroll delay-200">
-            <img src="{{ asset('images/gallery/medical-outreach.jpg') }}" alt="Medical Outreach" style="width:100%; height:100%; object-fit:cover;">
+            <img src="https://samsondungufoundation.org/images/gallery/medical-outreach.jpg" alt="Medical Outreach" style="width:100%; height:100%; object-fit:cover;">
         </div>
         <div class="staggered-img animate-on-scroll delay-400">
-            <img src="{{ asset('images/gallery/vocational-training.jpg') }}" alt="Vocational Training" style="width:100%; height:100%; object-fit:cover;">
+            <img src="https://samsondungufoundation.org/images/gallery/vocational-training.jpg" alt="Vocational Training" style="width:100%; height:100%; object-fit:cover;">
         </div>
     </div>
 
@@ -98,14 +98,14 @@
 
                 <div class="school-images">
                     <div class="main-school-image">
-                        <img src="{{ asset('images/schools/bushenyi-building.jpg') }}" alt="Bushenyi Preparatory School Building">
+                        <img src="https://samsondungufoundation.org/images/schools/bushenyi-building.jpg" alt="Bushenyi Preparatory School Building">
                     </div>
                     <div class="school-gallery">
                         <div class="gallery-item">
-                            <img src="{{ asset('images/schools/bushenyi-students.jpg') }}" alt="Bushenyi Students Learning">
+                            <img src="https://samsondungufoundation.org/images/schools/bushenyi-students.jpg" alt="Bushenyi Students Learning">
                         </div>
                         <div class="gallery-item">
-                            <img src="{{ asset('images/schools/bushenyi-playground.jpg') }}" alt="Children Playing at Bushenyi School">
+                            <img src="https://samsondungufoundation.org/images/schools/bushenyi-playground.jpg" alt="Children Playing at Bushenyi School">
                         </div>
                     </div>
                 </div>
@@ -139,14 +139,14 @@
 
                 <div class="school-images">
                     <div class="main-school-image">
-                        <img src="{{ asset('images/schools/prime-building.jpg') }}" alt="Prime Junior Primary School Building">
+                        <img src="https://samsondungufoundation.org/images/schools/prime-building.jpg" alt="Prime Junior Primary School Building">
                     </div>
                     <div class="school-gallery">
                         <div class="gallery-item">
-                            <img src="{{ asset('images/schools/prime-classroom.jpg') }}" alt="Prime School Classroom Activities">
+                            <img src="https://samsondungufoundation.org/images/schools/prime-classroom.jpg" alt="Prime School Classroom Activities">
                         </div>
                         <div class="gallery-item">
-                            <img src="{{ asset('images/schools/prime-activities.jpg') }}" alt="Students in Activities at Prime School">
+                            <img src="https://samsondungufoundation.org/images/schools/prime-activities.jpg" alt="Students in Activities at Prime School">
                         </div>
                     </div>
                 </div>
@@ -204,7 +204,7 @@
             <h3><i class="fas fa-heart"></i> Our Mission</h3>
             <p>{{ $mission }}</p>
             <div class="staggered-img" style="height:200px; margin-top:20px;">
-                <img src="{{ asset('images/mission/mission1.jpg') }}" alt="Mission in Action" style="width:100%; height:100%; object-fit:cover; border-radius:10px;">
+                <img src="https://samsondungufoundation.org/images/mission/mission1.jpg" alt="Mission in Action" style="width:100%; height:100%; object-fit:cover; border-radius:10px;">
             </div>
         </div>
 
@@ -212,7 +212,7 @@
             <h3><i class="fas fa-eye"></i> Our Vision</h3>
             <p>{{ $vision }}</p>
             <div class="staggered-img" style="height:200px; margin-top:20px;">
-                <img src="{{ asset('images/mission/vision1.jpg') }}" alt="Vision for Future" style="width:100%; height:100%; object-fit:cover; border-radius:10px;">
+                <img src="https://samsondungufoundation.org/images/mission/vision1.jpg" alt="Vision for Future" style="width:100%; height:100%; object-fit:cover; border-radius:10px;">
             </div>
         </div>
     </div>
@@ -225,13 +225,13 @@
 
             <div class="staggered-images" style="margin-top:40px;">
                 <div class="staggered-img" style="height:200px;">
-                    <img src="{{ asset('images/inclusive/community2.jpg') }}" alt="Inclusive Community" style="width:100%; height:100%; object-fit:cover;">
+                    <img src="https://samsondungufoundation.org/images/inclusive/community2.jpg" alt="Inclusive Community" style="width:100%; height:100%; object-fit:cover;">
                 </div>
                 <div class="staggered-img" style="height:200px;">
-                    <img src="{{ asset('images/inclusive/collaboration.jpg') }}" alt="Collaboration" style="width:100%; height:100%; object-fit:cover;">
+                    <img src="https://samsondungufoundation.org/images/inclusive/collaboration.jpg" alt="Collaboration" style="width:100%; height:100%; object-fit:cover;">
                 </div>
                 <div class="staggered-img" style="height:200px;">
-                    <img src="{{ asset('images/inclusive/diversity.jpg') }}" alt="Diversity" style="width:100%; height:100%; object-fit:cover;">
+                    <img src="https://samsondungufoundation.org/images/inclusive/diversity.jpg" alt="Diversity" style="width:100%; height:100%; object-fit:cover;">
                 </div>
             </div>
         </div>
@@ -259,7 +259,7 @@
 
                 <div class="goal-progress animate-on-scroll delay-400">
                     <div class="staggered-img" style="height:300px;">
-                        <img src="{{ asset('images/project/land-project.jpg') }}" alt="Land Project" style="width:100%; height:100%; object-fit:cover; border-radius:10px;">
+                        <img src="https://samsondungufoundation.org/images/project/land-project.jpg" alt="Land Project" style="width:100%; height:100%; object-fit:cover; border-radius:10px;">
                     </div>
                 </div>
             </div>

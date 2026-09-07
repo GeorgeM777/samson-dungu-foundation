@@ -60,10 +60,13 @@ class ContentController extends Controller
 
         $image = $request->file('image');
         $imageName = time() . '_' . uniqid() . '.' . $image->getClientOriginalExtension();
-        $path = $image->storeAs('hero', $imageName, 'public');
+        
+        // Save directly to public/images/hero/
+        $image->move(public_path('images/hero'), $imageName);
+        $path = 'samson-dungu-foundation/public/images/hero/' . $imageName;
 
         HeroSlide::create([
-            'image' => '/storage/' . $path,
+            'image' => '/' . $path,
             'title' => $request->title,
             'subtitle' => $request->subtitle,
             'order' => HeroSlide::max('order') + 1,
@@ -80,13 +83,17 @@ class ContentController extends Controller
         $data = $request->only(['title', 'subtitle', 'order', 'is_active']);
 
         if ($request->hasFile('image')) {
-            if ($slide->image && Storage::disk('public')->exists(ltrim($slide->image, '/storage/'))) {
-                Storage::disk('public')->delete(ltrim($slide->image, '/storage/'));
+            // Delete old image if exists
+            if ($slide->image && file_exists(public_path(ltrim($slide->image, '/')))) {
+                unlink(public_path(ltrim($slide->image, '/')));
             }
             $image = $request->file('image');
             $imageName = time() . '_' . uniqid() . '.' . $image->getClientOriginalExtension();
-            $path = $image->storeAs('hero', $imageName, 'public');
-            $data['image'] = '/storage/' . $path;
+            
+            // Save directly to public/images/hero/
+            $image->move(public_path('images/hero'), $imageName);
+            $path = 'samson-dungu-foundation/public/images/hero/' . $imageName;
+            $data['image'] = '/' . $path;
         }
 
         $slide->update($data);
@@ -96,7 +103,12 @@ class ContentController extends Controller
 
     public function deleteHeroSlide($id)
     {
-        HeroSlide::findOrFail($id)->delete();
+        $slide = HeroSlide::findOrFail($id);
+        // Delete the image file
+        if ($slide->image && file_exists(public_path(ltrim($slide->image, '/')))) {
+            unlink(public_path(ltrim($slide->image, '/')));
+        }
+        $slide->delete();
         return back()->with('success', 'Slide deleted.');
     }
 
@@ -140,13 +152,13 @@ class ContentController extends Controller
         $data['is_active'] = true;
 
         if ($request->hasFile('image')) {
-            if ($program->image && Storage::disk('public')->exists(ltrim($program->image, '/storage/'))) {
-                Storage::disk('public')->delete(ltrim($program->image, '/storage/'));
-            }
             $image = $request->file('image');
             $imageName = time() . '_' . uniqid() . '.' . $image->getClientOriginalExtension();
-            $path = $image->storeAs('programs', $imageName, 'public');
-            $data['image'] = '/storage/' . $path;
+            
+            // Save directly to public/images/programs/
+            $image->move(public_path('images/programs'), $imageName);
+            $path = 'samson-dungu-foundation/public/images/programs/' . $imageName;
+            $data['image'] = '/' . $path;
         }
 
         Program::create($data);
@@ -162,13 +174,16 @@ class ContentController extends Controller
         $data['stats'] = array_filter(array_map('trim', explode("\n", $request->stats ?? '')));
 
         if ($request->hasFile('image')) {
-            if ($program->image && Storage::disk('public')->exists(ltrim($program->image, '/storage/'))) {
-                Storage::disk('public')->delete(ltrim($program->image, '/storage/'));
+            if ($program->image && file_exists(public_path(ltrim($program->image, '/')))) {
+                unlink(public_path(ltrim($program->image, '/')));
             }
             $image = $request->file('image');
             $imageName = time() . '_' . uniqid() . '.' . $image->getClientOriginalExtension();
-            $path = $image->storeAs('programs', $imageName, 'public');
-            $data['image'] = '/storage/' . $path;
+            
+            // Save directly to public/images/programs/
+            $image->move(public_path('images/programs'), $imageName);
+            $path = 'samson-dungu-foundation/public/images/programs/' . $imageName;
+            $data['image'] = '/' . $path;
         }
 
         $program->update($data);
@@ -177,7 +192,11 @@ class ContentController extends Controller
 
     public function deleteProgram($id)
     {
-        Program::findOrFail($id)->delete();
+        $program = Program::findOrFail($id);
+        if ($program->image && file_exists(public_path(ltrim($program->image, '/')))) {
+            unlink(public_path(ltrim($program->image, '/')));
+        }
+        $program->delete();
         return back()->with('success', 'Program deleted.');
     }
 
@@ -197,8 +216,11 @@ class ContentController extends Controller
         if ($request->hasFile('image')) {
             $image = $request->file('image');
             $imageName = time() . '_' . uniqid() . '.' . $image->getClientOriginalExtension();
-            $path = $image->storeAs('stories', $imageName, 'public');
-            $data['image'] = '/storage/' . $path;
+            
+            // Save directly to public/images/stories/
+            $image->move(public_path('images/stories'), $imageName);
+            $path = 'samson-dungu-foundation/public/images/stories/' . $imageName;
+            $data['image'] = '/' . $path;
         }
 
         ImpactStory::create($data);
@@ -211,13 +233,16 @@ class ContentController extends Controller
         $data = $request->only(['title', 'description', 'link', 'order', 'is_active']);
 
         if ($request->hasFile('image')) {
-            if ($story->image && Storage::disk('public')->exists(ltrim($story->image, '/storage/'))) {
-                Storage::disk('public')->delete(ltrim($story->image, '/storage/'));
+            if ($story->image && file_exists(public_path(ltrim($story->image, '/')))) {
+                unlink(public_path(ltrim($story->image, '/')));
             }
             $image = $request->file('image');
             $imageName = time() . '_' . uniqid() . '.' . $image->getClientOriginalExtension();
-            $path = $image->storeAs('stories', $imageName, 'public');
-            $data['image'] = '/storage/' . $path;
+            
+            // Save directly to public/images/stories/
+            $image->move(public_path('images/stories'), $imageName);
+            $path = 'samson-dungu-foundation/public/images/stories/' . $imageName;
+            $data['image'] = '/' . $path;
         }
 
         $story->update($data);
@@ -226,7 +251,11 @@ class ContentController extends Controller
 
     public function deleteStory($id)
     {
-        ImpactStory::findOrFail($id)->delete();
+        $story = ImpactStory::findOrFail($id);
+        if ($story->image && file_exists(public_path(ltrim($story->image, '/')))) {
+            unlink(public_path(ltrim($story->image, '/')));
+        }
+        $story->delete();
         return back()->with('success', 'Story deleted.');
     }
 
@@ -246,8 +275,11 @@ class ContentController extends Controller
         if ($request->hasFile('photo')) {
             $image = $request->file('photo');
             $imageName = time() . '_' . uniqid() . '.' . $image->getClientOriginalExtension();
-            $path = $image->storeAs('leaders', $imageName, 'public');
-            $data['photo'] = '/storage/' . $path;
+            
+            // Save directly to public/images/leaders/
+            $image->move(public_path('images/leaders'), $imageName);
+            $path = 'samson-dungu-foundation/public/images/leaders/' . $imageName;
+            $data['photo'] = '/' . $path;
         }
 
         LeadershipTeam::create($data);
@@ -260,13 +292,16 @@ class ContentController extends Controller
         $data = $request->only(['name', 'position', 'phone', 'email', 'bio', 'order', 'is_active']);
 
         if ($request->hasFile('photo')) {
-            if ($leader->photo && Storage::disk('public')->exists(ltrim($leader->photo, '/storage/'))) {
-                Storage::disk('public')->delete(ltrim($leader->photo, '/storage/'));
+            if ($leader->photo && file_exists(public_path(ltrim($leader->photo, '/')))) {
+                unlink(public_path(ltrim($leader->photo, '/')));
             }
             $image = $request->file('photo');
             $imageName = time() . '_' . uniqid() . '.' . $image->getClientOriginalExtension();
-            $path = $image->storeAs('leaders', $imageName, 'public');
-            $data['photo'] = '/storage/' . $path;
+            
+            // Save directly to public/images/leaders/
+            $image->move(public_path('images/leaders'), $imageName);
+            $path = 'samson-dungu-foundation/public/images/leaders/' . $imageName;
+            $data['photo'] = '/' . $path;
         }
 
         $leader->update($data);
@@ -275,7 +310,11 @@ class ContentController extends Controller
 
     public function deleteLeader($id)
     {
-        LeadershipTeam::findOrFail($id)->delete();
+        $leader = LeadershipTeam::findOrFail($id);
+        if ($leader->photo && file_exists(public_path(ltrim($leader->photo, '/')))) {
+            unlink(public_path(ltrim($leader->photo, '/')));
+        }
+        $leader->delete();
         return back()->with('success', 'Leader deleted.');
     }
 
@@ -295,14 +334,17 @@ class ContentController extends Controller
 
         $image = $request->file('image');
         $imageName = time() . '_' . uniqid() . '.' . $image->getClientOriginalExtension();
-        $path = $image->storeAs('site', $imageName, 'public');
+        
+        // Save directly to public/images/site/
+        $image->move(public_path('images/site'), $imageName);
+        $path = 'samson-dungu-foundation/public/images/site/' . $imageName;
 
         SiteImage::create([
             'key' => $request->key,
             'label' => $request->label,
             'description' => $request->description,
             'group' => $request->group ?? 'general',
-            'image' => '/storage/' . $path,
+            'image' => '/' . $path,
         ]);
 
         return back()->with('success', 'Image added.');
@@ -310,26 +352,33 @@ class ContentController extends Controller
 
     public function updateImage(Request $request, $id)
     {
-        $image = SiteImage::findOrFail($id);
+        $imageModel = SiteImage::findOrFail($id);
         $data = $request->only(['key', 'label', 'description', 'group']);
 
         if ($request->hasFile('image')) {
-            if ($image->image && Storage::disk('public')->exists(ltrim($image->image, '/storage/'))) {
-                Storage::disk('public')->delete(ltrim($image->image, '/storage/'));
+            if ($imageModel->image && file_exists(public_path(ltrim($imageModel->image, '/')))) {
+                unlink(public_path(ltrim($imageModel->image, '/')));
             }
             $uploaded = $request->file('image');
             $imageName = time() . '_' . uniqid() . '.' . $uploaded->getClientOriginalExtension();
-            $path = $uploaded->storeAs('site', $imageName, 'public');
-            $data['image'] = '/storage/' . $path;
+            
+            // Save directly to public/images/site/
+            $uploaded->move(public_path('images/site'), $imageName);
+            $path = 'samson-dungu-foundation/public/images/site/' . $imageName;
+            $data['image'] = '/' . $path;
         }
 
-        $image->update($data);
+        $imageModel->update($data);
         return back()->with('success', 'Image updated.');
     }
 
     public function deleteImage($id)
     {
-        SiteImage::findOrFail($id)->delete();
+        $imageModel = SiteImage::findOrFail($id);
+        if ($imageModel->image && file_exists(public_path(ltrim($imageModel->image, '/')))) {
+            unlink(public_path(ltrim($imageModel->image, '/')));
+        }
+        $imageModel->delete();
         return back()->with('success', 'Image deleted.');
     }
 }
