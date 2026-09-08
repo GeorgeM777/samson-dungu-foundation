@@ -183,7 +183,7 @@
 
 
     <!-- School Partnership Expansion Project -->
-<div class="expansion-project animate-on-scroll">
+<div class="expansion-project animate-on-scroll slide-from-down">
     <div class="project-header">
         <h2><i class="fas fa-school"></i> School Partnership Expansion Project</h2>
         <div class="project-status">Active Partnership</div>
@@ -309,7 +309,7 @@
 </div>
 
     <!-- Partnership Opportunities -->
-    <div style="background: linear-gradient(135deg, var(--primary-blue), #003388); color: white; padding: 50px; border-radius: 15px; text-align: center; margin: 60px 0;">
+    <div style="background: linear-gradient(135deg, var(--primary-blue), #003388); color: white; padding: 50px; border-radius: 15px; text-align: center; margin: 60px 0;" class="animate-on-scroll slide-from-right">
         <h2 style="font-size: 2rem; margin-bottom: 20px;">Become a Project Partner</h2>
         <p style="font-size: 1.1rem; max-width: 700px; margin: 0 auto 30px;">
             Corporations, foundations, and major donors can partner with us to make this vision a reality

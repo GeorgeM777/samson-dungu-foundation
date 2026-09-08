@@ -13,16 +13,16 @@
             <p class="animate-on-scroll delay-200">Providing loving homes, education, and family support for orphaned children across Uganda</p>
         </div>
     </div>
-    <div class="hero-stats animate-on-scroll delay-400">
-        <div class="stat">
+    <div class="hero-stats animate-on-scroll delay-400 slide-from-down">
+        <div class="stat animate-on-scroll slide-from-left delay-200">
             <div class="stat-number">100+</div>
             <div class="stat-label">Children Supported</div>
         </div>
-        <div class="stat">
+        <div class="stat animate-on-scroll slide-from-down delay-400">
             <div class="stat-number">12</div>
             <div class="stat-label">Years of Care</div>
         </div>
-        <div class="stat">
+        <div class="stat animate-on-scroll slide-from-right delay-600">
             <div class="stat-number">20+</div>
             <div class="stat-label">Loving Homes</div>
         </div>
@@ -51,7 +51,7 @@
         <h2 class="section-title animate-on-scroll">Stories of Hope</h2>
 
         <div class="stories-container">
-            <div class="story-card animate-on-scroll">
+            <div class="story-card animate-on-scroll slide-from-left">
                 <div class="story-image">
                     <img src="{{ asset('images/stories/sarah-story.jpg') }}" alt="Sarah's Story">
                     <div class="story-overlay">
@@ -68,7 +68,7 @@
                 </div>
             </div>
 
-            <div class="story-card animate-on-scroll delay-200">
+            <div class="story-card animate-on-scroll delay-200 slide-from-right">
                 <div class="story-content">
                     <h3>The Muwanguzi Family</h3>
                     <p>"We opened our home to three orphaned siblings through the foundation's foster program. With the foundation's support, we've been able to provide them with love, education, and a bright future. They're not foster children - they're our children."</p>
@@ -92,7 +92,7 @@
         <h2 class="section-title">Our Support Services</h2>
 
         <div class="services-grid">
-            <div class="service-card">
+            <div class="service-card animate-on-scroll slide-from-left">
                 <div class="service-icon">
                     <i class="fas fa-home"></i>
                 </div>
@@ -105,7 +105,7 @@
                 </ul>
             </div>
 
-            <div class="service-card delay-200">
+            <div class="service-card animate-on-scroll delay-200 slide-from-down">
                 <div class="service-icon">
                     <i class="fas fa-graduation-cap"></i>
                 </div>
@@ -118,7 +118,7 @@
                 </ul>
             </div>
 
-            <div class="service-card delay-400">
+            <div class="service-card animate-on-scroll delay-400 slide-from-right">
                 <div class="service-icon">
                     <i class="fas fa-heart"></i>
                 </div>
@@ -134,7 +134,7 @@
     </section>
 
     <!-- How to Help Section -->
-    <section class="help-section animate-on-scroll">
+    <section class="help-section animate-on-scroll slide-from-right">
         <div class="help-content">
             <div class="help-text">
                 <h2>You Can Make a Difference</h2>

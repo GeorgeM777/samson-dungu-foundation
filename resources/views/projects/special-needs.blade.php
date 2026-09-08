@@ -27,19 +27,19 @@
 <div class="container">
     <!-- Hero Stats -->
     <div class="impact-stats animate-on-scroll" style="margin: 50px 0;">
-        <div class="stat-card animate-up">
+        <div class="stat-card animate-on-scroll slide-from-left">
             <div class="stat-number">50+</div>
             <p>Individuals Served</p>
         </div>
-        <div class="stat-card animate-up delay-200">
+        <div class="stat-card animate-on-scroll delay-200 slide-from-down">
             <div class="stat-number">5</div>
             <p>Support Programs</p>
         </div>
-        <div class="stat-card animate-up delay-400">
+        <div class="stat-card animate-on-scroll delay-400 slide-from-down">
             <div class="stat-number">3</div>
             <p>Therapy Centers</p>
         </div>
-        <div class="stat-card animate-up delay-600">
+        <div class="stat-card animate-on-scroll delay-600 slide-from-right">
             <div class="stat-number">10+</div>
             <p>Trained Caregivers</p>
         </div>
@@ -96,7 +96,7 @@
         <p class="section-subtitle">Comprehensive support services designed for different needs</p>
 
         <div class="mission-cards" style="grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));">
-            <div class="mission-card animate-up">
+            <div class="mission-card animate-on-scroll slide-from-left">
                 <div class="service-header" style="display: flex; align-items: center; gap: 20px; margin-bottom: 20px;">
                     <div style="width: 70px; height: 70px; background: linear-gradient(135deg, var(--primary-blue), var(--primary-blue-dark)); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.8rem;">
                         <i class="fas fa-running"></i>
@@ -119,7 +119,7 @@
                 </div>
             </div>
 
-            <div class="mission-card animate-up delay-200">
+            <div class="mission-card animate-on-scroll delay-200 slide-from-down">
                 <div class="service-header" style="display: flex; align-items: center; gap: 20px; margin-bottom: 20px;">
                     <div style="width: 70px; height: 70px; background: linear-gradient(135deg, var(--primary-blue), var(--primary-blue-dark)); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.8rem;">
                         <i class="fas fa-brain"></i>
@@ -142,7 +142,7 @@
                 </div>
             </div>
 
-            <div class="mission-card animate-up delay-400">
+            <div class="mission-card animate-on-scroll delay-400 slide-from-right">
                 <div class="service-header" style="display: flex; align-items: center; gap: 20px; margin-bottom: 20px;">
                     <div style="width: 70px; height: 70px; background: linear-gradient(135deg, var(--primary-blue), var(--primary-blue-dark)); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.8rem;">
                         <i class="fas fa-comments"></i>
@@ -173,7 +173,7 @@
         <p class="section-subtitle">Real impact through personalized care and support</p>
 
         <div class="partnership-cards" style="grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));">
-            <div class="partnership-card animate-up">
+            <div class="partnership-card animate-on-scroll slide-from-left">
                 <div class="school-badge" style="background: var(--primary-orange);">
                     <i class="fas fa-star"></i> Featured Story
                 </div>
@@ -218,7 +218,7 @@
                 </div>
             </div>
 
-            <div class="partnership-card animate-up delay-200">
+            <div class="partnership-card animate-on-scroll delay-200 slide-from-right">
                 <div class="school-badge" style="background: var(--primary-blue);">
                     <i class="fas fa-users"></i> Family Success
                 </div>
@@ -266,7 +266,7 @@
     </section>
 
     <!-- Community Integration -->
-    <section class="program-highlight animate-on-scroll">
+    <section class="program-highlight animate-on-scroll slide-from-left">
         <div class="highlight-badge" style="background: #4CAF50; color: white;">
             <i class="fas fa-hands-helping"></i> Community Integration
         </div>
@@ -318,7 +318,7 @@
         <p class="section-subtitle">Join us in creating a more inclusive Uganda for individuals with disabilities</p>
 
         <div class="involvement-options" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin: 60px 0;">
-            <div class="option-card animate-up" style="background: white; padding: 40px 30px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); border-top: 5px solid var(--primary-blue); transition: all 0.3s ease; text-align: center;">
+            <div class="option-card animate-on-scroll slide-from-left" style="background: white; padding: 40px 30px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); border-top: 5px solid var(--primary-blue); transition: all 0.3s ease; text-align: center;">
                 <div class="option-icon" style="width: 70px; height: 70px; background: var(--primary-blue); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.8rem; margin: 0 auto 25px;">
                     <i class="fas fa-hands-helping"></i>
                 </div>
@@ -329,7 +329,7 @@
                 </a>
             </div>
 
-            <div class="option-card animate-up delay-200" style="background: white; padding: 40px 30px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); border-top: 5px solid var(--primary-blue); transition: all 0.3s ease; text-align: center;">
+            <div class="option-card animate-on-scroll delay-200 slide-from-down" style="background: white; padding: 40px 30px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); border-top: 5px solid var(--primary-blue); transition: all 0.3s ease; text-align: center;">
                 <div class="option-icon" style="width: 70px; height: 70px; background: var(--primary-blue); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.8rem; margin: 0 auto 25px;">
                     <i class="fas fa-donate"></i>
                 </div>
@@ -340,7 +340,7 @@
                 </a>
             </div>
 
-            <div class="option-card animate-up delay-400" style="background: white; padding: 40px 30px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); border-top: 5px solid var(--primary-blue); transition: all 0.3s ease; text-align: center;">
+            <div class="option-card animate-on-scroll delay-400 slide-from-right" style="background: white; padding: 40px 30px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); border-top: 5px solid var(--primary-blue); transition: all 0.3s ease; text-align: center;">
                 <div class="option-icon" style="width: 70px; height: 70px; background: var(--primary-blue); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.8rem; margin: 0 auto 25px;">
                     <i class="fas fa-graduation-cap"></i>
                 </div>

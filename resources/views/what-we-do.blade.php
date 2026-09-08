@@ -25,12 +25,17 @@
 
 <div class="container">
     <!-- Programs Overview -->
-    <h2 class="section-title animate-on-scroll">Core Initiatives</h2>
+    <h2 class="section-title animate-on-scroll" id="programs">Core Initiatives</h2>
     <p class="section-subtitle animate-on-scroll delay-200">Integrated programs addressing the root causes of poverty and vulnerability</p>
 
     <div class="programs-grid animate-on-scroll">
         @forelse($programs as $index => $program)
-            <div class="program-card animate-on-scroll {{ $index > 0 ? 'delay-' . ($index * 200) : '' }}" @if($program->image) style="background-image: url('{{ asset(ltrim($program->image, '/')) }}');" @endif>
+            @php
+                $dir = 'slide-from-down';
+                if ($index === 0) $dir = 'slide-from-left';
+                elseif ($index == (($programs->count() ?? 3) - 1)) $dir = 'slide-from-right';
+            @endphp
+            <div class="program-card animate-on-scroll {{ $dir }} {{ $index > 0 ? 'delay-' . ($index * 200) : '' }}" @if($program->image) style="background-image: url('{{ asset(ltrim($program->image, '/')) }}');" @endif>
                 <div class="program-content">
                     <h3>@if($program->icon)<i class="{{ $program->icon }}"></i>@endif {{ $program->title }}</h3>
                     <p>{{ $program->short_description }}</p>
@@ -58,7 +63,7 @@
 
             @if($index == 1)
                 <!-- School Partnership Program (static) -->
-                <div class="program-highlight animate-on-scroll">
+                <div class="program-highlight animate-on-scroll slide-from-left">
                     <div class="highlight-content">
                         <div class="highlight-text">
                             <div class="highlight-badge">Partnership Program</div>
@@ -157,7 +162,7 @@
 
     <!-- Approach Section -->
     <div class="approach-section animate-on-scroll">
-        <h2 class="section-title">Our Holistic Approach</h2>
+        <h2 class="section-title" id="approach">Our Holistic Approach</h2>
         <div class="approach-content">
             <div class="approach-text">
                 <h3>Integrated Community Development</h3>
@@ -174,11 +179,16 @@
     </div>
 
     <!-- Program Impact -->
-    <h2 class="section-title animate-on-scroll">Program Impact & Success Stories</h2>
+    <h2 class="section-title animate-on-scroll" id="impact-stories">Program Impact & Success Stories</h2>
 
     <div class="impact-stories animate-on-scroll">
         @forelse($stories as $index => $story)
-            <div class="story-card {{ $index > 0 ? 'delay-' . ($index * 200) : '' }}">
+            @php
+                $storyDir = 'slide-from-down';
+                if ($index === 0) $storyDir = 'slide-from-left';
+                elseif ($index == (($stories->count() ?? 3) - 1)) $storyDir = 'slide-from-right';
+            @endphp
+            <div class="story-card {{ $storyDir }} {{ $index > 0 ? 'delay-' . ($index * 200) : '' }}">
                 @if($story->image)
                     <div class="story-image" style="background-image: url('{{ asset(ltrim($story->image, '/')) }}');"></div>
                 @endif

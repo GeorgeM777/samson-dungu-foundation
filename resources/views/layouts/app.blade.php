@@ -26,6 +26,8 @@
             --white: #FFFFFF;
             --gray-light: #F8F9FA;
             --shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            --teal-dark: #0b5e7c;
+            --teal-light: #2a9d8f;
         }
 
         * {
@@ -662,6 +664,10 @@
         .stat-card:hover {
             transform: translateY(-10px) rotate(3deg);
             box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+        }
+
+        .stat-card.animate-on-scroll.animated:hover {
+            transform: translateY(-10px) rotate(3deg);
         }
 
         .stat-number {
@@ -1524,6 +1530,124 @@
 
 
     </style>
+    <style>
+        /* Reading Progress Bar */
+        #readingProgressBar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--teal-dark, #0b5e7c), var(--teal-light, #2a9d8f));
+            width: 0%;
+            z-index: 9999;
+            transition: width 0.1s ease-out;
+            border-radius: 0 2px 2px 0;
+        }
+
+        /* Floating Action Buttons */
+        .fab-container {
+            position: fixed;
+            bottom: 30px;
+            right: 110px;
+            z-index: 9991;
+            display: flex;
+            flex-direction: column-reverse;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .fab-btn {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 18px;
+            text-decoration: none;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .fab-btn.back-to-top {
+            background: linear-gradient(135deg, var(--teal-dark, #0b5e7c), var(--teal-light, #2a9d8f));
+            opacity: 0;
+            transform: scale(0.6) translateY(10px);
+            pointer-events: none;
+        }
+
+        .fab-btn.back-to-top.visible {
+            opacity: 1;
+            transform: scale(1) translateY(0);
+            pointer-events: auto;
+        }
+
+        .fab-btn.donate {
+            background: linear-gradient(135deg, #FF6B35, #FF8B35);
+        }
+
+        .fab-btn.volunteer {
+            background: linear-gradient(135deg, #0047AB, #3366CC);
+        }
+
+        .fab-btn:hover {
+            transform: scale(1.15) !important;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+        }
+
+        .fab-label {
+            position: absolute;
+            right: 58px;
+            background: rgba(45,45,45,0.9);
+            color: white;
+            padding: 8px 14px;
+            border-radius: 6px;
+            font-size: 13px;
+            font-weight: 500;
+            white-space: nowrap;
+            opacity: 0;
+            transition: opacity 0.2s ease;
+            pointer-events: none;
+        }
+
+        .fab-label::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            right: -5px;
+            transform: translateY(-50%);
+            border-width: 5px 0 5px 5px;
+            border-style: solid;
+            border-color: transparent transparent transparent rgba(45,45,45,0.9);
+        }
+
+        .fab-btn:hover .fab-label {
+            opacity: 1;
+        }
+
+        @media (max-width: 768px) {
+            .fab-container {
+                right: 80px;
+                bottom: 20px;
+            }
+            .fab-btn {
+                width: 42px;
+                height: 42px;
+                font-size: 16px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .fab-container {
+                right: 70px;
+                bottom: 15px;
+            }
+        }
+    </style>
      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <!-- Font Awesome for icons -->
@@ -1531,6 +1655,7 @@
 </head>
 <body>
 
+<div id="readingProgressBar"></div>
 
    <header class="site-header" id="siteHeader">
     <div class="nav-container">
@@ -1854,10 +1979,7 @@ document.querySelectorAll('.main-nav a').forEach(link => {
             const observer = new IntersectionObserver(function(entries) {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
-                        // Randomly assign animation class
-                        const animations = ['animate-left', 'animate-right', 'animate-float', 'animate-rotate'];
-                        const randomAnim = animations[Math.floor(Math.random() * animations.length)];
-                        entry.target.classList.add('animated', randomAnim);
+                        entry.target.classList.add('animated');
                         observer.unobserve(entry.target);
                     }
                 });
@@ -1916,9 +2038,61 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 });
+
+// ============================================
+// Reading Progress Bar & FABs
+// ============================================
+const progressBar = document.getElementById('readingProgressBar');
+const backToTopBtn = document.getElementById('backToTopBtn');
+
+function updateProgressBar() {
+    if (!progressBar) return;
+    const scrollTop = window.scrollY || document.documentElement.scrollTop;
+    const docHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+    const progress = docHeight > 0 ? Math.min((scrollTop / docHeight) * 100, 100) : 0;
+    progressBar.style.width = progress + '%';
+}
+
+function updateBackToTop() {
+    if (!backToTopBtn) return;
+    if (window.scrollY > 600) {
+        backToTopBtn.classList.add('visible');
+    } else {
+        backToTopBtn.classList.remove('visible');
+    }
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+    updateProgressBar();
+    updateBackToTop();
+});
+
+window.addEventListener('scroll', function() {
+    updateProgressBar();
+    updateBackToTop();
+}, { passive: true });
+
+backToTopBtn.addEventListener('click', function() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+});
     </script>
     <a href="/admin/login" class="floating-admin-btn" title="Admin Management">
         <span>🔒</span>
     </a>
+
+    <div class="fab-container" id="fabContainer">
+        <a href="/sponsor" class="fab-btn donate" aria-label="Donate">
+            <i class="fas fa-donate"></i>
+            <span class="fab-label">Donate</span>
+        </a>
+        <a href="/get-involved" class="fab-btn volunteer" aria-label="Volunteer">
+            <i class="fas fa-users"></i>
+            <span class="fab-label">Volunteer</span>
+        </a>
+        <button class="fab-btn back-to-top" id="backToTopBtn" aria-label="Back to top">
+            <i class="fas fa-arrow-up"></i>
+            <span class="fab-label">Back to Top</span>
+        </button>
+    </div>
 </body>
 </html>

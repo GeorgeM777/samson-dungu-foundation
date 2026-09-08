@@ -18,7 +18,7 @@
 <div class="container">
     <!-- Impact Statement -->
     <div class="impact-statement animate-on-scroll">
-        <h2>Your Action Creates Ripple Effects</h2>
+        <h2 id="impact-statement">Your Action Creates Ripple Effects</h2>
         <p>Every effort you make multiplies across communities, creating sustainable transformation that reaches far beyond the initial impact.</p>
 
         <div class="impact-visual">
@@ -44,10 +44,10 @@
     </div>
 
     <!-- Ways to Get Involved -->
-    <h2 class="section-title animate-on-scroll">Choose Your Path to Impact</h2>
+    <h2 class="section-title animate-on-scroll" id="involvement-options">Choose Your Path to Impact</h2>
 
     <div class="involvement-options animate-on-scroll">
-        <div class="involvement-card">
+        <div class="involvement-card animate-on-scroll slide-from-left">
             <div class="card-header volunteer">
                 <i class="fas fa-hands-helping"></i>
                 <h3>Volunteer</h3>
@@ -70,7 +70,7 @@
             </div>
         </div>
 
-        <div class="involvement-card animate-on-scroll delay-200">
+        <div class="involvement-card animate-on-scroll delay-200 slide-from-down">
             <div class="card-header fundraiser">
                 <i class="fas fa-hand-holding-heart"></i>
                 <h3>Fundraise</h3>
@@ -97,7 +97,7 @@
             </div>
         </div>
 
-        <div class="involvement-card animate-on-scroll delay-400">
+        <div class="involvement-card animate-on-scroll delay-400 slide-from-right">
             <div class="card-header partner">
                 <i class="fas fa-handshake"></i>
                 <h3>Partner</h3>
@@ -124,7 +124,7 @@
 
     <!-- Volunteer Application Form -->
     <div class="form-section animate-on-scroll" id="volunteer-form">
-        <h2 class="section-title">Volunteer Application</h2>
+        <h2 class="section-title" id="volunteer-form-title">Volunteer Application</h2>
 
         <div class="application-form">
             <div class="form-progress">
@@ -307,10 +307,10 @@
 
     <!-- Fundraiser Tools -->
     <div class="tools-section animate-on-scroll" id="fundraiser-tools">
-        <h2 class="section-title">Fundraising Tools & Resources</h2>
+        <h2 class="section-title" id="fundraiser-tools-title">Fundraising Tools & Resources</h2>
 
         <div class="tools-grid">
-            <div class="tool-card">
+            <div class="tool-card animate-on-scroll slide-from-left">
                 <div class="tool-icon">
                     <i class="fas fa-palette"></i>
                 </div>
@@ -319,7 +319,7 @@
                 <a href="#" class="tool-link">Download Kit</a>
             </div>
 
-            <div class="tool-card delay-200">
+            <div class="tool-card animate-on-scroll delay-200 slide-from-down">
                 <div class="tool-icon">
                     <i class="fas fa-chart-line"></i>
                 </div>
@@ -328,7 +328,7 @@
                 <a href="#" class="tool-link">Track Progress</a>
             </div>
 
-            <div class="tool-card delay-400">
+            <div class="tool-card animate-on-scroll delay-400 slide-from-down">
                 <div class="tool-icon">
                     <i class="fas fa-share-alt"></i>
                 </div>
@@ -337,7 +337,7 @@
                 <a href="#" class="tool-link">Get Toolkit</a>
             </div>
 
-            <div class="tool-card delay-600">
+            <div class="tool-card animate-on-scroll delay-600 slide-from-right">
                 <div class="tool-icon">
                     <i class="fas fa-trophy"></i>
                 </div>
@@ -349,11 +349,11 @@
     </div>
 
     <!-- Success Stories -->
-    <h2 class="section-title animate-on-scroll">Volunteer Success Stories</h2>
+    <h2 class="section-title animate-on-scroll" id="success-stories">Volunteer Success Stories</h2>
 
     <div class="success-stories animate-on-scroll">
         <div class="story-slider">
-            <div class="story-slide active">
+            <div class="story-slide active animate-on-scroll slide-from-left">
                 <div class="story-image">
                     <img src="{{ asset('images/involved/volunteer1.jpg') }}" alt="Volunteer Story">
                 </div>
@@ -367,7 +367,7 @@
                 </div>
             </div>
 
-            <div class="story-slide">
+            <div class="story-slide animate-on-scroll delay-200 slide-from-right">
                 <div class="story-content">
                     <h4>TechCorp Team Building</h4>
                     <p>"Our company's volunteer trip to build a computer lab not only helped the community but transformed our team's collaboration and purpose."</p>
@@ -394,7 +394,7 @@
 
     <!-- Quick Action Section -->
     <div class="quick-action animate-on-scroll">
-        <h2>Take Your First Step Today</h2>
+        <h2 id="quick-action">Take Your First Step Today</h2>
         <p>Join hundreds of changemakers already making a difference</p>
         <div class="action-buttons">
             <a href="#volunteer-form" class="cta-button">

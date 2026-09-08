@@ -32,7 +32,8 @@
 
     <div class="leadership-team animate-on-scroll">
         @forelse($leaders as $index => $leader)
-            <div class="leader-card {{ $index > 0 ? 'animate-on-scroll delay-' . ($index * 400) : '' }}">
+            @php $leaderDir = ($index % 2 === 0) ? 'slide-from-left' : 'slide-from-right'; @endphp
+            <div class="leader-card {{ $index === 0 ? 'animate-on-scroll slide-from-left' : ($index > 0 ? 'animate-on-scroll delay-' . ($index * 400) . ' ' . $leaderDir : '') }}">
                 @if($index % 2 == 0)
                     <div class="leader-image">
                         @if($leader->photo)
@@ -73,7 +74,7 @@
     </div>
 
     <!-- Contact Information Section -->
-    <div class="contact-grid animate-on-scroll">
+    <div class="contact-grid animate-on-scroll slide-from-down">
         <div class="contact-info">
             <h2><i class="fas fa-map-marker-alt"></i> Our Location</h2>
             <p>{!! $contactAddress !!}</p>
@@ -129,7 +130,7 @@
     <h2 class="section-title animate-on-scroll">Quick Contact Options</h2>
 
     <div class="quick-contact animate-on-scroll">
-        <div class="contact-card">
+        <div class="contact-card animate-on-scroll slide-from-left">
             <div class="contact-icon">
                 <i class="fas fa-phone-alt"></i>
             </div>
@@ -138,7 +139,7 @@
             <a href="tel:+256782488116" class="contact-link">Call Now</a>
         </div>
 
-        <div class="contact-card delay-200">
+        <div class="contact-card animate-on-scroll delay-200 slide-from-down">
             <div class="contact-icon">
                 <i class="fab fa-whatsapp"></i>
             </div>
@@ -147,7 +148,7 @@
             <a href="https://wa.me/256782488116" class="contact-link">Message on WhatsApp</a>
         </div>
 
-        <div class="contact-card delay-400">
+        <div class="contact-card animate-on-scroll delay-400 slide-from-down">
             <div class="contact-icon">
                 <i class="fas fa-envelope"></i>
             </div>
@@ -156,7 +157,7 @@
             <a href="mailto:info@samsondungufoundation.org" class="contact-link">Send Email</a>
         </div>
 
-        <div class="contact-card delay-600">
+        <div class="contact-card animate-on-scroll delay-600 slide-from-right">
             <div class="contact-icon">
                 <i class="fas fa-map-marked-alt"></i>
             </div>

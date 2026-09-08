@@ -47,17 +47,22 @@
 
 <div class="container">
     <!-- Impact Statistics -->
-    <h2 class="section-title animate-on-scroll">Our Impact in Numbers</h2>
+    <h2 class="section-title animate-on-scroll" id="impact">Our Impact in Numbers</h2>
     <p class="section-subtitle animate-on-scroll delay-200">Real change measured in lives transformed, communities empowered, and futures secured</p>
 
     <div class="impact-stats">
         @forelse($impactStats as $index => $stat)
-            <div class="stat-card animate-on-scroll delay-{{ ($index + 1) * 200 }}">
+            @php
+                $direction = 'slide-from-down';
+                if ($index === 0) $direction = 'slide-from-left';
+                elseif ($index == (($impactStats->count() ?? 4) - 1)) $direction = 'slide-from-right';
+            @endphp
+            <div class="stat-card animate-on-scroll delay-{{ ($index + 1) * 200 }} {{ $direction }}">
                 <div class="stat-number">{{ $stat->number }}</div>
                 <p>{{ $stat->label }}</p>
             </div>
         @empty
-            <div class="stat-card animate-on-scroll delay-200">
+            <div class="stat-card animate-on-scroll delay-200 slide-from-left">
                 <div class="stat-number">100+</div>
                 <p>Orphaned Children Educated & Cared For</p>
             </div>
@@ -65,29 +70,29 @@
     </div>
 
     <!-- Image Gallery Section 1: Our Work in Action -->
-    <h2 class="section-title animate-on-scroll">Our Work in Action</h2>
+    <h2 class="section-title animate-on-scroll" id="work-in-action">Our Work in Action</h2>
     <p class="section-subtitle animate-on-scroll delay-200">Capturing moments of transformation, education, and community empowerment</p>
 
     <div class="staggered-images">
-        <div class="staggered-img animate-on-scroll">
+        <div class="staggered-img animate-on-scroll slide-from-left">
             <img src="https://samsondungufoundation.org/images/gallery/education-class.jpg" alt="Classroom Learning" style="width:100%; height:100%; object-fit:cover;">
         </div>
-        <div class="staggered-img animate-on-scroll delay-200">
+        <div class="staggered-img animate-on-scroll delay-200 slide-from-down">
             <img src="https://samsondungufoundation.org/images/gallery/medical-outreach.jpg" alt="Medical Outreach" style="width:100%; height:100%; object-fit:cover;">
         </div>
-        <div class="staggered-img animate-on-scroll delay-400">
+        <div class="staggered-img animate-on-scroll delay-400 slide-from-right">
             <img src="https://samsondungufoundation.org/images/gallery/vocational-training.jpg" alt="Vocational Training" style="width:100%; height:100%; object-fit:cover;">
         </div>
     </div>
 
     <!-- Educational Partnerships Section -->
 <div class="school-partnerships animate-on-scroll">
-    <h2 class="section-title">Educational Partnerships Creating Hope</h2>
+        <h2 class="section-title" id="partnerships">Educational Partnerships Creating Hope</h2>
     <p class="section-subtitle delay-200">Collaborating with local schools to provide quality education for orphaned and less privileged children</p>
 
     <div class="partnership-cards">
         <!-- Bushenyi Preparatory Primary School -->
-        <div class="partnership-card animate-on-scroll">
+        <div class="partnership-card animate-on-scroll slide-from-left">
             <div class="school-badge" style="background-color: #0047AB;">
                 <i class="fas fa-school"></i>
                 <span>Primary Education Partner</span>
@@ -128,7 +133,7 @@
         </div>
 
         <!-- Prime Junior Primary School -->
-        <div class="partnership-card animate-on-scroll delay-200">
+        <div class="partnership-card animate-on-scroll delay-200 slide-from-right">
             <div class="school-badge" style="background-color: #FF6B35;">
                 <i class="fas fa-graduation-cap"></i>
                 <span>Junior Education Partner</span>
@@ -196,7 +201,7 @@
 </div>
 
     <!-- Mission & Vision -->
-    <h2 class="section-title animate-on-scroll">Our Guiding Principles</h2>
+    <h2 class="section-title animate-on-scroll" id="mission-vision">Our Guiding Principles</h2>
     <p class="section-subtitle animate-on-scroll delay-200">Driven by compassion, guided by vision, committed to sustainable change</p>
 
     <div class="mission-cards">
@@ -220,7 +225,7 @@
     <!-- Inclusive Statement Section -->
     <div class="inclusive-statement animate-on-scroll">
         <div class="inclusive-content">
-            <h2>About Samson Ddungu Foundation</h2>
+            <h2 id="about">About Samson Ddungu Foundation</h2>
             <p>{{ $inclusiveStatement }}</p>
 
             <div class="staggered-images" style="margin-top:40px;">
@@ -242,7 +247,7 @@
         <div class="container">
             <div class="appeal-content">
                 <div class="appeal-text animate-on-scroll">
-                    <h2>{{ $urgentTitle }}</h2>
+                    <h2 id="urgent-appeal">{{ $urgentTitle }}</h2>
                     <p>{{ $urgentText }}</p>
                     <p style="font-size: 1.3rem; margin: 25px 0;">
                         <i class="fas fa-exclamation-circle"></i> <strong>Goal: {{ $urgentGoal }}</strong>
@@ -268,7 +273,7 @@
 
     <!-- Call to Action -->
     <div style="text-align: center; margin: 100px 0;">
-        <h2 class="section-title animate-on-scroll">Ready to Make a Difference?</h2>
+        <h2 class="section-title animate-on-scroll" id="cta">Ready to Make a Difference?</h2>
         <p class="section-subtitle animate-on-scroll delay-200">Join us in creating lasting change for Uganda's most vulnerable communities</p>
 
         <div style="display: flex; gap: 20px; justify-content: center; margin-top: 50px; flex-wrap: wrap;">
@@ -352,6 +357,33 @@
     .main-school-image:hover img,
     .gallery-item:hover img {
         animation-duration: 6s;
+    }
+
+    .animate-on-scroll.slide-from-left {
+        transform: translateX(-120px);
+        opacity: 0;
+    }
+    .animate-on-scroll.slide-from-left.animated {
+        transform: translateX(0);
+        opacity: 1;
+    }
+
+    .animate-on-scroll.slide-from-down {
+        transform: translateY(120px);
+        opacity: 0;
+    }
+    .animate-on-scroll.slide-from-down.animated {
+        transform: translateY(0);
+        opacity: 1;
+    }
+
+    .animate-on-scroll.slide-from-right {
+        transform: translateX(120px);
+        opacity: 0;
+    }
+    .animate-on-scroll.slide-from-right.animated {
+        transform: translateX(0);
+        opacity: 1;
     }
 </style>
 @endsection
