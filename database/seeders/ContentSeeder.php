@@ -33,6 +33,12 @@ class ContentSeeder extends Seeder
             ['key' => 'urgent_appeal_text', 'value' => 'We urgently need to purchase 10 acres of land in Wakiso District to expand our services. With rising cases of orphaned children due to HIV/AIDS and poverty, our current rented facilities are overcrowded and inadequate.', 'type' => 'textarea', 'group' => 'appeals', 'label' => 'Urgent Appeal Description'],
             ['key' => 'urgent_appeal_goal', 'value' => '£177,778 for 10 acres', 'type' => 'text', 'group' => 'appeals', 'label' => 'Urgent Appeal Goal'],
 
+            // Founder tribute on the homepage
+            ['key' => 'founder_name', 'value' => 'Samson Ddungu', 'type' => 'text', 'group' => 'founder', 'label' => 'Founder Name'],
+            ['key' => 'founder_title', 'value' => 'Founder', 'type' => 'text', 'group' => 'founder', 'label' => 'Founder Role'],
+            ['key' => 'founder_tribute', 'value' => 'His compassion and vision continue to guide our work, creating hope and dignity for vulnerable communities across Uganda.', 'type' => 'textarea', 'group' => 'founder', 'label' => 'Founder Tribute'],
+            ['key' => 'founder_portrait', 'value' => null, 'type' => 'image', 'group' => 'founder', 'label' => 'Founder Portrait'],
+
             // What We Do
             ['key' => 'what_we_do_hero_title', 'value' => 'Our Comprehensive Programs', 'type' => 'text', 'group' => 'what_we_do', 'label' => 'What We Do - Hero Title'],
             ['key' => 'what_we_do_hero_subtitle', 'value' => 'Holistic support for Uganda\'s most vulnerable communities', 'type' => 'text', 'group' => 'what_we_do', 'label' => 'What We Do - Hero Subtitle'],
@@ -48,7 +54,11 @@ class ContentSeeder extends Seeder
         ];
 
         foreach ($settings as $s) {
-            SiteSetting::updateOrCreate(['key' => $s['key']], $s);
+            if ($s['key'] === 'founder_portrait') {
+                SiteSetting::firstOrCreate(['key' => $s['key']], $s);
+            } else {
+                SiteSetting::updateOrCreate(['key' => $s['key']], $s);
+            }
         }
 
         // Hero Slides

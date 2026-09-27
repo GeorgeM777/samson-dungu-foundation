@@ -98,6 +98,11 @@ Route::prefix('admin')->group(function () {
             Route::post('/images', [ContentController::class, 'storeImage'])->name('images.store');
             Route::put('/images/{id}', [ContentController::class, 'updateImage'])->name('images.update');
             Route::delete('/images/{id}', [ContentController::class, 'deleteImage'])->name('images.delete');
+
+            Route::get('/videos', [ContentController::class, 'videos'])->name('videos');
+            Route::post('/videos', [ContentController::class, 'storeVideo'])->name('videos.store');
+            Route::put('/videos/{id}', [ContentController::class, 'updateVideo'])->name('videos.update');
+            Route::delete('/videos/{id}', [ContentController::class, 'deleteVideo'])->name('videos.delete');
         });
     });
 });

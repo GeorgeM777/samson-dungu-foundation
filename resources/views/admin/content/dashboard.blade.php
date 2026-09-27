@@ -29,6 +29,10 @@
             <div class="lbl">Site Images</div>
         </div>
         <div class="stat-tile">
+            <span class="num">{{ $stats['videos'] }}</span>
+            <div class="lbl">Videos</div>
+        </div>
+        <div class="stat-tile">
             <span class="num">{{ $stats['settings'] }}</span>
             <div class="lbl">Text Settings</div>
         </div>
@@ -41,6 +45,7 @@
             <a href="{{ route('admin.content.settings') }}" class="btn">Edit Site Text</a>
             <a href="{{ route('admin.content.hero') }}" class="btn">Manage Hero Slides</a>
             <a href="{{ route('admin.content.images') }}" class="btn">Upload Images</a>
+            <a href="{{ route('admin.content.videos') }}" class="btn">Manage Videos</a>
         </div>
     </div>
 
@@ -54,6 +59,7 @@
             <li><strong>Impact Stories</strong> — manage the success story cards.</li>
             <li><strong>Leadership</strong> — add or update team member profiles and photos.</li>
             <li><strong>Site Images</strong> — upload replacement images by their reference key.</li>
+            <li><strong>Videos</strong> — add, order, edit, or hide videos on the homepage.</li>
         </ul>
     </div>
 @endsection

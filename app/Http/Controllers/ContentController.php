@@ -11,6 +11,7 @@ use App\Models\Program;
 use App\Models\ImpactStory;
 use App\Models\LeadershipTeam;
 use App\Models\SiteImage;
+use App\Models\Video;
 
 class ContentController extends Controller
 {
@@ -24,6 +25,7 @@ class ContentController extends Controller
             'leaders' => LeadershipTeam::count(),
             'settings' => SiteSetting::count(),
             'images' => SiteImage::count(),
+            'videos' => Video::count(),
         ];
         return view('admin.content.dashboard', compact('stats'));
     }
@@ -36,13 +38,111 @@ class ContentController extends Controller
 
     public function updateSettings(Request $request)
     {
-        $data = $request->except('_token', '_method');
+        $request->validate([
+            'founder_portrait' => 'nullable|file|mimes:jpg,jpeg,png,webp,pdf|max:10240',
+        ]);
+
+        $data = $request->except('_token', '_method', 'founder_portrait');
 
         foreach ($data as $key => $value) {
             SiteSetting::where('key', $key)->update(['value' => $value]);
         }
 
+        if ($request->hasFile('founder_portrait')) {
+            $setting = SiteSetting::where('key', 'founder_portrait')->first();
+            $directory = public_path('founder-media');
+            if (!is_dir($directory)) {
+                mkdir($directory, 0755, true);
+            }
+
+            $image = $request->file('founder_portrait');
+            $imageName = time() . '_' . uniqid() . '.' . $image->getClientOriginalExtension();
+            $image->move($directory, $imageName);
+            $newPath = '/founder-media/' . $imageName;
+
+            if ($setting?->value && file_exists(public_path(ltrim($setting->value, '/')))) {
+                unlink(public_path(ltrim($setting->value, '/')));
+            }
+
+            SiteSetting::where('key', 'founder_portrait')->update(['value' => $newPath]);
+        }
+
         return back()->with('success', 'Settings updated successfully.');
+    }
+
+    public function videos()
+    {
+        $videos = Video::orderBy('order')->orderBy('id')->get();
+        return view('admin.content.videos', compact('videos'));
+    }
+
+    public function storeVideo(Request $request)
+    {
+        $data = $request->validate([
+            'title' => 'required|string|max:255',
+            'description' => 'nullable|string',
+            'url' => 'required|url|max:2048',
+            'thumbnail' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:5120',
+            'order' => 'nullable|integer|min:0',
+        ]);
+
+        if ($request->hasFile('thumbnail')) {
+            $data['thumbnail'] = $this->storeVideoThumbnail($request->file('thumbnail'));
+        }
+
+        $data['order'] = $data['order'] ?? (Video::max('order') + 1);
+        $data['is_active'] = true;
+        Video::create($data);
+
+        return back()->with('success', 'Video added.');
+    }
+
+    public function updateVideo(Request $request, $id)
+    {
+        $video = Video::findOrFail($id);
+        $data = $request->validate([
+            'title' => 'required|string|max:255',
+            'description' => 'nullable|string',
+            'url' => 'required|url|max:2048',
+            'thumbnail' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:5120',
+            'order' => 'nullable|integer|min:0',
+        ]);
+        $data['is_active'] = $request->boolean('is_active');
+        unset($data['thumbnail']);
+
+        if ($request->hasFile('thumbnail')) {
+            $newThumbnail = $this->storeVideoThumbnail($request->file('thumbnail'));
+            if ($video->thumbnail && file_exists(public_path(ltrim($video->thumbnail, '/')))) {
+                unlink(public_path(ltrim($video->thumbnail, '/')));
+            }
+            $data['thumbnail'] = $newThumbnail;
+        }
+
+        $video->update($data);
+        return back()->with('success', 'Video updated.');
+    }
+
+    public function deleteVideo($id)
+    {
+        $video = Video::findOrFail($id);
+        if ($video->thumbnail && file_exists(public_path(ltrim($video->thumbnail, '/')))) {
+            unlink(public_path(ltrim($video->thumbnail, '/')));
+        }
+        $video->delete();
+        return back()->with('success', 'Video deleted.');
+    }
+
+    private function storeVideoThumbnail($image): string
+    {
+        $directory = public_path('images/videos');
+        if (!is_dir($directory)) {
+            mkdir($directory, 0755, true);
+        }
+
+        $imageName = time() . '_' . uniqid() . '.' . $image->getClientOriginalExtension();
+        $image->move($directory, $imageName);
+
+        return '/images/videos/' . $imageName;
     }
 
     public function heroSlides()

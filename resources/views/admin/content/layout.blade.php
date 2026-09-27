@@ -14,6 +14,7 @@
         ['url' => route('admin.content.programs'), 'label' => 'Programs', 'match' => 'admin/content/programs'],
         ['url' => route('admin.content.stories'), 'label' => 'Impact Stories', 'match' => 'admin/content/stories'],
         ['url' => route('admin.content.leaders'), 'label' => 'Leadership', 'match' => 'admin/content/leaders'],
+        ['url' => route('admin.content.videos'), 'label' => 'Videos', 'match' => 'admin/content/videos'],
         ['url' => route('admin.content.images'), 'label' => 'Site Images', 'match' => 'admin/content/images'],
     ];
     $currentPath = request()->path();
@@ -38,6 +39,15 @@
     @endif
     @if(session('error'))
         <div class="alert alert-error">{{ session('error') }}</div>
+    @endif
+    @if($errors->any())
+        <div class="alert alert-error">
+            <ul style="margin:0; padding-left:20px;">
+                @foreach($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
     @endif
 
     @yield('content_body')
