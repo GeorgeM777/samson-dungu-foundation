@@ -23,7 +23,7 @@
 <!-- Hero Slideshow Section -->
 <div class="hero-slideshow">
     @forelse($heroSlides as $index => $slide)
-        <div class="slide {{ $index === 0 ? 'active' : '' }}" style="background-image: url('https://samsondungufoundation.org/{{ ltrim($slide->image, '/') }}');">
+        <div class="slide {{ $index === 0 ? 'active' : '' }}" style="background-image: url('{{ asset(ltrim($slide->image, '/')) }}');">
             <div class="slide-overlay">
                 <div class="slide-text">
                     <h2>{{ $slide->title }}</h2>
@@ -32,7 +32,7 @@
             </div>
         </div>
     @empty
-        <div class="slide active" style="background-image: url('https://samsondungufoundation.org/images/hero/slide1-children.jpg');">
+        <div class="slide active" style="background-image: url('{{ asset('images/hero/slide1-children.jpg') }}');">
             <div class="slide-overlay">
                 <div class="slide-text">
                     <h2>Honoring Legacy, Transforming Lives</h2>

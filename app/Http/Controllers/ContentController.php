@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Storage;
 use App\Models\SiteSetting;
 use App\Models\HeroSlide;
@@ -158,15 +159,10 @@ class ContentController extends Controller
             'image' => 'required|image|mimes:jpg,jpeg,png,webp|max:5120',
         ]);
 
-        $image = $request->file('image');
-        $imageName = time() . '_' . uniqid() . '.' . $image->getClientOriginalExtension();
-        
-        // Save directly to public/images/hero/
-        $image->move(public_path('images/hero'), $imageName);
-        $path = 'samson-dungu-foundation/public/images/hero/' . $imageName;
+        $imagePath = $this->storeContentImage($request->file('image'), 'hero');
 
         HeroSlide::create([
-            'image' => '/' . $path,
+            'image' => $imagePath,
             'title' => $request->title,
             'subtitle' => $request->subtitle,
             'order' => HeroSlide::max('order') + 1,
@@ -187,13 +183,7 @@ class ContentController extends Controller
             if ($slide->image && file_exists(public_path(ltrim($slide->image, '/')))) {
                 unlink(public_path(ltrim($slide->image, '/')));
             }
-            $image = $request->file('image');
-            $imageName = time() . '_' . uniqid() . '.' . $image->getClientOriginalExtension();
-            
-            // Save directly to public/images/hero/
-            $image->move(public_path('images/hero'), $imageName);
-            $path = 'samson-dungu-foundation/public/images/hero/' . $imageName;
-            $data['image'] = '/' . $path;
+            $data['image'] = $this->storeContentImage($request->file('image'), 'hero');
         }
 
         $slide->update($data);
@@ -252,13 +242,7 @@ class ContentController extends Controller
         $data['is_active'] = true;
 
         if ($request->hasFile('image')) {
-            $image = $request->file('image');
-            $imageName = time() . '_' . uniqid() . '.' . $image->getClientOriginalExtension();
-            
-            // Save directly to public/images/programs/
-            $image->move(public_path('images/programs'), $imageName);
-            $path = 'samson-dungu-foundation/public/images/programs/' . $imageName;
-            $data['image'] = '/' . $path;
+            $data['image'] = $this->storeContentImage($request->file('image'), 'programs');
         }
 
         Program::create($data);
@@ -277,13 +261,7 @@ class ContentController extends Controller
             if ($program->image && file_exists(public_path(ltrim($program->image, '/')))) {
                 unlink(public_path(ltrim($program->image, '/')));
             }
-            $image = $request->file('image');
-            $imageName = time() . '_' . uniqid() . '.' . $image->getClientOriginalExtension();
-            
-            // Save directly to public/images/programs/
-            $image->move(public_path('images/programs'), $imageName);
-            $path = 'samson-dungu-foundation/public/images/programs/' . $imageName;
-            $data['image'] = '/' . $path;
+            $data['image'] = $this->storeContentImage($request->file('image'), 'programs');
         }
 
         $program->update($data);
@@ -314,13 +292,7 @@ class ContentController extends Controller
         $data['is_active'] = true;
 
         if ($request->hasFile('image')) {
-            $image = $request->file('image');
-            $imageName = time() . '_' . uniqid() . '.' . $image->getClientOriginalExtension();
-            
-            // Save directly to public/images/stories/
-            $image->move(public_path('images/stories'), $imageName);
-            $path = 'samson-dungu-foundation/public/images/stories/' . $imageName;
-            $data['image'] = '/' . $path;
+            $data['image'] = $this->storeContentImage($request->file('image'), 'stories');
         }
 
         ImpactStory::create($data);
@@ -336,13 +308,7 @@ class ContentController extends Controller
             if ($story->image && file_exists(public_path(ltrim($story->image, '/')))) {
                 unlink(public_path(ltrim($story->image, '/')));
             }
-            $image = $request->file('image');
-            $imageName = time() . '_' . uniqid() . '.' . $image->getClientOriginalExtension();
-            
-            // Save directly to public/images/stories/
-            $image->move(public_path('images/stories'), $imageName);
-            $path = 'samson-dungu-foundation/public/images/stories/' . $imageName;
-            $data['image'] = '/' . $path;
+            $data['image'] = $this->storeContentImage($request->file('image'), 'stories');
         }
 
         $story->update($data);
@@ -373,13 +339,7 @@ class ContentController extends Controller
         $data['is_active'] = true;
 
         if ($request->hasFile('photo')) {
-            $image = $request->file('photo');
-            $imageName = time() . '_' . uniqid() . '.' . $image->getClientOriginalExtension();
-            
-            // Save directly to public/images/leaders/
-            $image->move(public_path('images/leaders'), $imageName);
-            $path = 'samson-dungu-foundation/public/images/leaders/' . $imageName;
-            $data['photo'] = '/' . $path;
+            $data['photo'] = $this->storeContentImage($request->file('photo'), 'leaders');
         }
 
         LeadershipTeam::create($data);
@@ -395,13 +355,7 @@ class ContentController extends Controller
             if ($leader->photo && file_exists(public_path(ltrim($leader->photo, '/')))) {
                 unlink(public_path(ltrim($leader->photo, '/')));
             }
-            $image = $request->file('photo');
-            $imageName = time() . '_' . uniqid() . '.' . $image->getClientOriginalExtension();
-            
-            // Save directly to public/images/leaders/
-            $image->move(public_path('images/leaders'), $imageName);
-            $path = 'samson-dungu-foundation/public/images/leaders/' . $imageName;
-            $data['photo'] = '/' . $path;
+            $data['photo'] = $this->storeContentImage($request->file('photo'), 'leaders');
         }
 
         $leader->update($data);
@@ -432,19 +386,14 @@ class ContentController extends Controller
             'image' => 'required|image|mimes:jpg,jpeg,png,webp|max:5120',
         ]);
 
-        $image = $request->file('image');
-        $imageName = time() . '_' . uniqid() . '.' . $image->getClientOriginalExtension();
-        
-        // Save directly to public/images/site/
-        $image->move(public_path('images/site'), $imageName);
-        $path = 'samson-dungu-foundation/public/images/site/' . $imageName;
+        $imagePath = $this->storeContentImage($request->file('image'), 'site');
 
         SiteImage::create([
             'key' => $request->key,
             'label' => $request->label,
             'description' => $request->description,
             'group' => $request->group ?? 'general',
-            'image' => '/' . $path,
+            'image' => $imagePath,
         ]);
 
         return back()->with('success', 'Image added.');
@@ -459,13 +408,7 @@ class ContentController extends Controller
             if ($imageModel->image && file_exists(public_path(ltrim($imageModel->image, '/')))) {
                 unlink(public_path(ltrim($imageModel->image, '/')));
             }
-            $uploaded = $request->file('image');
-            $imageName = time() . '_' . uniqid() . '.' . $uploaded->getClientOriginalExtension();
-            
-            // Save directly to public/images/site/
-            $uploaded->move(public_path('images/site'), $imageName);
-            $path = 'samson-dungu-foundation/public/images/site/' . $imageName;
-            $data['image'] = '/' . $path;
+            $data['image'] = $this->storeContentImage($request->file('image'), 'site');
         }
 
         $imageModel->update($data);
@@ -480,5 +423,20 @@ class ContentController extends Controller
         }
         $imageModel->delete();
         return back()->with('success', 'Image deleted.');
+    }
+
+    private function storeContentImage(UploadedFile $image, string $directory): string
+    {
+        $relativeDirectory = 'images/' . $directory;
+        $absoluteDirectory = public_path($relativeDirectory);
+
+        if (!is_dir($absoluteDirectory)) {
+            mkdir($absoluteDirectory, 0755, true);
+        }
+
+        $imageName = time() . '_' . uniqid() . '.' . $image->getClientOriginalExtension();
+        $image->move($absoluteDirectory, $imageName);
+
+        return '/' . $relativeDirectory . '/' . $imageName;
     }
 }
