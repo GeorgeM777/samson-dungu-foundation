@@ -12,6 +12,7 @@
     $founderTitle = \App\Models\SiteSetting::get('founder_title', 'Founder');
     $founderTribute = \App\Models\SiteSetting::get('founder_tribute', 'His compassion and vision continue to guide our work, creating hope and dignity for vulnerable communities across Uganda.');
     $founderPortrait = \App\Models\SiteSetting::get('founder_portrait');
+    $founderPortraitUrl = $founderPortrait ? 'https://samsondungufoundation.org/' . ltrim($founderPortrait, '/') : null;
     $mission = \App\Models\SiteSetting::get('mission_text');
     $vision = \App\Models\SiteSetting::get('vision_text');
     $inclusiveStatement = \App\Models\SiteSetting::get('inclusive_statement');
@@ -23,7 +24,7 @@
 <!-- Hero Slideshow Section -->
 <div class="hero-slideshow">
     @forelse($heroSlides as $index => $slide)
-        <div class="slide {{ $index === 0 ? 'active' : '' }}" style="background-image: url('{{ asset(ltrim($slide->image, '/')) }}');">
+        <div class="slide {{ $index === 0 ? 'active' : '' }}" style="background-image: url('https://samsondungufoundation.org/{{ ltrim($slide->image, '/') }}');">
             <div class="slide-overlay">
                 <div class="slide-text">
                     <h2>{{ $slide->title }}</h2>
@@ -32,7 +33,7 @@
             </div>
         </div>
     @empty
-        <div class="slide active" style="background-image: url('{{ asset('images/hero/slide1-children.jpg') }}');">
+        <div class="slide active" style="background-image: url('https://samsondungufoundation.org/images/hero/slide1-children.jpg');">
             <div class="slide-overlay">
                 <div class="slide-text">
                     <h2>Honoring Legacy, Transforming Lives</h2>
@@ -56,11 +57,11 @@
             @if($founderPortrait)
                 @if(strtolower(pathinfo($founderPortrait, PATHINFO_EXTENSION)) === 'pdf')
                     <div class="founder-pdf-frame">
-                        <canvas class="founder-pdf-canvas" data-pdf-url="{{ asset(ltrim($founderPortrait, '/')) }}" aria-label="Founder tribute document for {{ $founderName }}" oncontextmenu="return false"></canvas>
+                        <canvas class="founder-pdf-canvas" data-pdf-url="{{ $founderPortraitUrl }}" aria-label="Founder tribute document for {{ $founderName }}" oncontextmenu="return false"></canvas>
                         <p class="founder-pdf-error" hidden>The founder tribute preview is temporarily unavailable.</p>
                     </div>
                 @else
-                    <div class="founder-photo"><img src="{{ asset(ltrim($founderPortrait, '/')) }}" alt="{{ $founderName }}" draggable="false" oncontextmenu="return false"></div>
+                    <div class="founder-photo"><img src="{{ $founderPortraitUrl }}" alt="{{ $founderName }}" draggable="false" oncontextmenu="return false"></div>
                 @endif
             @else
                 <div class="founder-photo"><span aria-hidden="true"><i class="fas fa-user-tie"></i></span></div>

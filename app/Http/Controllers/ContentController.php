@@ -59,10 +59,10 @@ class ContentController extends Controller
             $image = $request->file('founder_portrait');
             $imageName = time() . '_' . uniqid() . '.' . $image->getClientOriginalExtension();
             $image->move($directory, $imageName);
-            $newPath = '/founder-media/' . $imageName;
+            $newPath = '/samson-dungu-foundation/public/founder-media/' . $imageName;
 
-            if ($setting?->value && file_exists(public_path(ltrim($setting->value, '/')))) {
-                unlink(public_path(ltrim($setting->value, '/')));
+            if ($setting?->value && file_exists($this->storedPublicPath($setting->value))) {
+                unlink($this->storedPublicPath($setting->value));
             }
 
             SiteSetting::where('key', 'founder_portrait')->update(['value' => $newPath]);
@@ -113,8 +113,8 @@ class ContentController extends Controller
 
         if ($request->hasFile('thumbnail')) {
             $newThumbnail = $this->storeVideoThumbnail($request->file('thumbnail'));
-            if ($video->thumbnail && file_exists(public_path(ltrim($video->thumbnail, '/')))) {
-                unlink(public_path(ltrim($video->thumbnail, '/')));
+            if ($video->thumbnail && file_exists($this->storedPublicPath($video->thumbnail))) {
+                unlink($this->storedPublicPath($video->thumbnail));
             }
             $data['thumbnail'] = $newThumbnail;
         }
@@ -126,8 +126,8 @@ class ContentController extends Controller
     public function deleteVideo($id)
     {
         $video = Video::findOrFail($id);
-        if ($video->thumbnail && file_exists(public_path(ltrim($video->thumbnail, '/')))) {
-            unlink(public_path(ltrim($video->thumbnail, '/')));
+        if ($video->thumbnail && file_exists($this->storedPublicPath($video->thumbnail))) {
+            unlink($this->storedPublicPath($video->thumbnail));
         }
         $video->delete();
         return back()->with('success', 'Video deleted.');
@@ -180,8 +180,8 @@ class ContentController extends Controller
 
         if ($request->hasFile('image')) {
             // Delete old image if exists
-            if ($slide->image && file_exists(public_path(ltrim($slide->image, '/')))) {
-                unlink(public_path(ltrim($slide->image, '/')));
+            if ($slide->image && file_exists($this->storedPublicPath($slide->image))) {
+                unlink($this->storedPublicPath($slide->image));
             }
             $data['image'] = $this->storeContentImage($request->file('image'), 'hero');
         }
@@ -195,8 +195,8 @@ class ContentController extends Controller
     {
         $slide = HeroSlide::findOrFail($id);
         // Delete the image file
-        if ($slide->image && file_exists(public_path(ltrim($slide->image, '/')))) {
-            unlink(public_path(ltrim($slide->image, '/')));
+        if ($slide->image && file_exists($this->storedPublicPath($slide->image))) {
+            unlink($this->storedPublicPath($slide->image));
         }
         $slide->delete();
         return back()->with('success', 'Slide deleted.');
@@ -258,8 +258,8 @@ class ContentController extends Controller
         $data['stats'] = array_filter(array_map('trim', explode("\n", $request->stats ?? '')));
 
         if ($request->hasFile('image')) {
-            if ($program->image && file_exists(public_path(ltrim($program->image, '/')))) {
-                unlink(public_path(ltrim($program->image, '/')));
+            if ($program->image && file_exists($this->storedPublicPath($program->image))) {
+                unlink($this->storedPublicPath($program->image));
             }
             $data['image'] = $this->storeContentImage($request->file('image'), 'programs');
         }
@@ -271,8 +271,8 @@ class ContentController extends Controller
     public function deleteProgram($id)
     {
         $program = Program::findOrFail($id);
-        if ($program->image && file_exists(public_path(ltrim($program->image, '/')))) {
-            unlink(public_path(ltrim($program->image, '/')));
+        if ($program->image && file_exists($this->storedPublicPath($program->image))) {
+            unlink($this->storedPublicPath($program->image));
         }
         $program->delete();
         return back()->with('success', 'Program deleted.');
@@ -305,8 +305,8 @@ class ContentController extends Controller
         $data = $request->only(['title', 'description', 'link', 'order', 'is_active']);
 
         if ($request->hasFile('image')) {
-            if ($story->image && file_exists(public_path(ltrim($story->image, '/')))) {
-                unlink(public_path(ltrim($story->image, '/')));
+            if ($story->image && file_exists($this->storedPublicPath($story->image))) {
+                unlink($this->storedPublicPath($story->image));
             }
             $data['image'] = $this->storeContentImage($request->file('image'), 'stories');
         }
@@ -318,8 +318,8 @@ class ContentController extends Controller
     public function deleteStory($id)
     {
         $story = ImpactStory::findOrFail($id);
-        if ($story->image && file_exists(public_path(ltrim($story->image, '/')))) {
-            unlink(public_path(ltrim($story->image, '/')));
+        if ($story->image && file_exists($this->storedPublicPath($story->image))) {
+            unlink($this->storedPublicPath($story->image));
         }
         $story->delete();
         return back()->with('success', 'Story deleted.');
@@ -352,8 +352,8 @@ class ContentController extends Controller
         $data = $request->only(['name', 'position', 'phone', 'email', 'bio', 'order', 'is_active']);
 
         if ($request->hasFile('photo')) {
-            if ($leader->photo && file_exists(public_path(ltrim($leader->photo, '/')))) {
-                unlink(public_path(ltrim($leader->photo, '/')));
+            if ($leader->photo && file_exists($this->storedPublicPath($leader->photo))) {
+                unlink($this->storedPublicPath($leader->photo));
             }
             $data['photo'] = $this->storeContentImage($request->file('photo'), 'leaders');
         }
@@ -365,8 +365,8 @@ class ContentController extends Controller
     public function deleteLeader($id)
     {
         $leader = LeadershipTeam::findOrFail($id);
-        if ($leader->photo && file_exists(public_path(ltrim($leader->photo, '/')))) {
-            unlink(public_path(ltrim($leader->photo, '/')));
+        if ($leader->photo && file_exists($this->storedPublicPath($leader->photo))) {
+            unlink($this->storedPublicPath($leader->photo));
         }
         $leader->delete();
         return back()->with('success', 'Leader deleted.');
@@ -405,8 +405,8 @@ class ContentController extends Controller
         $data = $request->only(['key', 'label', 'description', 'group']);
 
         if ($request->hasFile('image')) {
-            if ($imageModel->image && file_exists(public_path(ltrim($imageModel->image, '/')))) {
-                unlink(public_path(ltrim($imageModel->image, '/')));
+            if ($imageModel->image && file_exists($this->storedPublicPath($imageModel->image))) {
+                unlink($this->storedPublicPath($imageModel->image));
             }
             $data['image'] = $this->storeContentImage($request->file('image'), 'site');
         }
@@ -418,8 +418,8 @@ class ContentController extends Controller
     public function deleteImage($id)
     {
         $imageModel = SiteImage::findOrFail($id);
-        if ($imageModel->image && file_exists(public_path(ltrim($imageModel->image, '/')))) {
-            unlink(public_path(ltrim($imageModel->image, '/')));
+        if ($imageModel->image && file_exists($this->storedPublicPath($imageModel->image))) {
+            unlink($this->storedPublicPath($imageModel->image));
         }
         $imageModel->delete();
         return back()->with('success', 'Image deleted.');
@@ -437,6 +437,18 @@ class ContentController extends Controller
         $imageName = time() . '_' . uniqid() . '.' . $image->getClientOriginalExtension();
         $image->move($absoluteDirectory, $imageName);
 
-        return '/' . $relativeDirectory . '/' . $imageName;
+        return '/samson-dungu-foundation/public/' . $relativeDirectory . '/' . $imageName;
+    }
+
+    private function storedPublicPath(string $path): string
+    {
+        $relativePath = ltrim($path, '/');
+        $legacyPrefix = 'samson-dungu-foundation/public/';
+
+        if (str_starts_with($relativePath, $legacyPrefix)) {
+            $relativePath = substr($relativePath, strlen($legacyPrefix));
+        }
+
+        return public_path($relativePath);
     }
 }
