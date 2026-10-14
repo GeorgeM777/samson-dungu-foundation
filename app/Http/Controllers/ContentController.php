@@ -33,7 +33,11 @@ class ContentController extends Controller
 
     public function settings()
     {
-        $settings = SiteSetting::orderBy('group')->orderBy('label')->get()->groupBy('group');
+        $settings = SiteSetting::where('group', '!=', 'donation_page')
+            ->orderBy('group')
+            ->orderBy('label')
+            ->get()
+            ->groupBy('group');
         return view('admin.content.settings', compact('settings'));
     }
 
@@ -69,6 +73,70 @@ class ContentController extends Controller
         }
 
         return back()->with('success', 'Settings updated successfully.');
+    }
+
+    public function donationPage()
+    {
+        $settings = [
+            'heading' => SiteSetting::get('donation_page_heading', 'Your Generosity Changes Lives'),
+            'subheading' => SiteSetting::get('donation_page_subheading', 'Every donation helps us train, feed, and empower vulnerable youth in Uganda.'),
+            'story' => SiteSetting::get('donation_page_story', 'We support orphans and youth with special needs through vocational training and practical skills. With your help, they can learn to create handmade crafts, build independence, and shape a brighter future.'),
+            'button_text' => SiteSetting::get('donation_page_button_text', 'Donate Now'),
+            'link' => SiteSetting::get('donation_page_link', 'https://swapp.co.ug/fundraiser/SwAppMzI2ZGQ0NzEyMTgx'),
+        ];
+        $amounts = json_decode(SiteSetting::get('donation_page_amounts', '[]'), true);
+        if (!is_array($amounts) || $amounts === []) {
+            $amounts = [
+                ['amount' => '$10', 'description' => 'Provides a meal for a trainee'],
+                ['amount' => '$25', 'description' => 'Buys crafting materials'],
+                ['amount' => '$50', 'description' => 'Supports one week of training'],
+                ['amount' => '$100', 'description' => 'Sponsors a full month for one beneficiary'],
+            ];
+        }
+        $amounts = old('amounts', $amounts);
+
+        return view('admin.content.donation_page', compact('settings', 'amounts'));
+    }
+
+    public function updateDonationPage(Request $request)
+    {
+        $data = $request->validate([
+            'heading' => 'required|string|max:255',
+            'subheading' => 'required|string|max:2000',
+            'story' => 'required|string|max:10000',
+            'button_text' => 'required|string|max:80',
+            'link' => 'required|url|max:2048',
+            'amounts' => 'required|array|min:1',
+            'amounts.*.amount' => 'required|string|max:40',
+            'amounts.*.description' => 'required|string|max:255',
+        ]);
+
+        $fields = [
+            'heading' => ['donation_page_heading', 'text', 'Hero Heading'],
+            'subheading' => ['donation_page_subheading', 'textarea', 'Hero Subheading'],
+            'story' => ['donation_page_story', 'richtext', 'Story Content'],
+            'button_text' => ['donation_page_button_text', 'text', 'Donate Button Text'],
+            'link' => ['donation_page_link', 'url', 'SwApp Link'],
+        ];
+
+        foreach ($fields as $field => [$key, $type, $label]) {
+            SiteSetting::updateOrCreate(
+                ['key' => $key],
+                ['value' => $data[$field], 'type' => $type, 'group' => 'donation_page', 'label' => $label]
+            );
+        }
+
+        SiteSetting::updateOrCreate(
+            ['key' => 'donation_page_amounts'],
+            [
+                'value' => json_encode($data['amounts'], JSON_UNESCAPED_SLASHES),
+                'type' => 'repeater',
+                'group' => 'donation_page',
+                'label' => 'Donation Amounts',
+            ]
+        );
+
+        return back()->with('success', 'Donation page updated successfully.');
     }
 
     public function videos()

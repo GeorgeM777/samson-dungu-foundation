@@ -28,6 +28,7 @@
                         <option value="schools">Schools</option>
                         <option value="stories">Stories</option>
                         <option value="leaders">Leaders</option>
+                        <option value="donation">Donation</option>
                     </select>
                 </div>
                 <div class="form-group">

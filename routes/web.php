@@ -69,6 +69,9 @@ Route::prefix('admin')->group(function () {
             Route::get('/settings', [ContentController::class, 'settings'])->name('settings');
             Route::put('/settings', [ContentController::class, 'updateSettings'])->name('settings.update');
 
+            Route::get('/donation-page', [ContentController::class, 'donationPage'])->name('donation-page');
+            Route::put('/donation-page', [ContentController::class, 'updateDonationPage'])->name('donation-page.update');
+
             Route::get('/hero', [ContentController::class, 'heroSlides'])->name('hero');
             Route::post('/hero', [ContentController::class, 'storeHeroSlide'])->name('hero.store');
             Route::put('/hero/{id}', [ContentController::class, 'updateHeroSlide'])->name('hero.update');

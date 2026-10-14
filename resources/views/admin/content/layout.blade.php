@@ -9,6 +9,7 @@
     $navItems = [
         ['url' => route('admin.content.dashboard'), 'label' => 'Dashboard', 'match' => 'admin/content'],
         ['url' => route('admin.content.settings'), 'label' => 'Site Text', 'match' => 'admin/content/settings'],
+        ['url' => route('admin.content.donation-page'), 'label' => 'Donation Page', 'match' => 'admin/content/donation-page'],
         ['url' => route('admin.content.hero'), 'label' => 'Hero Slides', 'match' => 'admin/content/hero'],
         ['url' => route('admin.content.stats'), 'label' => 'Impact Stats', 'match' => 'admin/content/stats'],
         ['url' => route('admin.content.programs'), 'label' => 'Programs', 'match' => 'admin/content/programs'],
@@ -30,7 +31,12 @@
 
     <div class="admin-nav">
         @foreach($navItems as $item)
-            <a href="{{ $item['url'] }}" class="{{ str_contains($currentPath, $item['match']) ? 'active' : '' }}">{{ $item['label'] }}</a>
+            @php
+                $isActive = $item['match'] === 'admin/content'
+                    ? $currentPath === 'admin/content'
+                    : str_contains($currentPath, $item['match']);
+            @endphp
+            <a href="{{ $item['url'] }}" class="{{ $isActive ? 'active' : '' }}">{{ $item['label'] }}</a>
         @endforeach
     </div>
 
